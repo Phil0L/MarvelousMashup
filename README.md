@@ -12,9 +12,16 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
 * Link zu der Projekt PDF: 
   * [Marvelous Mashup](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/master/Marvelous%20Mashup.pdf)
 * Link zu Meilenstein 1:
-  * [Meilenstein 1](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein%3A1)
+  * [Meilenstein 1](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein1)
 * Link zu Meilenstein 2:
-  * [Meilenstein 2](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein%3A2)
+  * [Meilenstein 2](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein2)
+* Link zu Meilenstein 3:
+  * [Meilenstein 3](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein3)
+* Link zu Meilenstein 4:
+  * [Meilenstein 4](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein4)
+  * [Pflichtenheft](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein4/Pflichtenheft.pdf)
+* Link zu Meilenstein 5:
+  * [Meilenstein 5](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein5)
 
 ## Creators
 
@@ -22,5 +29,5 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
 * Enrique Rempp
 * Philipp Letschka
 * René Müller
-* Michael Walter
+
 
