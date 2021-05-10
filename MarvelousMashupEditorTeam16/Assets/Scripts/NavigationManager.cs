@@ -31,7 +31,7 @@ public class NavigationManager : MonoBehaviour
     public int selectedTabHeight = 90;
     public int unselectedTabHeight = 60;
 
-    public void Start()
+    void Start()
     {
         RectTransform rt = GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(rt.rect.width, selectedTabHeight);
@@ -40,9 +40,9 @@ public class NavigationManager : MonoBehaviour
     
     public void NavigationItemClicked(int which)
     {
-        navigationConfig.sizeDelta = new Vector2(navigationConfig.rect.width, unselectedTabHeight);
-        navigationMap.sizeDelta = new Vector2(navigationMap.rect.width, unselectedTabHeight);
-        navigationCharacter.sizeDelta = new Vector2(navigationCharacter.rect.width, unselectedTabHeight);
+        navigationConfig.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
+        navigationMap.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
+        navigationCharacter.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
         
         config.gameObject.SetActive(false);
         map.gameObject.SetActive(false);
@@ -51,15 +51,15 @@ public class NavigationManager : MonoBehaviour
         switch (which)
         {
             case (int) Pages.CONFIG:
-                navigationConfig.sizeDelta = new Vector2(navigationConfig.rect.width, selectedTabHeight);
+                navigationConfig.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
                 config.gameObject.SetActive(true);
                 break;
             case (int) Pages.MAP:
-                navigationMap.sizeDelta = new Vector2(navigationMap.rect.width, selectedTabHeight);
+                navigationMap.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
                 map.gameObject.SetActive(true);
                 break;
             case (int) Pages.CHARACTER:
-                navigationCharacter.sizeDelta = new Vector2(navigationCharacter.rect.width, selectedTabHeight);
+                navigationCharacter.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
                 character.gameObject.SetActive(true);
                 break;
         }
