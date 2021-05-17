@@ -14,6 +14,8 @@ public class NavigationManager : MonoBehaviour
     private static readonly int CONFIG = 1;
     private static readonly int MAP = 2;
     private static readonly int CHARACTER = 3;
+
+    private BackgroundHandler bh;
     
     [Header("Navigation Items:")]
     public RectTransform navigationConfig;
@@ -47,20 +49,25 @@ public class NavigationManager : MonoBehaviour
         config.gameObject.SetActive(false);
         map.gameObject.SetActive(false);
         character.gameObject.SetActive(false);
+
+        if (bh == null)
+        {
+            bh = BackgroundHandler.Get();
+        }
         
         switch (which)
         {
             case (int) Pages.CONFIG:
                 navigationConfig.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
-                config.gameObject.SetActive(true);
+                bh.MoveMap(bh.configOffset, () => config.gameObject.SetActive(true));
                 break;
             case (int) Pages.MAP:
                 navigationMap.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
-                map.gameObject.SetActive(true);
+                bh.MoveMap(bh.mapOffset, () => map.gameObject.SetActive(true));
                 break;
             case (int) Pages.CHARACTER:
                 navigationCharacter.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
-                character.gameObject.SetActive(true);
+                bh.MoveMap(bh.characterOffset, () => character.gameObject.SetActive(true));
                 break;
         }
     }
