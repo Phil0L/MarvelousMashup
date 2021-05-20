@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GridDisplayer : MonoBehaviour
@@ -8,7 +9,7 @@ public class GridDisplayer : MonoBehaviour
 
     [Header("References:")]
     public GridLayoutGroup gridLayoutGroup;
-    public GameObject prefabTile;
+    public MapTileInfo prefabTile;
     public MapStore mapStore;
 
     [Header("Values:")] 
@@ -18,44 +19,60 @@ public class GridDisplayer : MonoBehaviour
     void Start()
     {
         mapStore.AddListener(MapChanged);
-        MapChanged(mapStore.GetMap());
+        MapChanged(mapStore.GetMap(), MapStore.MapAction.Initial);
     }
 
-    public void MapChanged(Map map)
+    public void MapChanged(Map map, MapStore.MapAction action)
     {
         if (map == null)
         {
             map = mapStore.GetMap();
         }
-        
-        RectTransform rt = gridLayoutGroup.GetComponent<RectTransform>();
-        float gridWidth = rt.rect.width;
-        float gridHeight = rt.rect.height;
 
-        int mapHeight = map.height;
-        int mapWidth = map.width;
-
-        float cellWidth = gridWidth / mapWidth - cellSpacing;
-        float cellHeight = gridHeight / mapHeight - cellSpacing;
-        float cellSize = Math.Min(cellWidth, cellHeight);
-
-        gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
-        gridLayoutGroup.constraintCount = mapWidth;
-        gridLayoutGroup.spacing = new Vector2(cellSpacing, cellSpacing);
-
-        foreach (Transform child in gridLayoutGroup.transform)
+        if (action == MapStore.MapAction.SizeChange || action == MapStore.MapAction.Initial)
         {
-            Destroy(child.gameObject);
+            RectTransform rt = gridLayoutGroup.GetComponent<RectTransform>();
+            float gridWidth = rt.rect.width;
+            float gridHeight = rt.rect.height;
+
+            int mapHeight = map.height;
+            int mapWidth = map.width;
+
+            float cellWidth = gridWidth / mapHeight - cellSpacing;
+            float cellHeight = gridHeight / mapWidth - cellSpacing;
+            float cellSize = Math.Min(cellWidth, cellHeight);
+
+            gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
+            gridLayoutGroup.constraintCount = mapHeight;
+            gridLayoutGroup.spacing = new Vector2(cellSpacing, cellSpacing);
+
+            foreach (Transform child in gridLayoutGroup.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            for (int x = 0; x < mapWidth; x++)
+            {
+                for (int y = 0; y < mapHeight; y++)
+                {
+                    MapTileInfo child = Instantiate(prefabTile, gridLayoutGroup.transform);
+                    child.name = "MapTile " + x + "|" + y;
+                    child.position = new Vector2(x, y);
+                    child.GetComponent<Image>().pixelsPerUnitMultiplier = 1 / cellCornerRadius * 50;
+                    child.SetTile(map.tiles[(int) child.position.x, (int) child.position.y]);
+                }
+            }
         }
 
-        for (int i = 0; i < mapHeight * mapWidth; i++)
+        if (action == MapStore.MapAction.TileChange)
         {
-            GameObject child = Instantiate(prefabTile, gridLayoutGroup.transform);
-            child.name = "MapTile " + (i / 10) + "|" + (i % 10);
-            child.GetComponent<Image>().pixelsPerUnitMultiplier = 1 / cellCornerRadius * 50;
+            foreach (Transform tf in gridLayoutGroup.transform)
+            {
+                MapTileInfo mti = tf.GetComponent<MapTileInfo>();
+                mti.SetTile(map.tiles[(int) mti.position.x, (int) mti.position.y]);
+            }
         }
     }
-    
 }
 
 [CustomEditor(typeof(GridDisplayer))]
@@ -68,7 +85,7 @@ public class GridDisplayerEditor : Editor
         GridDisplayer myScript = (GridDisplayer) target;
         if(GUILayout.Button("Update Grid"))
         {
-            myScript.MapChanged(null);
+            myScript.MapChanged(null, MapStore.MapAction.Initial);
         }
     }
 }
