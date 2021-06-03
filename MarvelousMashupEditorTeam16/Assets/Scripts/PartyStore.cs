@@ -1,7 +1,6 @@
-namespace DefaultNamespace
+using UnityEngine;
+public class PartyStore:MonoBehaviour  //, Store
 {
-    public class PartyStore
-    {
-        
-    }
+    public Party party;
+
 }

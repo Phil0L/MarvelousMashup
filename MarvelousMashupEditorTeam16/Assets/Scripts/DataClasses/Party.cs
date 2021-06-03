@@ -1,7 +1,5 @@
-namespace DefaultNamespace
+public class Party
 {
-    public class Party
-    {
-        
-    }
+    public int spaceStoneCD;
+    // hier alle values
 }
