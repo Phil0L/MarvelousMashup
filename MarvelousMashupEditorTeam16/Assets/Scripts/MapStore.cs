@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapStore : MonoBehaviour
+public class MapStore : MonoBehaviour, IStore
 {
     public enum MapAction
     {
@@ -46,5 +46,15 @@ public class MapStore : MonoBehaviour
     {
         //unnessecary?
         _grid ??= new Map(10, 10);
+    }
+
+    public void loadJson(string json)
+    {
+        throw new NotImplementedException();
+    }
+
+    public string toJson()
+    {
+        return this._grid.ToJson();
     }
 }

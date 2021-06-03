@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ValueController : MonoBehaviour
@@ -15,6 +17,9 @@ public class ValueController : MonoBehaviour
     public int maxValue = 100;
     public int defaultValue = 10;
     public int step = 1;
+    
+    [SerializeField]
+    public UnityEvent<int> onValueChange;
 
     [Header("References:")]
     public Image decreaseIcon;
@@ -26,6 +31,8 @@ public class ValueController : MonoBehaviour
     public Image backgroundImage;
 
     private int value;
+
+
 
 
     public void IncreaseButtonClicked()
@@ -65,6 +72,8 @@ public class ValueController : MonoBehaviour
         decreaseIcon.color = Color.black;
         this.value = newValue;
         inputField.text = newValue.ToString();
+        
+        onValueChange.Invoke(this.value);
     }
 
     public int GetValue()
