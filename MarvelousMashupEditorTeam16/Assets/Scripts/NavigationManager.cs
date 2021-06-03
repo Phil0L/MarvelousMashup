@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NavigationManager : MonoBehaviour
@@ -11,10 +9,6 @@ public class NavigationManager : MonoBehaviour
         CHARACTER = 3
     }
     
-    private static readonly int CONFIG = 1;
-    private static readonly int MAP = 2;
-    private static readonly int CHARACTER = 3;
-
     private BackgroundHandler bh;
     
     [Header("Navigation Items:")]
@@ -60,14 +54,17 @@ public class NavigationManager : MonoBehaviour
             case (int) Pages.CONFIG:
                 navigationConfig.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
                 bh.MoveMap(bh.configOffset, () => config.gameObject.SetActive(true));
+                Debug.Log("Config tab selected!");
                 break;
             case (int) Pages.MAP:
                 navigationMap.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
                 bh.MoveMap(bh.mapOffset, () => map.gameObject.SetActive(true));
+                Debug.Log("Map tab selected!");
                 break;
             case (int) Pages.CHARACTER:
                 navigationCharacter.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
                 bh.MoveMap(bh.characterOffset, () => character.gameObject.SetActive(true));
+                Debug.Log("Character tab selected!");
                 break;
         }
     }

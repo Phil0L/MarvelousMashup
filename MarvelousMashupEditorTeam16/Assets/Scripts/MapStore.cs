@@ -2,31 +2,43 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapStore : MonoBehaviour
+public class MapStore : MonoBehaviour, IStore
 {
+    public enum MapAction
+    {
+        Initial,
+        SizeChange,
+        TileChange
+    }
+
     private Map _grid = new Map(10, 10);
-    private List<Action<Map>> _listeners = new List<Action<Map>>();
+    private List<Action<Map, MapAction>> _listeners = new List<Action<Map, MapAction>>();
 
     public Map GetMap()
     {
         return _grid;
     }
 
-    public void SetNewMap(Map newMap)
+    public MapTile GetTile(int x, int y)
+    {
+        return _grid.tiles[x, y];
+    }
+
+    public void SetNewMap(Map newMap, MapAction action)
     {
         _grid = newMap;
-        foreach (var listener in _listeners)
+        foreach (Action<Map, MapAction> listener in _listeners)
         {
-            listener(_grid);
+            listener(_grid, action);
         }
     }
 
-    public void AddListener(Action<Map> listener)
+    public void AddListener(Action<Map, MapAction> listener)
     {
         _listeners.Add(listener);
         if (_grid != null)
         {
-            listener(_grid);
+            listener(_grid, MapAction.Initial);
         }
     }
     
@@ -34,5 +46,15 @@ public class MapStore : MonoBehaviour
     {
         //unnessecary?
         _grid ??= new Map(10, 10);
+    }
+
+    public void loadJson(string json)
+    {
+        throw new NotImplementedException();
+    }
+
+    public string toJson()
+    {
+        return this._grid.ToJson();
     }
 }
