@@ -2980,6 +2980,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 370001336}
     m_Modifications:
+    - target: {fileID: 4949837246373017746, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Text
+      value: max Round T.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837246508068027, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Text
+      value: max Resp. T.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837246552934275, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Text
+      value: max Anim. T.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837246648017696, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Text
+      value: max Rounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837246746488635, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Name
+      value: Balancing
+      objectReference: {fileID: 0}
     - target: {fileID: 4949837247003518484, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3067,6 +3087,18 @@ PrefabInstance:
     - target: {fileID: 4949837247003518491, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
       propertyPath: m_Name
       value: PartieEditor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837247144606036, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Text
+      value: max Game T.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837247844363256, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Text
+      value: max Pause T.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452723522605711499, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_Name
+      value: General
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
