@@ -1,6 +1,8 @@
 public interface IStore
 {
-    void loadJson(string json);
+    void LoadJson(string json);
 
-    string toJson();
+    string ToJson();
+
+    bool Savable();
 }
