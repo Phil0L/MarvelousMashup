@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class MapStore : MonoBehaviour, IStore
@@ -48,13 +49,19 @@ public class MapStore : MonoBehaviour, IStore
         _grid ??= new Map(10, 10);
     }
 
-    public void loadJson(string json)
+    public void LoadJson(string json)
     {
-        throw new NotImplementedException();
+        Map loadedMap = JsonConvert.DeserializeObject<Map>(json);
+        _grid = loadedMap;
     }
 
-    public string toJson()
+    public string ToJson()
     {
         return this._grid.ToJson();
+    }
+
+    public bool Savable()
+    {
+        return true;
     }
 }

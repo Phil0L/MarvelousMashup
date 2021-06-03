@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterValueChanger : MonoBehaviour
 {
 
     public CharacterListController controller;
+    public Dropdown typeDropdown;
+    public CharacterSpriteDisplayer spriteDisplayer;
 
     public void NameChanged(string newName)
     {
@@ -58,6 +62,16 @@ public class CharacterValueChanger : MonoBehaviour
         if (controller.selectedElement != null)
         {
             controller.selectedElement.character.meleeDamage = crd;
+        }
+    }
+
+    public void TypeChanged(int index)
+    {
+        if (controller.selectedElement != null)
+        {
+            Character.Characters characterE = (Character.Characters) Enum.Parse(typeof(Character.Characters), typeDropdown.options[index].text);
+            controller.selectedElement.character.characterID = characterE;
+            spriteDisplayer.ForceReload();
         }
     }
 }

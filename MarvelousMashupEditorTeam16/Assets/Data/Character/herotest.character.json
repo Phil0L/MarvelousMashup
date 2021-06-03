@@ -1,0 +1,14 @@
+{
+  "characters": [
+    {
+      "characterID": 6,
+      "name": "Captain America",
+      "HP": 0,
+      "MP": 0,
+      "AP": 0,
+      "meleeDamage": 0,
+      "rangeCombatDamage": 0,
+      "rangeCombatReach": 0
+    }
+  ]
+}
