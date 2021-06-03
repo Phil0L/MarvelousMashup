@@ -85,6 +85,28 @@ public class CharacterListController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (store.loadFlag)
+        {
+            store.loadFlag = false;
+            foreach (Transform elem in content.transform)
+            {
+                Destroy(elem.gameObject);
+            }
+            
+            available = Enum
+                .GetValues(typeof(Character.Characters))
+                .Cast<Character.Characters>()
+                .Where(c => c != Character.Characters.Unassigned)
+                .ToList();
+            
+            foreach (Character ch in store.GetCharacters())
+            {
+                var cle = Instantiate(listPrefab, content.transform);
+                cle.SetController(this);
+                cle.SetCharacter(ch);
+                cle.GetComponent<Image>().color = Color.white;
+                available.Remove(ch.characterID);
+            }
+        }
     }
 }

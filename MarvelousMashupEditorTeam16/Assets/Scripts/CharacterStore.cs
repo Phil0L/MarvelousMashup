@@ -8,6 +8,7 @@ public class CharacterStore : MonoBehaviour, IStore
     private Characters _characters = new Characters();
 
     public List<CharacterDefaults> defaultValues;
+    public bool loadFlag;
     
     public void CharacterAdded(Character character)
     {
@@ -19,14 +20,23 @@ public class CharacterStore : MonoBehaviour, IStore
         _characters.characters.Remove(character);
     }
 
-    public void loadJson(string json)
+    public Character[] GetCharacters() => _characters.characters.ToArray();
+
+    public void LoadJson(string json)
     {
-        throw new NotImplementedException();
+        Characters characters = JsonConvert.DeserializeObject<Characters>(json);
+        _characters = characters;
+        loadFlag = true;
     }
 
-    public string toJson()
+    public string ToJson()
     {
         return JsonConvert.SerializeObject(_characters, Formatting.Indented);
+    }
+
+    public bool Savable()
+    {
+        return true;
     }
 }
 
