@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +15,7 @@ public class CharacterValueDisplayer : MonoBehaviour
     public ValueController lrdChanger;
     public ValueController lrrChanger;
     public ValueController crdChanger;
+    public Dropdown typeChanger;
 
     private CharacterListElement localSelected;
     
@@ -37,6 +40,12 @@ public class CharacterValueDisplayer : MonoBehaviour
         lrdChanger.SetValue(localSelected.character.rangeCombatDamage);
         lrrChanger.SetValue(localSelected.character.rangeCombatReach);
         crdChanger.SetValue(localSelected.character.meleeDamage);
+        List<Dropdown.OptionData> dropdownlist = new List<Dropdown.OptionData>();
+        dropdownlist.Add(new Dropdown.OptionData(controller.selectedElement.character.characterID.ToString()));
+        dropdownlist.AddRange(controller.available.Select(a => new Dropdown.OptionData(a.ToString())));
+        typeChanger.options = dropdownlist;
+        typeChanger.value = 0;
+        typeChanger.interactable = true;
     }
 
     private void Deactivate()
@@ -48,5 +57,7 @@ public class CharacterValueDisplayer : MonoBehaviour
         lrdChanger.SetValue(0);
         lrrChanger.SetValue(0);
         crdChanger.SetValue(0);
+        typeChanger.ClearOptions();
+        typeChanger.interactable = false;
     }
 }

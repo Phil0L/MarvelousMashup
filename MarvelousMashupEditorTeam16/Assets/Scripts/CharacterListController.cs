@@ -15,7 +15,7 @@ public class CharacterListController : MonoBehaviour
 
     public CharacterListElement selectedElement;
     
-    private List<Character.Characters> available = Enum
+    public List<Character.Characters> available = Enum
         .GetValues(typeof(Character.Characters))
         .Cast<Character.Characters>()
         .Where(c => c != Character.Characters.Unassigned)
@@ -107,6 +107,11 @@ public class CharacterListController : MonoBehaviour
                 cle.GetComponent<Image>().color = Color.white;
                 available.Remove(ch.characterID);
             }
+        }
+
+        if (selectedElement == null && store.GetCharacters().Length != 0)
+        {
+            ElementSelected(content.transform.GetChild(0).GetComponent<CharacterListElement>());
         }
     }
 }

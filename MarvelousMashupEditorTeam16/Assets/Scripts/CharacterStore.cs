@@ -36,7 +36,7 @@ public class CharacterStore : MonoBehaviour, IStore
 
     public bool Savable()
     {
-        return true;
+        return _characters.characters.Count == 24;
     }
 }
 
