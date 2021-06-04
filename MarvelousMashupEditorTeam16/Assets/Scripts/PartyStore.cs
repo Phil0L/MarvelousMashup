@@ -1,17 +1,25 @@
 using System;
 using UnityEngine;
+using Newtonsoft.Json;
 
 
 public class PartyStore:MonoBehaviour, IStore
 {
-    public Party party;
+    public Party party = new Party();
+    public PartyController pc;
     
 
-    public void loadJson(string json){
-        throw new NotImplementedException();
+    public void LoadJson(string json){
+        this.party = JsonConvert.DeserializeObject<Party>(json);
+        pc.Load();
 	}
 
-    public string toJson() {
-        throw new NotImplementedException();
+    public string ToJson() {
+        pc.Save();
+        return JsonConvert.SerializeObject(party, Formatting.Indented);
 	}
+
+	public bool Savable() {
+        return true;
+    }
 }

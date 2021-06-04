@@ -1,3 +1,4 @@
+[System.Serializable]
 public class Party
 {
     public int spaceStoneCD;
@@ -14,5 +15,9 @@ public class Party
 	public int maxPauseTime;
 	public int maxRoundTime;
 	public int maxRounds;
+
+    public Party() 
+    {
+    }
 
 }
