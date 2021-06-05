@@ -1,6 +1,7 @@
-![version](https://img.shields.io/badge/version-alpha.0.1-blue)
+![version](https://img.shields.io/badge/version-alpha.1.0-green)
 ![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
 ![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)
+![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 
 # Marvelous Mashup Editor
 
