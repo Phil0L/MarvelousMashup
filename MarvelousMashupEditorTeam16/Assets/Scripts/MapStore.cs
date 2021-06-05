@@ -62,11 +62,18 @@ public class MapStore : MonoBehaviour, IStore
 
     public void LoadJson(string json)
     {
-        Map loadedMap = JsonConvert.DeserializeObject<Map>(json);
-        loadedMap.width = loadedMap.scenario.GetLength(0);
-        loadedMap.height = loadedMap.scenario.GetLength(1);
-        Debug.Log(loadedMap.ToString());
-        SetNewMap(loadedMap, MapAction.Load);
+        try
+        {
+            Map loadedMap = JsonConvert.DeserializeObject<Map>(json);
+            loadedMap.width = loadedMap.scenario.GetLength(0);
+            loadedMap.height = loadedMap.scenario.GetLength(1);
+            Debug.Log(loadedMap.ToString());
+            SetNewMap(loadedMap, MapAction.Load);
+        }
+        catch (Exception)
+        {
+            Debug.Log("Load canceled due to errors");
+        }
     }
 
     public string ToJson()

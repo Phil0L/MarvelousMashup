@@ -3046,6 +3046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7957007191199688505}
   - component: {fileID: 7957007191199688507}
+  - component: {fileID: 1108923614476000894}
   - component: {fileID: 7957007191199688506}
   m_Layer: 5
   m_Name: CharacterEditor
@@ -3085,6 +3086,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7957007191199688510}
   m_CullTransparentMesh: 1
+--- !u!225 &1108923614476000894
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7957007191199688510}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &7957007191199688506
 MonoBehaviour:
   m_ObjectHideFlags: 0
