@@ -93,6 +93,7 @@ public class GridDisplayer : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(GridDisplayer))]
 public class GridDisplayerEditor : Editor
 {
@@ -107,3 +108,4 @@ public class GridDisplayerEditor : Editor
         }
     }
 }
+#endif
