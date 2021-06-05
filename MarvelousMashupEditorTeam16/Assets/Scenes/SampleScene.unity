@@ -1040,6 +1040,7 @@ MonoBehaviour:
   defaultPage: 1
   selectedTabHeight: 90
   unselectedTabHeight: 60
+  fadeSpeed: 0.062
 --- !u!114 &1253766135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1263,7 @@ MonoBehaviour:
   mapOffset: {x: 400, y: 200}
   characterOffset: {x: 300, y: 350}
   speed: 5.7
-  finishedDistance: 3
+  finishedDistance: 30
 --- !u!1001 &1394621700
 PrefabInstance:
   m_ObjectHideFlags: 0
