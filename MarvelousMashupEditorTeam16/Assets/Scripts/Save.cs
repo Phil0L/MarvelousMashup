@@ -8,7 +8,7 @@ public class Save : MonoBehaviour
     public CharacterStore characterStore;
 
     public MapStore mapStore;
-    //public PartyStore partyStore;
+    public PartyStore partyStore;
 
     public Color savableColor;
     public Color unsavableColor;
@@ -35,11 +35,11 @@ public class Save : MonoBehaviour
                 ending = "scenario.json";
             }
 
-            //if (partyStore)
-            //{
-            //    filename = config.game.json;
-            //    ending = game.json
-            //}
+            if (partyStore)
+            {
+                filename = "config.game.json";
+                ending = "game.json";
+            }
             var saveWindow = new SaveWindow("Save the file", filename, ending, content,
                 s =>
                 {
@@ -68,8 +68,8 @@ public class Save : MonoBehaviour
             return characterStore;
         if (mapStore)
             return mapStore;
-        //if (partyStore)
-        //    return partyStore;
+        if (partyStore)
+            return partyStore;
         return null;
     }
 }

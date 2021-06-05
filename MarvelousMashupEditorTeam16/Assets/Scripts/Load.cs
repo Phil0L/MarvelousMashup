@@ -6,7 +6,7 @@ public class Load : MonoBehaviour
     public CharacterStore characterStore;
 
     public MapStore mapStore;
-    //public PartyStore partyStore;
+    public PartyStore partyStore;
 
     public Color loadColor;
 
@@ -25,17 +25,18 @@ public class Load : MonoBehaviour
             ending = "scenario.json";
         }
 
-        //if (partyStore)
-        //{
-        //    ending = game.json
-        //}
+        if (partyStore)
+        {
+            ending = "game.json";
+        }
+
         var loadWindow = new LoadWindow("Select a file", ending,
             (path, data) =>
             {
                 Debug.Log("Loaded!");
                 getStore().LoadJson(data);
             });
-        
+
     }
 
     private void Start()
@@ -49,8 +50,8 @@ public class Load : MonoBehaviour
             return characterStore;
         if (mapStore)
             return mapStore;
-        //if (partyStore)
-        //    return partyStore;
+        if (partyStore)
+            return partyStore;
         return null;
     }
 }
