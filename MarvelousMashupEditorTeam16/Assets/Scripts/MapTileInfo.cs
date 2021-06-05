@@ -13,6 +13,8 @@ public class MapTileInfo : MonoBehaviour
     public Image image;
     public Sprite spriteGrass;
     public Sprite spriteStone;
+    public Color colorGrass;
+    public Color colorStone;
 
     public void SetTile(MapTile tile)
     {
@@ -41,11 +43,13 @@ public class MapTileInfo : MonoBehaviour
         if (newImage == MapTile.GRASS)
         {
             image.sprite = spriteGrass;
+            image.color = colorGrass;
         }
 
-        if (newImage == MapTile.STONE)
+        if (newImage == MapTile.ROCK)
         {
             image.sprite = spriteStone;
+            image.color = colorStone;
         }
         this._displayedTile = newImage;
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
@@ -8,29 +9,34 @@ public class Map
     [NonSerialized] public int width;
     [NonSerialized] public int height;
 
-    public MapTile[,] tiles;
+    public MapTile[,] scenario;
     public string author;
-    public string name = "Testname";
+    public string name = "My Map";
+
+    [JsonConstructor]
+    public Map()
+    {
+    }
 
     public Map(int width, int height)
     {
-        this.tiles = new MapTile[width, height];
+        this.scenario = new MapTile[width, height];
         this.width = width;
         this.height = height;
-        for (int ii = 0; ii < tiles.GetLength(0); ii++)
+        for (int ii = 0; ii < scenario.GetLength(0); ii++)
         {
-            for (int ij = 0; ij < tiles.GetLength(1); ij++)
+            for (int ij = 0; ij < scenario.GetLength(1); ij++)
             {
-                tiles[ii, ij] = MapTile.GRASS;
+                scenario[ii, ij] = MapTile.GRASS;
             }
         }
     }
 
-    public Map(MapTile[,] tiles)
+    public Map(MapTile[,] scenario)
     {
-        this.tiles = tiles;
-        this.width = tiles.GetLength(0);
-        this.height = tiles.GetLength(1);
+        this.scenario = scenario;
+        this.width = scenario.GetLength(0);
+        this.height = scenario.GetLength(1);
     }
 
     public Map(MapTile[][] tiles)
@@ -43,7 +49,8 @@ public class Map
                 aTiles[ii, ij] = tiles[ii][ij];
             }
         }
-        this.tiles = aTiles;
+
+        this.scenario = aTiles;
         this.width = tiles.Length;
         this.height = tiles[0].Length;
     }
@@ -55,8 +62,23 @@ public class Map
         currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*2", " \"STONE\"");
         currentMapJson = Regex.Replace(currentMapJson, @"[^]]\n\s*]", "]");
         currentMapJson = Regex.Replace(currentMapJson, "]]", "]\n  ]");
-        currentMapJson = Regex.Replace(currentMapJson, "\"author\": null,\\n\\s*", "]");
 
         return currentMapJson;
+    }
+
+    public override string ToString()
+    {
+        string s = width + ", " + height + Environment.NewLine;
+        for (int ii = 0; ii < scenario.GetLength(0); ii++)
+        {
+            for (int ij = 0; ij < scenario.GetLength(1); ij++)
+            {
+                s += scenario[ii, ij].ToString() + " ";
+            }
+            s += Environment.NewLine;
+        }
+        s += name + Environment.NewLine;
+        s += author + Environment.NewLine;
+        return s;
     }
 }

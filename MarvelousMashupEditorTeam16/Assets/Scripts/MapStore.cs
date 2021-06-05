@@ -9,7 +9,8 @@ public class MapStore : MonoBehaviour, IStore
     {
         Initial,
         SizeChange,
-        TileChange
+        TileChange,
+        Load
     }
 
     private Map _grid = new Map(10, 10);
@@ -22,7 +23,17 @@ public class MapStore : MonoBehaviour, IStore
 
     public MapTile GetTile(int x, int y)
     {
-        return _grid.tiles[x, y];
+        return _grid.scenario[x, y];
+    }
+
+    public void SetName(string name)
+    {
+        _grid.name = name;
+    }
+
+    public void SetAuthor(string author)
+    {
+        _grid.author = author;
     }
 
     public void SetNewMap(Map newMap, MapAction action)
@@ -52,7 +63,10 @@ public class MapStore : MonoBehaviour, IStore
     public void LoadJson(string json)
     {
         Map loadedMap = JsonConvert.DeserializeObject<Map>(json);
-        _grid = loadedMap;
+        loadedMap.width = loadedMap.scenario.GetLength(0);
+        loadedMap.height = loadedMap.scenario.GetLength(1);
+        Debug.Log(loadedMap.ToString());
+        SetNewMap(loadedMap, MapAction.Load);
     }
 
     public string ToJson()

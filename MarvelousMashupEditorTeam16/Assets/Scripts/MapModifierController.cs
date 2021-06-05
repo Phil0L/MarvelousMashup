@@ -15,6 +15,25 @@ public class MapModifierController : MonoBehaviour
     void Start()
     {
         _changableMap.NewSize(10, 10);
+        mapStore.AddListener(StoreUpdate);
+    }
+
+    void StoreUpdate(Map map, MapStore.MapAction action)
+    {
+        if (action == MapStore.MapAction.Load)
+        {
+            MapSizeChanged(map.width, map.height);
+            widthController.SetValue(map.width);
+            heightController.SetValue(map.height);
+            for (int ii = 0; ii < map.scenario.GetLength(0); ii++)
+            {
+                for (int ij = 0; ij < map.scenario.GetLength(1); ij++)
+                {
+                    _changableMap[ii][ij] = map.scenario[ii, ij];
+                }
+            }
+            mapStore.SetNewMap(_changableMap.ToMap(), MapStore.MapAction.TileChange);
+        }
     }
 
     void Update()
@@ -44,16 +63,16 @@ public class MapModifierController : MonoBehaviour
         switch (toolsManager.selectedTool)
         {
             case MapToolsManager.Tool.Switch:
-                if (_changableMap[x][y] == MapTile.STONE)
+                if (_changableMap[x][y] == MapTile.ROCK)
                     _changableMap[x][y] = MapTile.GRASS;
                 else
-                    _changableMap[x][y] = MapTile.STONE;
+                    _changableMap[x][y] = MapTile.ROCK;
                 break;
             case MapToolsManager.Tool.Grass:
                 _changableMap[x][y] = MapTile.GRASS;
                 break;
             case MapToolsManager.Tool.Stone:
-                _changableMap[x][y] = MapTile.STONE;
+                _changableMap[x][y] = MapTile.ROCK;
                 break;
 
         }
