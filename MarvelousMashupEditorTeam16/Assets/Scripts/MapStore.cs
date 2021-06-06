@@ -70,9 +70,11 @@ public class MapStore : MonoBehaviour, IStore
             Debug.Log(loadedMap.ToString());
             SetNewMap(loadedMap, MapAction.Load);
         }
-        catch (Exception)
+        catch (Exception e)
         {
             Debug.Log("Load canceled due to errors");
+            Debug.LogError(e);
+            throw;
         }
     }
 

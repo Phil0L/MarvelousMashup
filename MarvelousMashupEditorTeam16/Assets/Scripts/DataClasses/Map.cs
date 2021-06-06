@@ -59,7 +59,7 @@ public class Map
     {
         string currentMapJson = JsonConvert.SerializeObject(this, Formatting.Indented);
         currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*1", " \"GRASS\"");
-        currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*2", " \"STONE\"");
+        currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*2", " \"ROCK\"");
         currentMapJson = Regex.Replace(currentMapJson, @"[^]]\n\s*]", "]");
         currentMapJson = Regex.Replace(currentMapJson, "]]", "]\n  ]");
 
