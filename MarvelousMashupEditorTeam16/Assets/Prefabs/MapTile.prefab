@@ -141,8 +141,8 @@ MonoBehaviour:
   image: {fileID: 5054913597873693384}
   spriteGrass: {fileID: 0}
   spriteStone: {fileID: 0}
-  colorGrass: {r: 0.17915626, g: 0.6226415, b: 0.2638811, a: 1}
-  colorStone: {r: 0.5660378, g: 0.49085736, b: 0.38714847, a: 1}
+  colorGrass: {r: 0.3137255, g: 0.5647059, b: 0.22352943, a: 1}
+  colorStone: {r: 0.45098042, g: 0.45098042, b: 0.45098042, a: 1}
 --- !u!114 &7789003155506423126
 MonoBehaviour:
   m_ObjectHideFlags: 0

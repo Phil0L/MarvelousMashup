@@ -27,7 +27,7 @@ public class NavigationManager : MonoBehaviour
 
     public int selectedTabHeight = 90;
     public int unselectedTabHeight = 60;
-    [Range(0,0.01f)] public float fadeSpeed;
+    [Range(0,0.1f)] public float fadeSpeed;
     private Pages showingPage;
 
     void Start()

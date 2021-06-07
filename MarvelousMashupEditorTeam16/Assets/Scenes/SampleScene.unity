@@ -1040,7 +1040,7 @@ MonoBehaviour:
   defaultPage: 1
   selectedTabHeight: 90
   unselectedTabHeight: 60
-  fadeSpeed: 0.062
+  fadeSpeed: 0.0553
 --- !u!114 &1253766135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,6 +1769,10 @@ PrefabInstance:
     - target: {fileID: 4949837247003518491, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
       propertyPath: m_Name
       value: PartieEditor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837247003518491, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe5f34c43cfb98f491cb4bdcc12f7bd, type: 3}
