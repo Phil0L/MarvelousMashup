@@ -11,8 +11,7 @@ The project is part of the lecture "Softwaregrundprojekt" held at Ulm University
 
 This Editor has been created by Team 16.
 
-**For more Information Checkout the whole [Projects Gitlab](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16):**
-https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16
+**For more Information Checkout the whole [Projects Gitlab](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16)**
 
 You can also checkout the Guidlines for the Project:
 * [Standard Document on Gitlab](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/standard)
