@@ -15,6 +15,8 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
 ## Links
 * Link zu der Projekt PDF: 
   * [Marvelous Mashup](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/master/Marvelous%20Mashup.pdf)
+  * Link zum Projekttagebuch: 
+  * [Marvelous Mashup](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/master/Projekttagebuch.pdf)
 * Link zu Meilenstein 1:
   * [Meilenstein 1](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein1)
 * Link zu Meilenstein 2:
