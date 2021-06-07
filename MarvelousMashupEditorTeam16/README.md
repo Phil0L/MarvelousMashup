@@ -1,5 +1,5 @@
-![version](https://img.shields.io/badge/version-alpha.1.0-green)
-![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
+![version](https://img.shields.io/badge/version-1.1-green)
+![coverage](https://img.shields.io/badge/coverage-90%25-yellowgreen)
 ![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 
@@ -33,16 +33,46 @@ https://docs.microsoft.com/de-de/dotnet/csharp/tour-of-csharp/
 
 C# (Aussprache „C Sharp“) ist eine moderne, objektorientierte und typsichere Programmiersprache. C# ermöglicht Entwicklern das Erstellen zahlreicher sicherer und robuster Anwendungen, die im .NET-Ökosystem ausgeführt werden. C# hat seine Wurzeln in der C-Sprachenfamilie und ist Programmierern, die mit C, C++, Java und JavaScript arbeiten, sofort vertraut. Diese Einführung bietet einen Überblick über die wichtigsten Komponenten der Sprache in C# 8 und früheren Versionen. Wenn Sie die Sprache anhand von interaktiven Beispielen kennenlernen möchten, arbeiten Sie die Tutorials auf der Seite Einführung in C# durch.
 
+### **External libraries**
+
+
+**Parsing objects to and from json strings:**
+
+https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonConvert.htm
+
+**Open a window to select a file location:**
+
+https://github.com/gkngkc/UnityStandaloneFileBrowser
+
+## Images
+
+The Editor contains 3 different Editors for each the Character, Map and Config Editor. These are shown below:
+
+### Config Editor
+
+![Config Editor](images/config.png)
+
+
+### Scenario Editor
+
+![Scenario Editor](images/map.png)
+
+
+### Character Editor
+
+![Character Editor](images/character.png)
+
 ## Creators
 
 * **Developer**
   * Philipp Letschka
   * Cornelius Huber
   * René Müller
-
+---
 
 * **Artists**
   * Enrique Rempp
+---
 
 * Tutor
   * Jakob Meyer-Hilberg
