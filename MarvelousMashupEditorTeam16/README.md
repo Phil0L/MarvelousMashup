@@ -14,16 +14,16 @@ This Editor has been created by Team 16.
 **For more Information Checkout the whole [Projects Gitlab](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16):**
 https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16
 
-You can also checkout the Guidlines for the Project: 
+You can also checkout the Guidlines for the Project:
 * https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/standard
 * https://discord.gg/aurEVPJv5y
 
 
-## Unity 
+## Unity
 
 **The project uses [Unity](https://unity.com/) as a Game-Engine.**
 
-https://unity.com 
+https://unity.com
 
 The leading platform for creating interactive, real-time content Build 2D, 3D and VR games and apps at speed. From artist tools to LiveOps – Everything you need to bring your vision to life today.
 
@@ -38,11 +38,11 @@ C# (Aussprache „C Sharp“) ist eine moderne, objektorientierte und typsichere
 
 **Parsing objects to and from json strings:**
 
-https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonConvert.htm
+[Newtonsoft Json](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonConvert.htm)
 
 **Open a window to select a file location:**
 
-https://github.com/gkngkc/UnityStandaloneFileBrowser
+[Unity Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
 
 ## Images
 
