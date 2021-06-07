@@ -15,34 +15,27 @@ This Editor has been created by Team 16.
 https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16
 
 You can also checkout the Guidlines for the Project:
-* https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/standard
-* https://discord.gg/aurEVPJv5y
+* [Standard Document on Gitlab](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/standard)
+* [Standardization Commitee Discord Server](https://discord.gg/aurEVPJv5y)
 
 
 ## Unity
 
 **The project uses [Unity](https://unity.com/) as a Game-Engine.**
 
-https://unity.com
-
 The leading platform for creating interactive, real-time content Build 2D, 3D and VR games and apps at speed. From artist tools to LiveOps – Everything you need to bring your vision to life today.
 
-**The Code is written in C#**
+**The Code is written in [C#](https://docs.microsoft.com/de-de/dotnet/csharp/tour-of-csharp/)**
 
-https://docs.microsoft.com/de-de/dotnet/csharp/tour-of-csharp/
 
 C# (Aussprache „C Sharp“) ist eine moderne, objektorientierte und typsichere Programmiersprache. C# ermöglicht Entwicklern das Erstellen zahlreicher sicherer und robuster Anwendungen, die im .NET-Ökosystem ausgeführt werden. C# hat seine Wurzeln in der C-Sprachenfamilie und ist Programmierern, die mit C, C++, Java und JavaScript arbeiten, sofort vertraut. Diese Einführung bietet einen Überblick über die wichtigsten Komponenten der Sprache in C# 8 und früheren Versionen. Wenn Sie die Sprache anhand von interaktiven Beispielen kennenlernen möchten, arbeiten Sie die Tutorials auf der Seite Einführung in C# durch.
 
 ### **External libraries**
 
 
-**Parsing objects to and from json strings:**
+**Parsing objects to and from json strings with [Newtonsoft Json](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonConvert.htm)**
 
-[Newtonsoft Json](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonConvert.htm)
-
-**Open a window to select a file location:**
-
-[Unity Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
+**Open a window to select a file location with [Unity Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser)**
 
 ## Images
 
