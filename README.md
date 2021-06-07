@@ -15,7 +15,7 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
 ## Links
 * Link zu der Projekt PDF: 
   * [Marvelous Mashup](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/master/Marvelous%20Mashup.pdf)
-  * Link zum Projekttagebuch: 
+* Link zum Projekttagebuch: 
   * [Marvelous Mashup](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/master/Projekttagebuch.pdf)
 * Link zu Meilenstein 1:
   * [Meilenstein 1](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein1)
@@ -31,7 +31,7 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
 
 
 ## [Editor](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/unity-editor/MarvelousMashupEditorTeam16)
-![version](https://img.shields.io/badge/version-alpha.0.1-blue)
+![version](https://img.shields.io/badge/version-1.1-blue)
 ![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
 
 Der Editor des Spiels.
