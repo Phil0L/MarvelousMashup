@@ -3046,6 +3046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7957007191199688505}
   - component: {fileID: 7957007191199688507}
+  - component: {fileID: 1108923614476000894}
   - component: {fileID: 7957007191199688506}
   m_Layer: 5
   m_Name: CharacterEditor
@@ -3085,6 +3086,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7957007191199688510}
   m_CullTransparentMesh: 1
+--- !u!225 &1108923614476000894
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7957007191199688510}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &7957007191199688506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3106,7 +3119,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 436f7282ba06d0549a4774ba1c80154c, type: 3}
   - characterID: 2
     name: Quicksilver
     HP: 0
@@ -3115,7 +3128,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 3a8de61d3cef4a6469d46f0766600ab0, type: 3}
   - characterID: 3
     name: Hulk
     HP: 0
@@ -3124,7 +3137,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 717a4da104779d74abf0b0685bec8aec, type: 3}
   - characterID: 4
     name: Black Widow
     HP: 0
@@ -3151,7 +3164,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 51007eb29cb1c8d4cac6a8dae600a7fe, type: 3}
   - characterID: 7
     name: Spiderman
     HP: 0
@@ -3160,7 +3173,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 71496dbe33c7bfb49a528c01f31a0dbc, type: 3}
   - characterID: 8
     name: Dr. Strange
     HP: 0
@@ -3169,7 +3182,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 34842bba689228a4fbe8ffd78be3d63e, type: 3}
   - characterID: 9
     name: Iron Man
     HP: 0
@@ -3178,7 +3191,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 4f415c245d3c49441af3ef122cab64ce, type: 3}
   - characterID: 10
     name: Black Panther
     HP: 0
@@ -3187,7 +3200,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 8090ada510f099b45a5c319c900d8ad0, type: 3}
   - characterID: 11
     name: Thor
     HP: 0
@@ -3196,7 +3209,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 93b2e0ab7c9ccb049b7ea917521ddcef, type: 3}
   - characterID: 12
     name: Captain Marvel
     HP: 0
@@ -3205,7 +3218,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: dc1374e76eebaf94f95307670e3039d6, type: 3}
   - characterID: 13
     name: Groot
     HP: 0
@@ -3214,7 +3227,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 7361e19cb6691eb4394ece2e6aa3f9e9, type: 3}
   - characterID: 14
     name: Starlord
     HP: 0
@@ -3223,7 +3236,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: e6f8f342378a02c428d5aeb993c88f1a, type: 3}
   - characterID: 15
     name: Gamora
     HP: 0
@@ -3232,7 +3245,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 0349ae9d0e33c8f4e8fde340faef4e96, type: 3}
   - characterID: 16
     name: Antman
     HP: 0
@@ -3241,7 +3254,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 731e156a11b46044e9cf7427e066c46b, type: 3}
   - characterID: 17
     name: Vision
     HP: 0
@@ -3250,15 +3263,15 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 2708338128d09ff4cbb5ab54cb5c69ed, type: 3}
   - characterID: 18
     name: Deadpool
-    HP: 50
-    MP: 14
-    AP: 6
-    meleeDamage: 17
-    rangeCombatDamage: 3
-    rangeCombatReach: 2
+    HP: 0
+    MP: 0
+    AP: 0
+    meleeDamage: 0
+    rangeCombatDamage: 0
+    rangeCombatReach: 0
     sprite: {fileID: 21300000, guid: 3ae680fd6c7bb864ba35311712bc3c52, type: 3}
   - characterID: 19
     name: Loki
@@ -3268,7 +3281,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: f1de271b58ea28d47a814368a6582985, type: 3}
   - characterID: 20
     name: Silver Surfer
     HP: 0
@@ -3277,7 +3290,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 50df1851646ebc84eb9c61485f4720b3, type: 3}
   - characterID: 21
     name: Mantis
     HP: 0
@@ -3286,7 +3299,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 04b4263e8ce1ef94f9949344a3b3ab2d, type: 3}
   - characterID: 22
     name: Ghost Rider
     HP: 0
@@ -3295,7 +3308,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: fedd082754c8aae4fba1f7cc3888ad26, type: 3}
   - characterID: 23
     name: Jesica Jones
     HP: 0
@@ -3304,7 +3317,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: de62a3479467ffd40ad3e44e8caeb38d, type: 3}
   - characterID: 24
     name: Scarlet Witch
     HP: 0
@@ -3313,7 +3326,7 @@ MonoBehaviour:
     meleeDamage: 0
     rangeCombatDamage: 0
     rangeCombatReach: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 1b563297dd4ff4746b2b7a5ad63ba5d8, type: 3}
   loadFlag: 0
 --- !u!1 &7957007191240130530
 GameObject:

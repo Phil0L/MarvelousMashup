@@ -1,0 +1,244 @@
+{
+  "characters": [
+    {
+      "characterID": 1,
+      "name": "Thomas Thüm",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 2,
+      "name": "Florian Ege",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 3,
+      "name": "Nico Brenner",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 4,
+      "name": "Ruben Dunkel",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 5,
+      "name": "Lucas Gmünder",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 6,
+      "name": "Johannes Herschel",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 7,
+      "name": "Dennis Jehle",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 8,
+      "name": "Jasmin Klassen",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 9,
+      "name": "Jakob Meyer-Hilberg",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 10,
+      "name": "Justin Mücke",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 11,
+      "name": "Felix Nagel",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 12,
+      "name": "Timo Netzer",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 13,
+      "name": "Theo Nonnenmacher",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 14,
+      "name": "Dominik Rollenmiller",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 15,
+      "name": "Pascal Schiessle",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 16,
+      "name": "Bastian Wankmüller",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 17,
+      "name": "Tim Wibiral",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "characterID": 18,
+      "name": "Timo Zuccarello",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 19,
+      "name": "Gina Gitlab",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 20,
+      "name": "Sophie SonarQube",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 21,
+      "name": "Dorli Docker",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 22,
+      "name": "Jaana JUnit",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 23,
+      "name": "Gisela Git",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "characterID": 24,
+      "name": "Lina Libgdx",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    }
+  ]
+}

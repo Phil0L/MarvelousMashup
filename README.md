@@ -1,4 +1,8 @@
-# Team16
+![version](https://img.shields.io/badge/version-1.5.1-blue)
+![coverage](https://img.shields.io/badge/coverage-40%25-orange)
+![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)
+
+# Marvelous Mashup Team 16
 
 In diesem Softwaregrundprojekt geht es um die Realisierung eines rundenbasiertes Taktik-Spiels welches sich an dem Marvel Universum orientiert.  Das Spiel trägt den Namen “Marvelous Mashup” und lässt den Spieler in eine Rolle eines Marvel Helden steigen und gegen andere Spieler oder eine Künstliche Intelligenz spielen, die von Zuschauern im Nachhinein verfolgt werden kann.
 Die Versionierung der Projektdateien wird durch Git gestützt, die Architektur basiert auf der Client-Server-Architektur, das bedeutet, dass die Spieler Clients nicht untereinander kommunizieren, sondern lediglich über den Server.
@@ -23,11 +27,45 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
 * Link zu Meilenstein 5:
   * [Meilenstein 5](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein5)
 
+
+## [Editor](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/unity-editor/MarvelousMashupEditorTeam16)
+![version](https://img.shields.io/badge/version-alpha.0.1-blue)
+![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
+
+Der Editor des Spiels.
+
+Link zu dem Editor:
+
+https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/unity-editor/MarvelousMashupEditorTeam16
+
+
 ## Creators
 
-* Cornelius Huber
-* Enrique Rempp
-* Philipp Letschka
-* René Müller
+* **Project Manager / Document Creators**
+  * Philipp Letschka
+  * Cornelius Huber
+  * Enrique Rempp
+  * René Müller
+---
+
+* **Developer**
+  * Philipp Letschka
+  * Cornelius Huber
+  * René Müller
+---
+
+* **Artists**
+  * Enrique Rempp
+---
+
+* Previous Members
+  * Mika Witteczek
+  * Michael Walter
+---
+
+* Tutor
+  * Jakob Meyer-Hilberg
+  * Florian Ege
+  * Thomas Thüm
 
 

@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 947fbd289e8d49d45afa518e3befe696, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -139,8 +139,10 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   defaultTile: 1
   image: {fileID: 5054913597873693384}
-  spriteGrass: {fileID: 21300000, guid: f5daa9d545b13184eb895a62a42de83c, type: 3}
-  spriteStone: {fileID: 21300000, guid: d3e2ab729db173c4aae8ab9d9195d234, type: 3}
+  spriteGrass: {fileID: 0}
+  spriteStone: {fileID: 0}
+  colorGrass: {r: 0.3137255, g: 0.5647059, b: 0.22352943, a: 1}
+  colorStone: {r: 0.45098042, g: 0.45098042, b: 0.45098042, a: 1}
 --- !u!114 &7789003155506423126
 MonoBehaviour:
   m_ObjectHideFlags: 0

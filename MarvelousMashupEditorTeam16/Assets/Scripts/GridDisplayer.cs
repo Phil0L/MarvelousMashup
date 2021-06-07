@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,7 +30,7 @@ public class GridDisplayer : MonoBehaviour
             map = mapStore.GetMap();
         }
 
-        if (action == MapStore.MapAction.SizeChange || action == MapStore.MapAction.Initial)
+        if (action == MapStore.MapAction.SizeChange || action == MapStore.MapAction.Initial || action == MapStore.MapAction.Load)
         {
             RectTransform rt = gridLayoutGroup.GetComponent<RectTransform>();
             float gridWidth = rt.rect.width;
@@ -59,22 +60,40 @@ public class GridDisplayer : MonoBehaviour
                     child.name = "MapTile " + x + "|" + y;
                     child.position = new Vector2(x, y);
                     child.GetComponent<Image>().pixelsPerUnitMultiplier = 1 / cellCornerRadius * 50;
-                    child.SetTile(map.tiles[(int) child.position.x, (int) child.position.y]);
+                    child.SetTile(map.scenario[(int) child.position.x, (int) child.position.y]);
                 }
             }
         }
 
         if (action == MapStore.MapAction.TileChange)
         {
-            foreach (Transform tf in gridLayoutGroup.transform)
+            try
             {
-                MapTileInfo mti = tf.GetComponent<MapTileInfo>();
-                mti.SetTile(map.tiles[(int) mti.position.x, (int) mti.position.y]);
+                foreach (Transform tf in gridLayoutGroup.transform)
+                {
+                    MapTileInfo mti = tf.GetComponent<MapTileInfo>();
+                    mti.SetTile(map.scenario[(int) mti.position.x, (int) mti.position.y]);
+                }
             }
+            catch (Exception e)
+            {
+                StartCoroutine(FixTileChange());
+            }
+        }
+    }
+
+    IEnumerator FixTileChange()
+    {
+        yield return 0;
+        foreach (Transform tf in gridLayoutGroup.transform)
+        {
+            MapTileInfo mti = tf.GetComponent<MapTileInfo>();
+            mti.SetTile(mapStore.GetMap().scenario[(int) mti.position.x, (int) mti.position.y]);
         }
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(GridDisplayer))]
 public class GridDisplayerEditor : Editor
 {
@@ -89,3 +108,4 @@ public class GridDisplayerEditor : Editor
         }
     }
 }
+#endif

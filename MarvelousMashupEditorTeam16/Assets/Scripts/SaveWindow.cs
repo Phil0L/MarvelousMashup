@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using SFB;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +8,12 @@ public class SaveWindow
 {
     public SaveWindow(string title, string filename, string ending, string data, Action<string> onSuccess)
     {
-        var path = EditorUtility.SaveFilePanel(title, "", filename, ending);
+        string path;
+        #if UNITY_EDITOR
+        path = EditorUtility.SaveFilePanel(title, "", filename, ending);
+        #else
+        path = StandaloneFileBrowser.SaveFilePanel(title, "", filename, ending);
+        #endif
         if (path.Length != 0)
         {
             Debug.Log("Selected file path:" + path);

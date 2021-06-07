@@ -10,9 +10,16 @@ public class PartyStore:MonoBehaviour, IStore
     
 
     public void LoadJson(string json){
-        this.party = JsonConvert.DeserializeObject<Party>(json);
-        pc.Load();
-	}
+        try
+        {
+            this.party = JsonConvert.DeserializeObject<Party>(json);
+            pc.Load();
+        }
+        catch (Exception)
+        {
+            Debug.Log("Load canceled due to errors");
+        }
+    }
 
     public string ToJson() {
         pc.Save();

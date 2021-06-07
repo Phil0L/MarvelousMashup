@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class NavigationManager : MonoBehaviour
@@ -26,9 +27,12 @@ public class NavigationManager : MonoBehaviour
 
     public int selectedTabHeight = 90;
     public int unselectedTabHeight = 60;
+    [Range(0,0.1f)] public float fadeSpeed;
+    private Pages showingPage;
 
     void Start()
     {
+        showingPage = defaultPage;
         RectTransform rt = GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(rt.rect.width, selectedTabHeight);
         NavigationItemClicked((int) defaultPage);
@@ -40,10 +44,6 @@ public class NavigationManager : MonoBehaviour
         navigationMap.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
         navigationCharacter.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
         
-        config.gameObject.SetActive(false);
-        map.gameObject.SetActive(false);
-        character.gameObject.SetActive(false);
-
         if (bh == null)
         {
             bh = BackgroundHandler.Get();
@@ -53,19 +53,68 @@ public class NavigationManager : MonoBehaviour
         {
             case (int) Pages.CONFIG:
                 navigationConfig.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
-                bh.MoveMap(bh.configOffset, () => config.gameObject.SetActive(true));
+                showingPage = 0;
+                bh.MoveMap(bh.configOffset, () =>
+                {
+                    config.gameObject.SetActive(true);
+                    showingPage = Pages.CONFIG;
+                });
                 Debug.Log("Config tab selected!");
                 break;
             case (int) Pages.MAP:
                 navigationMap.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
-                bh.MoveMap(bh.mapOffset, () => map.gameObject.SetActive(true));
+                showingPage = 0;
+                bh.MoveMap(bh.mapOffset, () =>
+                {
+                    map.gameObject.SetActive(true);
+                    showingPage = Pages.MAP;
+                });
                 Debug.Log("Map tab selected!");
                 break;
             case (int) Pages.CHARACTER:
                 navigationCharacter.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.SELECTED);
-                bh.MoveMap(bh.characterOffset, () => character.gameObject.SetActive(true));
+                showingPage = 0;
+                bh.MoveMap(bh.characterOffset, () =>
+                {
+                    character.gameObject.SetActive(true);
+                    showingPage = Pages.CHARACTER;
+                });
                 Debug.Log("Character tab selected!");
                 break;
         }
+    }
+
+    private void Update()
+    {
+        switch (showingPage)
+        {
+            case Pages.CONFIG:
+                config.GetComponent<CanvasGroup>().alpha += fadeSpeed;
+                character.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                map.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                break;
+            case Pages.MAP:
+                config.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                character.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                map.GetComponent<CanvasGroup>().alpha += fadeSpeed;
+                break;
+            case Pages.CHARACTER:
+                config.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                character.GetComponent<CanvasGroup>().alpha += fadeSpeed;
+                map.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                break;
+            default:
+                config.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                character.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                map.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                break;
+        }
+        
+        if (config.GetComponent<CanvasGroup>().alpha == 0)
+            config.gameObject.SetActive(false);
+        if (map.GetComponent<CanvasGroup>().alpha == 0)
+            map.gameObject.SetActive(false);
+        if (character.GetComponent<CanvasGroup>().alpha == 0)
+            character.gameObject.SetActive(false);
     }
 }

@@ -5,6 +5,6 @@ public enum MapTile
 {
     UNDEFINED,
     GRASS,
-    STONE
+    ROCK
     
 }

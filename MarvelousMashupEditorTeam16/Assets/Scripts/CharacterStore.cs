@@ -24,9 +24,16 @@ public class CharacterStore : MonoBehaviour, IStore
 
     public void LoadJson(string json)
     {
-        Characters characters = JsonConvert.DeserializeObject<Characters>(json);
-        _characters = characters;
-        loadFlag = true;
+        try
+        {
+            Characters characters = JsonConvert.DeserializeObject<Characters>(json);
+            _characters = characters;
+            loadFlag = true;
+        }
+        catch (Exception)
+        {
+            Debug.Log("Load canceled due to errors");
+        }
     }
 
     public string ToJson()
