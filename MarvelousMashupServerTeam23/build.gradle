@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.1'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson converts and reconverts Objects to and from Json Strings
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = 'logic.Main'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "src/"
+        }
+    }
+    test {
+        java {
+            srcDir "src/test/"
+        }
+    }
+}

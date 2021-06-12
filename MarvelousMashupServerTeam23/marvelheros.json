@@ -1,0 +1,220 @@
+{
+  "characters": [
+    {
+      "name": "Rocket Raccoon",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Quicksilver",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Hulk",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Black Widow",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Hawkeye",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Captain America",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Spiderman",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Dr. Strange",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Iron Man",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Black Panther",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Thor",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Captain Marvel",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Groot",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Starlord",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Gamora",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Ant Man",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Vision",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Deadpool",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Loki",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Silver Surfer",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Mantis",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Ghost rider ",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    },
+    {
+      "name": "Jesica Jones ",
+      "HP": 100,
+      "MP": 2,
+      "AP": 2,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 30,
+      "rangeCombatReach": 5
+    },
+    {
+      "name": "Scarlet witch",
+      "HP": 100,
+      "MP": 6,
+      "AP": 1,
+      "meleeDamage": 10,
+      "rangeCombatDamage": 10,
+      "rangeCombatReach": 3
+    }
+  ]
+}
