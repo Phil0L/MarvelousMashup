@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/version-1.5.1-blue)
+![version](https://img.shields.io/badge/version-1.6.1-blue)
 ![coverage](https://img.shields.io/badge/coverage-40%25-orange)
 ![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)
 
@@ -30,15 +30,26 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
   * [Meilenstein 5](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein5)
 
 
-## [Editor](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/unity-editor/MarvelousMashupEditorTeam16)
-![version](https://img.shields.io/badge/version-1.1-blue)
-![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
+## [Editor](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupEditorTeam16)
+![version](https://img.shields.io/badge/version-1.2-blue)
+![coverage](https://img.shields.io/badge/coverage-90%25-green)
 
 Der Editor des Spiels.
 
 Link zu dem Editor:
 
-https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/blob/unity-editor/MarvelousMashupEditorTeam16
+https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupEditorTeam16
+
+
+## [Server](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupServerTeam23)
+
+Der Server des Spiels.
+
+Der Server wird von Team 23 bereit gestellt.
+
+Link zu dem Server:
+
+https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupServerTeam23
 
 
 ## Creators
@@ -63,6 +74,10 @@ https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/
 * Previous Members
   * Mika Witteczek
   * Michael Walter
+---
+
+* Other Contributers
+  * Team 23 (Server)
 ---
 
 * Tutor
