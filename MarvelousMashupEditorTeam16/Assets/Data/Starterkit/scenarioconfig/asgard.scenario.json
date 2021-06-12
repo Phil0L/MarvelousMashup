@@ -1,0 +1,12 @@
+{
+    "scenario":[
+        ["GRASS","GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+        ["GRASS","GRASS", "GRASS", "ROCK", "GRASS", "GRASS", "GRASS"],
+        ["GRASS","GRASS", "GRASS", "ROCK", "GRASS", "GRASS", "GRASS"],
+        ["GRASS","GRASS", "GRASS", "ROCK", "GRASS", "GRASS", "GRASS"],
+        ["GRASS","GRASS", "ROCK", "ROCK", "ROCK", "GRASS", "GRASS"],
+        ["GRASS","ROCK", "ROCK", "ROCK", "ROCK", "ROCK", "GRASS"]
+    ],
+    "author": "jakobmh",
+    "name": "asgard"
+}
