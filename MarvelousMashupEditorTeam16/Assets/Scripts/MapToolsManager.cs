@@ -8,13 +8,15 @@ public class MapToolsManager : MonoBehaviour
     {
         Switch,
         Stone,
-        Grass
+        Grass,
+        Portal
     }
 
     [Header("Tools:")]
     public Image toolSwitch;
     public Image toolGrass;
     public Image toolStone;
+    public Image toolPortal;
 
     [Header("Colors:")]
     public Color unselectedColor;
@@ -37,6 +39,9 @@ public class MapToolsManager : MonoBehaviour
             case Tool.Stone:
                 OnStoneToolSelected();
                 break;
+            case Tool.Portal:
+                OnPortalToolSelected();
+                break;
         }
     }
 
@@ -45,6 +50,7 @@ public class MapToolsManager : MonoBehaviour
         toolSwitch.color = selectedColor;
         toolGrass.color = unselectedColor;
         toolStone.color = unselectedColor;
+        toolPortal.color = unselectedColor;
         selectedTool = Tool.Switch;
         Debug.Log("Switch tool selected!");
     }
@@ -54,6 +60,7 @@ public class MapToolsManager : MonoBehaviour
         toolSwitch.color = unselectedColor;
         toolGrass.color = selectedColor;
         toolStone.color = unselectedColor;
+        toolPortal.color = unselectedColor;
         selectedTool = Tool.Grass;
         Debug.Log("Grass tool selected!");
     }
@@ -63,7 +70,18 @@ public class MapToolsManager : MonoBehaviour
         toolSwitch.color = unselectedColor;
         toolGrass.color = unselectedColor;
         toolStone.color = selectedColor;
+        toolPortal.color = unselectedColor;
         selectedTool = Tool.Stone;
         Debug.Log("Stone tool selected!");
+    }
+    
+    public void OnPortalToolSelected()
+    {
+        toolSwitch.color = unselectedColor;
+        toolGrass.color = unselectedColor;
+        toolStone.color = unselectedColor;
+        toolPortal.color = selectedColor;
+        selectedTool = Tool.Portal;
+        Debug.Log("Portal tool selected!");
     }
 }

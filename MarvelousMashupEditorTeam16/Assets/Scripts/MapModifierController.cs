@@ -74,6 +74,9 @@ public class MapModifierController : MonoBehaviour
             case MapToolsManager.Tool.Stone:
                 _changableMap[x][y] = MapTile.ROCK;
                 break;
+            case MapToolsManager.Tool.Portal:
+                _changableMap[x][y] = MapTile.PORTAL;
+                break;
 
         }
         mapStore.SetNewMap(_changableMap.ToMap(), MapStore.MapAction.TileChange);
