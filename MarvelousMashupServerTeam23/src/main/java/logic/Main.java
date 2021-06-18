@@ -149,7 +149,7 @@ public class Main {
                     pathReplay(inputArray[i+1]);
                     break;
                 default:
-                    System.out.println("Wrong input. If you need help, please type in \"--help\" or \"-h\"");
+                    System.err.println("Wrong input. If you need help, please type in \"--help\" or \"-h\"");
             }
 
         }
@@ -200,7 +200,7 @@ public class Main {
      * @param n how much information is supposed to be locked
      */
     public static void setLogLevel(int n){
-        System.out.println("log-level is not supported by this server.");
+        System.err.println("log-level is not supported by this server.");
 
     }
 
@@ -210,7 +210,7 @@ public class Main {
      * @author Sarah Engele
      */
     public static void verboseLogLevel(){
-        System.out.println("verbose is not supported by this server.");
+        System.err.println("verbose is not supported by this server.");
     }
 
     /**
@@ -257,7 +257,7 @@ public class Main {
      * @author Sarah Engele
      */
     private static void checkConfigFiles() {
-        System.out.println("check-conf is not supported by this server.");
+        System.err.println("check-conf is not supported by this server.");
         System.exit(0);
     }
 
@@ -267,7 +267,7 @@ public class Main {
      * @author Sarah Engele
      */
     private static void pathReplay(String path) {
-        System.out.println("replay is not supported by this server.");
+        System.err.println("replay is not supported by this server.");
     }
 
 }
