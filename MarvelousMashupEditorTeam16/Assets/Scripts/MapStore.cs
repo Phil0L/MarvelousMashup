@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -80,11 +81,29 @@ public class MapStore : MonoBehaviour, IStore
 
     public string ToJson()
     {
-        return this._grid.ToJson();
+        string currentMapJson = JsonConvert.SerializeObject(_grid, Formatting.Indented);
+        currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*1", " \"GRASS\"");
+        currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*2", " \"ROCK\"");
+        currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*3", " \"PORTAL\"");
+        currentMapJson = Regex.Replace(currentMapJson, @"[^]]\n\s*]", "]");
+        currentMapJson = Regex.Replace(currentMapJson, "]]", "]\n  ]");
+
+        return currentMapJson;
     }
 
     public bool Savable()
     {
-        return true;
+        return CountTile(MapTile.GRASS) >= 20 && CountTile(MapTile.PORTAL) >= 2;
+    }
+
+    private int CountTile(MapTile tile)
+    {
+        int count = 0;
+        foreach (var mt in _grid.scenario)
+        {
+            if (mt == tile)
+                count++;
+        }
+        return count;
     }
 }

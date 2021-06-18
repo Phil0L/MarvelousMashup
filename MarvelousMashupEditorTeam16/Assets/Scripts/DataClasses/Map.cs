@@ -54,18 +54,7 @@ public class Map
         this.width = tiles.Length;
         this.height = tiles[0].Length;
     }
-
-    public string ToJson()
-    {
-        string currentMapJson = JsonConvert.SerializeObject(this, Formatting.Indented);
-        currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*1", " \"GRASS\"");
-        currentMapJson = Regex.Replace(currentMapJson, @"\s*\n\s*2", " \"ROCK\"");
-        currentMapJson = Regex.Replace(currentMapJson, @"[^]]\n\s*]", "]");
-        currentMapJson = Regex.Replace(currentMapJson, "]]", "]\n  ]");
-
-        return currentMapJson;
-    }
-
+    
     public override string ToString()
     {
         string s = width + ", " + height + Environment.NewLine;

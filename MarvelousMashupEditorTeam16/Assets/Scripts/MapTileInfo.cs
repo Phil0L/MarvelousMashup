@@ -13,8 +13,10 @@ public class MapTileInfo : MonoBehaviour
     public Image image;
     public Sprite spriteGrass;
     public Sprite spriteStone;
+    public Sprite spritePortal;
     public Color colorGrass;
     public Color colorStone;
+    public Color colorPortal;
 
     public void SetTile(MapTile tile)
     {
@@ -50,6 +52,12 @@ public class MapTileInfo : MonoBehaviour
         {
             image.sprite = spriteStone;
             image.color = colorStone;
+        }
+
+        if (newImage == MapTile.PORTAL)
+        {
+            image.sprite = spritePortal;
+            image.color = colorPortal;
         }
         this._displayedTile = newImage;
     }

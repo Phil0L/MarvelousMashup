@@ -1,0 +1,10 @@
+{
+  "scenario": [
+    [ "ROCK", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "ROCK", "PORTAL", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "ROCK", "PORTAL", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "ROCK", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"]
+  ],
+  "author": null,
+  "name": "My Map"
+}
