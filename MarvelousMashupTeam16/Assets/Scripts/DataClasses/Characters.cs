@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-class Characters
+public class Characters
 {
     [SerializeField] public List<Character> characters = new List<Character>();
 }

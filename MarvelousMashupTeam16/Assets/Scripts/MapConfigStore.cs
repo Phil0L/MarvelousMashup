@@ -7,8 +7,13 @@ using UnityEngine;
 public class MapConfigStore : MonoBehaviour, IConfigStore
 {
     
-    private Map _grid = new Map(10, 10);
+    private static Map _grid = new Map(10, 10);
 
+    public static Map Map()
+    {
+        return _grid;
+    }
+    
     public Map GetMap()
     {
         return _grid;
@@ -32,7 +37,6 @@ public class MapConfigStore : MonoBehaviour, IConfigStore
     public void SetNewMap(Map newMap)
     {
         _grid = newMap;
-        
     }
     
     public void LoadJson(string json)
@@ -50,4 +54,11 @@ public class MapConfigStore : MonoBehaviour, IConfigStore
         }
     }
     
+    private void Awake()
+    {
+        if (GetComponent<FileLoader>())
+        {
+            LoadJson(GetComponent<FileLoader>().GetContent());
+        }
+    }
 }
