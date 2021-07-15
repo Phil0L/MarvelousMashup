@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using SFB;
 
 namespace MarvelousEditor
 {
@@ -13,7 +14,7 @@ namespace MarvelousEditor
 #if UNITY_EDITOR
             path = EditorUtility.OpenFilePanel(title, "", ending);
 #else
-        path = StandaloneFileBrowser.OpenFilePanel(title, "", ending, false)[0];
+            path = StandaloneFileBrowser.OpenFilePanel(title, "", ending, false)[0];
 #endif
             if (path.Length != 0)
             {
