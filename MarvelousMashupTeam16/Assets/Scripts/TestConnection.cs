@@ -115,7 +115,7 @@ public class TestConnection : MonoBehaviour
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(TestConnection))]
-public class GridDisplayerEditor : Editor
+public class TestConnectionEditor : Editor
 {
     private string enteredText = "";
     private string state;

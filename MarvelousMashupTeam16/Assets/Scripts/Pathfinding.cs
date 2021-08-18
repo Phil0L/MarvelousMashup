@@ -10,6 +10,7 @@ public class Pathfinding : MonoBehaviour
 
     private List<Vector2Int> _lastSuccessfulPath;
 
+    public List<Vector2Int> GetPath() => _lastSuccessfulPath;
     public List<Vector2Int> PathFind(Vector2Int from, Vector2Int to)
     {
         List<Vector2Int> points = new List<Vector2Int>();
@@ -116,7 +117,7 @@ public class Pathfinding : MonoBehaviour
             .ToList();
     }
 
-    class Tile
+    private class Tile
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -133,6 +134,8 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
+    
+    // DEBUGGING
     private Vector2Int _right = new Vector2Int(-1, -1);
     private Vector2Int _left = new Vector2Int(-1, -1);
     private void OnDrawGizmos()

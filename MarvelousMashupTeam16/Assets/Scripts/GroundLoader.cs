@@ -46,10 +46,12 @@ public class GroundLoader : MonoBehaviour
         }
     }
 
-    public void UpdateTile(Vector2Int position, Map map)
+    public void UpdateTile(Vector2Int position)
     {
+        if (Game.State().IsOutOfBounds(position)) return;
         var pos = new Vector3Int(position.x, position.y, 0);
-        switch (map.scenario[position.x,position.y])
+        MapTile tile = Game.State()[position.x, position.y].tile;
+        switch (tile)
         {
             case MapTile.ROCK:
                 tilemap.SetTile(pos, rockBase);
@@ -58,9 +60,13 @@ public class GroundLoader : MonoBehaviour
                 break;
             case MapTile.GRASS:
                 tilemap.SetTile(pos, grassBase);
+                matrix = Matrix4x4.TRS(new Vector3(0,0f,0), Quaternion.identity, Vector3.one);
+                tilemap.SetTransformMatrix(pos, matrix);
                 break;
             case MapTile.PORTAL:
                 tilemap.SetTile(pos, portalBase);
+                matrix = Matrix4x4.TRS(new Vector3(0,0f,0), Quaternion.identity, Vector3.one);
+                tilemap.SetTransformMatrix(pos, matrix);
                 break;
         }
     }

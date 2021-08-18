@@ -21,7 +21,14 @@ public class CameraController : MonoBehaviour
     public float minFov = 15f;
     public float maxFov = 90f;
     public float sensitivity = 10f;
-    
+
+    private void Start()
+    {
+        Game.Controller().ButtonInfoManager.Add("Center Map", "C");
+        Game.Controller().ButtonInfoManager.Add("Overview", "F");
+        Game.Controller().ButtonInfoManager.Add("Move Map", ButtonInfoManager.IconButton.RightClick);
+    }
+
     public void FocusCamera()
     {
         FocusCamera(cameraZ);

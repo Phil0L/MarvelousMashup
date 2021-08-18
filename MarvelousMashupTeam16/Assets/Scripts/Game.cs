@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Game : MonoBehaviour
 {
@@ -8,8 +7,14 @@ public class Game : MonoBehaviour
 
     public GroundLoader GroundLoader;
     public CharacterLoader CharacterLoader;
+    public InfinityStoneLoader InfinityStoneLoader;
     public CameraController CameraController;
     public Pathfinding Pathfinding;
+    public PathDisplayer PathDisplayer;
+    public AttackDisplayer AttackDisplayer;
+    public InfinityStoneActionDisplayer InfinityStoneActionDisplayer;
+    public ButtonInfoManager ButtonInfoManager;
+    public ArrowDispenser ArrowDispenser;
 
     public static GameState State()
     {
@@ -26,11 +31,11 @@ public class Game : MonoBehaviour
         return INSTANCE != null;
     }
 
-    private void Start()
+    private void Awake()
     {
         INSTANCE = this;
         state = new GameState();
-        GroundLoader.LoadMap(state);
-        Pathfinding.PathFind(new Vector2Int(1, 1), new Vector2Int(5,2));
+        GroundLoader.LoadMap();
     }
+
 }
