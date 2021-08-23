@@ -1,0 +1,24 @@
+{
+    "scenario":[
+        ["GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "ROCK", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["GRASS", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["ROCK", "GRASS", "ROCK", "GRASS", "GRASS"],
+        ["ROCK", "GRASS", "ROCK", "ROCK", "GRASS"],
+        ["ROCK", "ROCK", "ROCK", "ROCK", "GRASS"]
+    ],
+    "author": "jakobmh",
+    "name": "avengerstower"
+}

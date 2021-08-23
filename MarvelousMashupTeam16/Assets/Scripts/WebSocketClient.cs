@@ -87,7 +87,7 @@ public class WebSocketClient
     {
         var thread = new Thread(() =>
         {
-            Read();
+            ReadInternal();
         })
         {
             Name = "Client message receiver"
@@ -129,10 +129,9 @@ public class WebSocketClient
         }
     }
 
-    public void OnMessage(Action<string> json)
+    public void OnMessage(Action<string> callback)
     {
-        listener.Add(json);
-    } 
-    
+        listener.Add(callback);
+    }
     
 }

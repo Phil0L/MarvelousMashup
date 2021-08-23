@@ -4,9 +4,14 @@ using Newtonsoft.Json;
 
 public class PartyConfigStore : MonoBehaviour, IConfigStore
 {
-    private Party _party = new Party();
+    private static Party _party = new Party();
 
     public Party GetParty()
+    {
+        return _party;
+    }
+    
+    public static Party Party()
     {
         return _party;
     }
@@ -15,11 +20,19 @@ public class PartyConfigStore : MonoBehaviour, IConfigStore
     {
         try
         {
-            this._party = JsonConvert.DeserializeObject<Party>(json);
+            _party = JsonConvert.DeserializeObject<Party>(json);
         }
         catch (Exception)
         {
             Debug.Log("Load canceled due to errors");
+        }
+    }
+    
+    private void Awake()
+    {
+        if (GetComponent<FileLoader>())
+        {
+            LoadJson(GetComponent<FileLoader>().GetContent());
         }
     }
 }
