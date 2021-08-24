@@ -13,7 +13,7 @@ public class SpawnEntityEvent : Message
      * @param entity the entity that is about to be spawned on the map (e.g. Thanos or Goose, or Infinity Stones)
      */
     public SpawnEntityEvent(Entities entity){
-        super(EventType.SpawnEntityEvent);
+        base(EventType.SpawnEntityEvent);
         this.entity = entity;
     }
 }

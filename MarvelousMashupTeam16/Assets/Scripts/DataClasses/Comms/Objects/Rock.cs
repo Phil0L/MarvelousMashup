@@ -23,7 +23,7 @@ public class Rock : Entities
      */
 
     public Rock(int ID, int HP, int[] position){
-        super(EntityType.Rock, ID, position);
+        base(EntityType.Rock, ID, position);
 
         this.HP = HP;
 
@@ -40,7 +40,7 @@ public class Rock : Entities
     public override bool Equals(object o) {
         if (this == o) return true;
         if (!(o is Rock)) return false;
-        if (!super.Equals(o)) return false;
+        if (!base.Equals(o)) return false;
         Rock rock = (Rock) o;
         return HP == rock.HP;
     }

@@ -28,7 +28,7 @@ public class ConsumedAPEvent : Message {
     *
     */ 
    public ConsumedAPEvent(IDs targetEntity, int[] targetField, int amount){ 
-       super(EventType.ConsumedAPEvent);
+       base(EventType.ConsumedAPEvent);
        this.targetEntity = targetEntity;
        this.targetField = targetField;
        this.amount = amount;

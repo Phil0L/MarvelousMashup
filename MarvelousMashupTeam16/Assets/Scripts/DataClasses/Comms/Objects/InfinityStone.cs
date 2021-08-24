@@ -25,7 +25,7 @@ public class InfinityStone : Entities, IFieldContent
 
     public InfinityStone(int ID, int[] position){
 
-        super(EntityType.InfinityStone, ID, position);
+        base(EntityType.InfinityStone, ID, position);
 
     }
 
@@ -38,7 +38,7 @@ public class InfinityStone : Entities, IFieldContent
      * @return boolean which is true when both objects are equal (entityType, ID, position)
      */
     public override bool Equals(object o) {
-        return super.equals(o);
+        return base.Equals(o);
     }
     
     public override string ToString()

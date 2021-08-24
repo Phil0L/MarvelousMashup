@@ -10,6 +10,14 @@ public class Message
     public RequestType requestType;
 
     /**
+     * constructor of the Message-class with no argument to satisfy the almighty god of c#
+     */
+    public Message()
+    {
+        
+    }
+
+    /**
      * constructor of the Message-class if the Message is an event
      *
      * @author Sarah Engele
@@ -43,7 +51,7 @@ public class Message
      */
     public override bool Equals(object o) {
         if (this == o) return true;
-        if (!(o.GetType() == typeof(o))) return false;
+        if (!(o is Message)) return false;
         Message message = (Message) o;
         return eventType == message.eventType && requestType == message.requestType;
     }

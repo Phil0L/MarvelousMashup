@@ -22,7 +22,7 @@ public class NPC : Entities
      * @author Sarah Engele
      */
     public NPC(int ID, int[] position, int MP, int[] stones) {
-        super(EntityType.NPC, ID, position);
+        base(EntityType.NPC, ID, position);
         this.MP = MP;
         this.stones = stones;
 
@@ -39,7 +39,7 @@ public class NPC : Entities
     public override bool Equals(object o) {
         if (this == o) return true;
         if (!(o is NPC)) return false;
-        if (!super.Equals(o)) return false;
+        if (!base.Equals(o)) return false;
         NPC npc = (NPC) o;
         return MP == npc.MP && Arrays.equals(stones, npc.stones);
     }

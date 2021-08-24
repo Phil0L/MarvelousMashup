@@ -12,7 +12,7 @@ public class DestroyedEntityEvent : Message
      * @param targetEntity The entity that is about to be destroyed
      */
     public DestroyedEntityEvent(int[] targetField, IDs targetEntity){
-        super(EventType.DestroyedEntityEvent);
+        base(EventType.DestroyedEntityEvent);
         this.targetEntity = targetEntity;
         this.targetField = targetField;
 

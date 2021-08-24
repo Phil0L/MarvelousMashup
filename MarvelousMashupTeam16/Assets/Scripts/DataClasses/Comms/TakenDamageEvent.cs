@@ -25,7 +25,7 @@ public class TakenDamageEvent
      */
 
     public TakenDamageEvent(IDs targetEntity, int[] targetField, int amount){
-        super(EventType.TakenDamageEvent);
+        base(EventType.TakenDamageEvent);
         this.targetEntity = targetEntity;
         this.targetField = targetField;
         this.amount = amount;

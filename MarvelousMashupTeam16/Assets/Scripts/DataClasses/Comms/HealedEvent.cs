@@ -27,7 +27,7 @@ public class HealedEvent : Message
      */
 
     public HealedEvent(IDs targetEntity, int[] targetField, int amount){
-        super(EventType.HealedEvent);
+        base(EventType.HealedEvent);
         this.targetEntity = targetEntity;
         this.targetField = targetField;
         this.amount = amount;
