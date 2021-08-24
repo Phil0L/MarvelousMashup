@@ -23,5 +23,9 @@ public enum EntityType
     TurnTimeoutEvent,
     DisconnectEvent,
     PauseStartEvent,
-    PauseStopEvent
+    PauseStopEvent,
+    InfinityStone,
+    NPC,
+    Rock,
+    Character
 }
