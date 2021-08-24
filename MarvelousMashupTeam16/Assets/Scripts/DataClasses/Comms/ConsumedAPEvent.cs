@@ -27,8 +27,8 @@ public class ConsumedAPEvent : Message {
     * @param amount The amount of action points the targetEntity consumes
     *
     */ 
-   public ConsumedAPEvent(IDs targetEntity, int[] targetField, int amount){ 
-       base(EventType.ConsumedAPEvent);
+   public ConsumedAPEvent(IDs targetEntity, int[] targetField, int amount) : base(EventType.ConsumedAPEvent){ 
+    
        this.targetEntity = targetEntity;
        this.targetField = targetField;
        this.amount = amount;

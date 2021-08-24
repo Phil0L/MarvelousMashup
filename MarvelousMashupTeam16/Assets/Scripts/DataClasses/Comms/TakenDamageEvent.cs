@@ -24,8 +24,7 @@ public class TakenDamageEvent
      * @param amount The amount of damage that is going to be done to the targetEntity
      */
 
-    public TakenDamageEvent(IDs targetEntity, int[] targetField, int amount){
-        base(EventType.TakenDamageEvent);
+    public TakenDamageEvent(IDs targetEntity, int[] targetField, int amount) : base(EventType.TakenDamageEvent){
         this.targetEntity = targetEntity;
         this.targetField = targetField;
         this.amount = amount;

@@ -16,8 +16,8 @@ public class ConsumedMPEvent : Message
      *
      */
 
-    public ConsumedMPEvent(IDs targetEntity, int[] targetField, int amount){
-        base(EventType.ConsumedMPEvent);
+    public ConsumedMPEvent(IDs targetEntity, int[] targetField, int amount) : base(EventType.ConsumedMPEvent){
+        
         this.targetEntity = targetEntity;
         this.targetField = targetField;
         this.amount = amount;

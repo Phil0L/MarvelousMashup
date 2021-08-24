@@ -13,8 +13,7 @@ public class ExtractorSpawnEntityEvent : Message
      *
      * @param entity the entity that is about to be spawned on the map (e.g. Thanos or Goose, or Infinity Stones)
      */
-    public ExtractorSpawnEntityEvent(ExtractorEntities entity){
-        base(EventType.SpawnEntityEvent);
+    public ExtractorSpawnEntityEvent(ExtractorEntities entity) : base(EventType.SpawnEntityEvent){
         this.entity = entity;
     }
 

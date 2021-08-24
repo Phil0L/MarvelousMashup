@@ -11,8 +11,7 @@ public class DestroyedEntityEvent : Message
      * @param targetField The field on the map where the entity was placed before being destroyed
      * @param targetEntity The entity that is about to be destroyed
      */
-    public DestroyedEntityEvent(int[] targetField, IDs targetEntity){
-        base(EventType.DestroyedEntityEvent);
+    public DestroyedEntityEvent(int[] targetField, IDs targetEntity) : base(EventType.DestroyedEntityEvent){
         this.targetEntity = targetEntity;
         this.targetField = targetField;
 
