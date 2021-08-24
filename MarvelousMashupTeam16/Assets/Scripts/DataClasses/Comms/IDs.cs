@@ -34,7 +34,7 @@ public class IDs
 		{
 			return true;
 		}
-        if (!(o.GetType() == typeof(TForm))) {
+        if (!(o is IDs )) {
 			return false;
 		}
         IDs iDs = (IDs) o;
