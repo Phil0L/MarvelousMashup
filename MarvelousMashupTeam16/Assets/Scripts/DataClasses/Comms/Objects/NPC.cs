@@ -21,8 +21,7 @@ public class NPC : Entities
      * @param stones     the inventory with stones the NPC has (only important for Thanos)
      * @author Sarah Engele
      */
-    public NPC(int ID, int[] position, int MP, int[] stones) {
-        base(EntityType.NPC, ID, position);
+    public NPC(int ID, int[] position, int MP, int[] stones) : base(EntityType.NPC, ID, position){
         this.MP = MP;
         this.stones = stones;
 

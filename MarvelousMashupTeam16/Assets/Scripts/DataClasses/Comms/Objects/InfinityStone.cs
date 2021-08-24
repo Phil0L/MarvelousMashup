@@ -23,10 +23,7 @@ public class InfinityStone : Entities, IFieldContent
      * @param position the position where the InfinityStone is placed on the map
      */
 
-    public InfinityStone(int ID, int[] position){
-
-        base(EntityType.InfinityStone, ID, position);
-
+    public InfinityStone(int ID, int[] position) : base(EntityType.InfinityStone, ID, position){
     }
 
     /**

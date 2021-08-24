@@ -42,9 +42,7 @@ public class InGameCharacter : Entities
      * @param stones the inventory of the Character that might contain Infinity Stones
      * @param position the position where the character is placed on the map
      */
-    public InGameCharacter(string name, int PID, int ID, int HP, int MP, int AP, int[] stones, int[] position){
-        super(EntityType.Character, ID, position);
-
+    public InGameCharacter(string name, int PID, int ID, int HP, int MP, int AP, int[] stones, int[] position) : base(EntityType.Character, ID, position){
         this.name = name;
         this.PID = PID;
 

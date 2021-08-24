@@ -22,8 +22,7 @@ public class Rock : Entities
      *
      */
 
-    public Rock(int ID, int HP, int[] position){
-        base(EntityType.Rock, ID, position);
+    public Rock(int ID, int HP, int[] position) : base(EntityType.Rock, ID, position){
 
         this.HP = HP;
 
