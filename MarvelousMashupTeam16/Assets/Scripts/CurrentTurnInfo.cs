@@ -28,12 +28,12 @@ public class CurrentTurnInfo : MonoBehaviour
             Game.Controller().PathDisplayer.OnSelected(pos =>
             {
                 Game.Controller().PathDisplayer.Deactivate();
-                MoveRequest mr = new MoveRequest(
+                CharacterMoveRequest cmr = new CharacterMoveRequest(
                     Game.State().CurrentTurn(),
                     Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID),
                     pos,
                     Game.Controller().Pathfinding.GetPath());
-                GameState.SubscriptionCaller.CallAllSubscriptions(mr);
+                GameState.SubscriptionCaller.CallAllSubscriptions(cmr);
             });
         });
         CloseRange.OnClick(() =>

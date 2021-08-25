@@ -1,5 +1,6 @@
 public enum RequestType
 {
+    Null,
     MeleeAttackRequest,
     RangedAttackRequest,
     MoveRequest,

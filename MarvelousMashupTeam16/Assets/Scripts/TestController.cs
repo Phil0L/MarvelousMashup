@@ -83,7 +83,7 @@ public class TestControllerEditor : Editor
         {
             controller.OnGridSelected(
                 pos => !Game.State().IsOutOfBounds(pos) && Game.State()[pos.x, pos.y].IsWalkable(),
-                pos => { Game.State().SummonInfinityStone(new InfinityStone {stone = stoneSummon + 1}, pos); });
+                pos => { Game.State().SummonInfinityStone(new InfinityStone(1234, new []{pos.x,pos.y}) {stone = stoneSummon + 1}, pos); });
         }
 
         GUILayout.EndHorizontal();
@@ -313,7 +313,7 @@ public class TestControllerEditor : Editor
 
     private InfinityStone GetNewInfinityStone(int i)
     {
-        return new InfinityStone() {stone = i+1, cooldown = 0, defaultcooldownTime = 3};
+        return new InfinityStone(1234, new []{0,0}) {stone = i+1, cooldown = 0, defaultcooldownTime = 3};
     }
 
     private Vector2Int GetEmptyField()

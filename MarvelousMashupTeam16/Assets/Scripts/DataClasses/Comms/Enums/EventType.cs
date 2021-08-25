@@ -1,6 +1,6 @@
 public enum EventType
 {
-    
+    Null,
     Ack,
     Nack,
     GamestateEvent,
