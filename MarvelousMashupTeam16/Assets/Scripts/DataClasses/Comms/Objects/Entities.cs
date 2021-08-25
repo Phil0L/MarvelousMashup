@@ -41,7 +41,7 @@ public class Entities
         if (this == o) return true;
         if (!(o is Entities)) return false;
         Entities entities = (Entities) o;
-        return ID == entities.ID && entityType == entities.entityType && Arrays.equals(position, entities.position);
+        return ID == entities.ID && entityType == entities.entityType && position.Equals(entities.position);
     }
 
     

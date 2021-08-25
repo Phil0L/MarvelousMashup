@@ -60,13 +60,13 @@ public class ExtractorEntities
      */
     public Entities toEntities(){
         switch (this.entityType) {
-            case entityType.Character:
+            case EntityType.Character:
                 return this.toCharacter();
-            case entityType.NPC:
+            case EntityType.NPC:
                 return this.toNPC();
-            case entityType.Rock:
+            case EntityType.Rock:
                 return this.toRock();
-            case entityType.InfinityStone:
+            case EntityType.InfinityStone:
                 return this.toInfinityStone();
             default:
                 return null;

@@ -40,6 +40,6 @@ public class NPC : Entities
         if (!(o is NPC)) return false;
         if (!base.Equals(o)) return false;
         NPC npc = (NPC) o;
-        return MP == npc.MP && Arrays.equals(stones, npc.stones);
+        return MP == npc.MP && stones.Equals(npc.stones);
     }
 }
