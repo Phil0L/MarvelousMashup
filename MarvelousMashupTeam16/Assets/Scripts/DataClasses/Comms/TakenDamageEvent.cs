@@ -1,4 +1,4 @@
-public class TakenDamageEvent
+public class TakenDamageEvent : Message
 {
     /**
      * The Entity that is about to be done damage to
