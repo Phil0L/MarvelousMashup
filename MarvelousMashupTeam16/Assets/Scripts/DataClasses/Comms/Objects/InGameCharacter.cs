@@ -65,9 +65,9 @@ public class InGameCharacter : Entities
     public override bool Equals(object o) {
         if (this == o) return true;
         if (!(o is InGameCharacter)) return false;
-        if (!super.Equals(o)) return false;
+        if (!base.Equals(o)) return false;
         InGameCharacter that = (InGameCharacter) o;
-        return PID == that.PID && HP == that.HP && MP == that.MP && AP == that.AP && name.equals(that.name) && Arrays.equals(stones, that.stones);
+        return PID == that.PID && HP == that.HP && MP == that.MP && AP == that.AP && name.Equals(that.name) && stones.Equals(that.stones);
     }
 
 }
