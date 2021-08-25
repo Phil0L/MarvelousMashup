@@ -23,6 +23,7 @@ public class AttackDisplayer : MonoBehaviour
     private bool hasCollision;
     private TileMarker _tileMarker;
     private TileMarker _errorMarker;
+    private bool teamMates;
 
     private void Start()
     {
@@ -31,8 +32,14 @@ public class AttackDisplayer : MonoBehaviour
 
     public void Activate()
     {
+        teamMates = false;
         active = true;
         Render();
+    }
+
+    public void FriendlyFire()
+    {
+        teamMates = true;
     }
 
     public void Deactivate()
@@ -135,12 +142,13 @@ public class AttackDisplayer : MonoBehaviour
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int point = tm.WorldToCell(pos);
         Vector2Int arrPos = new Vector2Int(point.x, point.y);
-        if (!Game.State().IsOutOfBounds(arrPos) && Game.State()[point.x, point.y].IsAttackable())
+        if (!teamMates && !Game.State().IsOutOfBounds(arrPos) && Game.State()[point.x, point.y].IsAttackable())
         {
-            if (lastPosition != arrPos)
-            {
-                Render();
-            }
+            if (lastPosition != arrPos) Render();
+        }
+        if (teamMates && !Game.State().IsOutOfBounds(arrPos) && Game.State()[point.x, point.y].item is Character {enemy: false})
+        {
+            if (lastPosition != arrPos) Render();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -185,7 +193,7 @@ public class AttackDisplayer : MonoBehaviour
             }
 
             GameField gf = Game.State()[lp.x, lp.y];
-            if (!gf.IsWalkable())
+            if (gf.IsBlockingLine())
                 return new Vector2Int(lp.x, lp.y);
             
         }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MarvelousEditor
 {
@@ -8,7 +9,8 @@ namespace MarvelousEditor
         {
             CONFIG = 1, 
             MAP = 2, 
-            CHARACTER = 3
+            CHARACTER = 3,
+            EXIT = 4
         }
     
         private BackgroundHandler bh;
@@ -17,6 +19,7 @@ namespace MarvelousEditor
         public RectTransform navigationConfig;
         public RectTransform navigationMap;
         public RectTransform navigationCharacter;
+        public RectTransform navigationExit;
 
         [Header("Pages:")] 
         public RectTransform config;
@@ -44,6 +47,7 @@ namespace MarvelousEditor
             navigationConfig.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
             navigationMap.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
             navigationCharacter.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
+            navigationExit.GetComponent<NavigationItemController>().AnimateHeight(NavigationItemController.Heights.UNSELECTED);
         
             if (bh == null)
             {
@@ -81,6 +85,10 @@ namespace MarvelousEditor
                         showingPage = Pages.CHARACTER;
                     });
                     Debug.Log("Character tab selected!");
+                    break;
+                case (int) Pages.EXIT:
+                    showingPage = 0;
+                    SceneManager.LoadScene("MainMenu");
                     break;
             }
         }

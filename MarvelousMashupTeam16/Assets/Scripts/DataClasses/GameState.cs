@@ -14,7 +14,7 @@ public class GameState
         {
             for (int y = 0; y < map.height; y++)
             {
-                var field = new GameField { tile = map.scenario[x, y], tileData = 100 };
+                var field = new GameField { tile = map.scenario[x, y], tileData = Game.Controller().GroundLoader.defaultRockHealth };
                 this[x, y] = field;
             }
         }
@@ -45,6 +45,22 @@ public class GameState
         {
             if (gameField.item is Character item && item.characterID == hero)
                 return item;
+        }
+        return null;
+    }
+
+    public InfinityStone FindInfinityStone(int stone)
+    {
+        foreach (var car in CurrentCharactersDetail().ToArray())
+        {
+            foreach (var inf in car.infinityStones)
+            {
+                if (inf.stone == stone) return inf;
+            }
+        }
+        foreach (GameField gameField in _arr)
+        {
+            if (gameField.item is InfinityStone item && item.stone == stone) return item;
         }
         return null;
     }
@@ -142,6 +158,20 @@ public class GameState
 
         return chars;
     }
+    
+    public List<Character> CurrentCharactersDetail()
+    {
+        var chars = new List<Character>();
+        foreach (var field in _arr)
+        {
+            if (field.item is Character ch)
+            {
+                chars.Add(ch);
+            }
+        }
+
+        return chars;
+    }
 
     public void AttackLongRange(Character attacker, Vector2Int attackerPosition, IFieldContent attacked, Vector2Int attackedPosition, int damage, Action callback = null)
     {
@@ -151,7 +181,14 @@ public class GameState
             if (attacked is Character c)
                 c.HP -= damage;
             else
+            {
                 Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
+                if (Game.State()[attackedPosition.x, attackedPosition.y].tileData <= 0)
+                    Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
+                Game.Controller().GroundLoader.UpdateTile(attackedPosition);
+            }
+
+            
             attacker.AP -= 1;
             callback?.Invoke();
         });
@@ -163,14 +200,16 @@ public class GameState
         if (attacked is Character c)
             c.HP -= damage;
         else
+        {
             Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
+            if (Game.State()[attackedPosition.x, attackedPosition.y].tileData <= 0)
+                Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
+            Game.Controller().GroundLoader.UpdateTile(attackedPosition);
+        }
         attacker.AP -= 1;
         callback?.Invoke();
     }
-
-
-
-
+    
     public static class SubscriptionCaller
     {
         public static void CallAllSubscriptions(UserRequest request)

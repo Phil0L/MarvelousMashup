@@ -68,13 +68,19 @@ public class CurrentTurnInfo : MonoBehaviour
         });
         StonePass.OnClick(() =>
         {
-            // StonePassRequest spr = new StonePassRequest(
-            //     infinityStone,
-            //     Game.State().CurrentTurn(),
-            //     Game.State()[pos.x, pos.y].item as Character,
-            //     pos,
-            //     Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID));
-            // GameState.SubscriptionCaller.CallAllSubscriptions(spr);
+            Game.Controller().InfinityStonePassDisplayer.Activate();
+            Game.Controller().InfinityStonePassDisplayer.OnSelected((pos, stone) =>
+            {
+                Game.Controller().InfinityStonePassDisplayer.Deactivate();
+                StonePassRequest spr = new StonePassRequest(
+                    Game.State().FindInfinityStone(stone),
+                    Game.State().CurrentTurn(),
+                    Game.State()[pos.x, pos.y].item as Character,
+                    pos,
+                    Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID));
+                GameState.SubscriptionCaller.CallAllSubscriptions(spr);
+            });
+            
         });
         NextCharacter.OnClick(() =>
         {

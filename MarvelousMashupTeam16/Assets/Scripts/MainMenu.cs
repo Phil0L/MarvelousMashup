@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -21,6 +22,7 @@ public class MainMenu : MonoBehaviour
             
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => ItemClicked(existingItem.name));
+            Activate(existingItem.name);
         }
     }
 
@@ -41,7 +43,7 @@ public class MainMenu : MonoBehaviour
                 var newItem = Instantiate(item, transform);
                 newItem.gameObject.SetActive(true);
                 newItem.name = listItem;
-                newItem.GetComponent<Text>().text = listItem;
+                newItem.GetComponent<MainMenuItemHighlighter>().text.text = listItem;
                 newItem.GetComponent<Button>().onClick.AddListener(() => ItemClicked(listItem));
             }
         }
@@ -64,7 +66,7 @@ public class MainMenu : MonoBehaviour
                 var newItem = Instantiate(item, transform);
                 newItem.gameObject.SetActive(true);
                 newItem.name = listItem;
-                newItem.GetComponent<Text>().text = listItem;
+                newItem.GetComponent<MainMenuItemHighlighter>().text.text = listItem;
                 newItem.GetComponent<Button>().onClick.AddListener(() => ItemClicked(listItem));
             }
         }
@@ -74,12 +76,12 @@ public class MainMenu : MonoBehaviour
     {
         if (active[itemName])
         {
-            foreach (var lis in listener)
-            {
-                lis();
-            }
-
+            foreach (var lis in listener) lis();
             Debug.Log(itemName + " Main Menu Item Clicked!");
+            
+            if (itemName == "Quit") Application.Quit();
+            if (itemName == "Editor") SceneManager.LoadScene("Editor");
+            if (itemName == "Play") SceneManager.LoadScene("JoinMenu");
         }
     }
 

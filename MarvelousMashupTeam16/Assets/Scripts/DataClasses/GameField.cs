@@ -6,7 +6,7 @@
 
     public bool IsWalkable()
     {
-        return tile != MapTile.ROCK;
+        return tile != MapTile.ROCK && (item == null || item is InfinityStone);
     }
 
     public bool IsAttackable()

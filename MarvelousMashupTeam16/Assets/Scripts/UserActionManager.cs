@@ -1,14 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UserActionManager : MonoBehaviour
 {
     public PathDisplayer PathDisplayer;
     public AttackDisplayer AttackDisplayer;
     public InfinityStoneActionDisplayer InfinityStoneActionDisplayer;
+    public InfinityStonePassDisplayer InfinityStonePassDisplayer;
 
     private ButtonInfo biAction;
     private ButtonInfo biCancel;
@@ -35,6 +32,9 @@ public class UserActionManager : MonoBehaviour
             case UserAction.Move:
                 PathDisplayer.Deactivate();
                 break;
+            case UserAction.StonePass:
+                InfinityStonePassDisplayer.Deactivate();
+                break;
         }
     }
 
@@ -45,6 +45,10 @@ public class UserActionManager : MonoBehaviour
         if (InfinityStoneActionDisplayer.active != 0)
         {
             activeAction = (UserAction) (InfinityStoneActionDisplayer.active + 3);
+        }
+        else if (InfinityStonePassDisplayer.active)
+        {
+            activeAction = UserAction.StonePass;
         }
         else
         {
@@ -72,7 +76,8 @@ public class UserActionManager : MonoBehaviour
         
         if (biAction) biAction.usable = AttackDisplayer.Confirmable() &&
                                         PathDisplayer.Confirmable() &&
-                                        InfinityStoneActionDisplayer.Confirmable();
+                                        InfinityStoneActionDisplayer.Confirmable() && 
+                                        InfinityStonePassDisplayer.Confirmable();
 
         // Setting Action Text
         switch (activeAction)
@@ -104,6 +109,10 @@ public class UserActionManager : MonoBehaviour
             case UserAction.Move:
                 biAction.title = "Move Character";
                 break;
+            case UserAction.StonePass:
+                biAction.title = !InfinityStonePassDisplayer.hasStoneSelected ? "Select Infinitystone" : "Pass Infinitystone";
+                break;
+            
         }
 
         

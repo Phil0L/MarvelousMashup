@@ -81,9 +81,6 @@ public class TestConnection : MonoBehaviour
         {
             Debug.Log("Reading...");
             
-            
-            
-            
             byte[] buffer = new byte[1024];
             WebSocketReceiveResult result = await cws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);//ToDo built in CancellationToken
 

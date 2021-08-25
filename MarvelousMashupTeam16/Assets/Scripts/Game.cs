@@ -13,8 +13,10 @@ public class Game : MonoBehaviour
     public PathDisplayer PathDisplayer;
     public AttackDisplayer AttackDisplayer;
     public InfinityStoneActionDisplayer InfinityStoneActionDisplayer;
+    public InfinityStonePassDisplayer InfinityStonePassDisplayer;
     public ButtonInfoManager ButtonInfoManager;
     public ArrowDispenser ArrowDispenser;
+    public CurrentTurnInfo CurrentTurnInfo;
 
     public static GameState State()
     {

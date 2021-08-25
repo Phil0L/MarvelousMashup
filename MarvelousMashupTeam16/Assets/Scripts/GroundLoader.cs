@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,6 +7,11 @@ public class GroundLoader : MonoBehaviour
     public TileBase rockBase;
     public TileBase grassBase;
     public TileBase portalBase;
+    public TileBase crackedRockBase;
+    public TileBase damagedRockBase;
+    public TileBase destroyedRockBase;
+
+    public int defaultRockHealth;
     
     public void LoadMap()
     {
@@ -50,11 +52,15 @@ public class GroundLoader : MonoBehaviour
     {
         if (Game.State().IsOutOfBounds(position)) return;
         var pos = new Vector3Int(position.x, position.y, 0);
-        MapTile tile = Game.State()[position.x, position.y].tile;
+        GameField field = Game.State()[position.x, position.y];
+        MapTile tile = field.tile;
         switch (tile)
         {
             case MapTile.ROCK:
                 tilemap.SetTile(pos, rockBase);
+                if (field.tileData < defaultRockHealth * 0.75) tilemap.SetTile(pos, crackedRockBase);
+                if (field.tileData < defaultRockHealth * 0.5) tilemap.SetTile(pos, damagedRockBase);
+                if (field.tileData < defaultRockHealth * 0.25) tilemap.SetTile(pos, destroyedRockBase);
                 Matrix4x4 matrix = Matrix4x4.TRS(new Vector3(0,0.13f,0), Quaternion.identity, Vector3.one);
                 tilemap.SetTransformMatrix(pos, matrix);
                 break;
