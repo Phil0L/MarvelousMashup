@@ -5,15 +5,20 @@ using Newtonsoft.Json;
 public class PartyConfigStore : MonoBehaviour, IConfigStore
 {
     private static Party _party = new Party();
-
-    public Party GetParty()
-    {
-        return _party;
-    }
+    private static string yourName;
+    private static string opponentName;
     
-    public static Party Party()
+    public  Party GetParty() => _party;
+    public static Party Party() => _party;
+    public static string You() => yourName;
+    public static string Opponent() => opponentName;
+
+    public static void SetParty(Party party) => _party = party;
+
+    public static void SetNames(string you, string other)
     {
-        return _party;
+        yourName = you;
+        opponentName = other;
     }
 
     public void LoadJson(string json)

@@ -8,6 +8,7 @@ public class CharacterConfigStore : MonoBehaviour, IConfigStore
 {
     private static Characters _characters = new Characters();
     
+    public Characters GetCharacters() => _characters;
     public static Character[] Characters() => _characters.characters.ToArray();
 
     public static Character Character(Character.Characters character)
@@ -17,6 +18,12 @@ public class CharacterConfigStore : MonoBehaviour, IConfigStore
             if (car.characterID == character) return car;
         }
         return null;
+    }
+
+    public static void SetCharacters(List<Character> chars)
+    {
+        _characters = new Characters();
+        _characters.characters = chars;
     }
 
     public void LoadJson(string json)

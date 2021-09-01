@@ -9,34 +9,15 @@ public class MapConfigStore : MonoBehaviour, IConfigStore
     
     private static Map _grid = new Map(10, 10);
 
-    public static Map Map()
-    {
-        return _grid;
-    }
-    
-    public Map GetMap()
-    {
-        return _grid;
-    }
+    public Map GetMap() => _grid;
+    public static Map Map() => _grid;
 
-    public MapTile GetTile(int x, int y)
-    {
-        return _grid.scenario[x, y];
-    }
 
-    public void SetName(string name)
-    {
-        _grid.name = name;
-    }
-
-    public void SetAuthor(string author)
-    {
-        _grid.author = author;
-    }
-
-    public void SetNewMap(Map newMap)
+    public static void SetMap(Map newMap)
     {
         _grid = newMap;
+        _grid.width = newMap.scenario.GetLength(0);
+        _grid.height = newMap.scenario.GetLength(1);
     }
     
     public void LoadJson(string json)
@@ -46,7 +27,7 @@ public class MapConfigStore : MonoBehaviour, IConfigStore
             Map loadedMap = JsonConvert.DeserializeObject<Map>(json);
             loadedMap.width = loadedMap.scenario.GetLength(0);
             loadedMap.height = loadedMap.scenario.GetLength(1);
-            SetNewMap(loadedMap);
+            SetMap(loadedMap);
         }
         catch (Exception)
         {

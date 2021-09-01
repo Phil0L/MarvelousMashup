@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
@@ -22,6 +23,7 @@ public class GameState
     
     private readonly GameField[,] _arr;
     private readonly List<Action<UserRequest>> _subscriptions;
+
 
     private Character _turnsCharacter;
     
@@ -209,6 +211,14 @@ public class GameState
         attacker.AP -= 1;
         callback?.Invoke();
     }
+
+    public List<Character> YourCharacters() => CurrentCharactersDetail().Where(c => !c.enemy).ToList();
+    
+    public List<Character> OpponentCharacters() => CurrentCharactersDetail().Where(c => c.enemy).ToList();
+
+    public string YourName() => PartyConfigStore.You();
+    
+    public string OpponentName() => PartyConfigStore.Opponent();
     
     public static class SubscriptionCaller
     {
@@ -221,4 +231,5 @@ public class GameState
             }
         }
     }
+    
 }

@@ -38,7 +38,7 @@ public class HelloServer {
      * @param optionals optional String that might be used
      *
      */
-    public HelloServer(string name, string deviceID, string optionals){
+    public HelloServer(string name, string deviceID, string optionals = null){
         this.name = name;
         this.deviceID = deviceID;
         this.optionals = optionals;

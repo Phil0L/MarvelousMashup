@@ -7335,7 +7335,7 @@ MonoBehaviour:
   selected: 
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -9987,8 +9987,8 @@ Camera:
   m_GameObject: {fileID: 975885884}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

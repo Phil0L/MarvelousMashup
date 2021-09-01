@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 [Serializable]
 public class Map
 {
-    [NonSerialized] public int width;
-    [NonSerialized] public int height;
-
+    [JsonIgnore] public int width;
+    [JsonIgnore] public int height;
+    [JsonIgnore] public string mapContent;
     public MapTile[,] scenario;
     public string author;
     public string name = "My Map";
@@ -31,6 +31,7 @@ public class Map
                 scenario[ii, ij] = MapTile.GRASS;
             }
         }
+        mapContent = ToString();
     }
 
     public Map(MapTile[,] scenario)
@@ -38,6 +39,7 @@ public class Map
         this.scenario = scenario;
         this.width = scenario.GetLength(0);
         this.height = scenario.GetLength(1);
+        mapContent = ToString();
     }
 
     public Map(MapTile[][] tiles)
@@ -54,10 +56,12 @@ public class Map
         this.scenario = aTiles;
         this.width = tiles.Length;
         this.height = tiles[0].Length;
+        mapContent = ToString();
     }
     
     public override string ToString()
     {
+        if (scenario == null) return "";
         string s = width + ", " + height + Environment.NewLine;
         for (int ii = 0; ii < scenario.GetLength(0); ii++)
         {

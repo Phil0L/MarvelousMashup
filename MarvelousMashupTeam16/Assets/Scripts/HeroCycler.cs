@@ -30,7 +30,7 @@ public class HeroCycler : MonoBehaviour
 
         if (frame < leaveTime)
         {
-            coming.transform.position = Vector3.Lerp(coming.transform.position, transform.position, speed / 100);
+            coming.transform.position = Vector3.Lerp(coming.transform.position, transform.position, speed * Time.deltaTime);
             coming.color = new Color(coming.color.r, coming.color.g, coming.color.g,
                 1 - (Vector3.Distance(coming.transform.position, transform.position) / movingDistance));
         }
@@ -47,7 +47,7 @@ public class HeroCycler : MonoBehaviour
         if (frame > leaveTime)
         {
             leaving.transform.position = new Vector2(leaving.transform.position.x - velocity, transform.position.y);
-            velocity += speed / 1000;
+            velocity += speed / 10 * Time.deltaTime;
             leaving.color = new Color(leaving.color.r, leaving.color.g, leaving.color.g,
                 1 - (Vector3.Distance(leaving.transform.position, transform.position) / movingDistance));
             if (Vector2.Distance(leaving.transform.position, transform.position) > movingDistance)

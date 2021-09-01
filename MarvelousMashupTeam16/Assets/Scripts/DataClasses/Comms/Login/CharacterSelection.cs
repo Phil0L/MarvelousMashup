@@ -25,7 +25,7 @@ public class CharacterSelection : BasicMessage {
      * @param characters true if the player has chosen the character, false if not. The size of this array is 12.
      *
      */
-    public CharacterSelection(string optionals, bool[] characters) : base( MessageType.CHARACTER_SELECTION,optionals)
+    public CharacterSelection(bool[] characters, string optionals = null) : base( MessageType.CHARACTER_SELECTION,optionals)
     {
         this.characters = characters;
     }
