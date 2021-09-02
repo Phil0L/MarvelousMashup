@@ -1,4 +1,4 @@
-public class ConsumedAPEvent : Message {
+public class ConsumedAPEvent : Message, EntityEvent {
 
     /**
      * The Entity that is about to consume its AP
@@ -32,6 +32,15 @@ public class ConsumedAPEvent : Message {
        this.targetEntity = targetEntity;
        this.targetField = targetField;
        this.amount = amount;
+   }
+
+   /**
+    * Implementation of the EnityEvent
+    */
+   public void Execute()
+   {
+       //TODO 
+       //Characters.GetCharacterByID();
    }
 
 }
