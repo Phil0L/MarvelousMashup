@@ -57,11 +57,11 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     }
     
-    private Sprite GetSprite(Character.Characters chr)
+    private Sprite GetSprite(IDs characterID)
     {
         foreach (var sp in sprites)
         {
-            if (sp.character == chr)
+            if (sp.characterID.Equals(characterID))
                 return sp.image;
         }
         return sprites[0].image;
@@ -70,7 +70,7 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [Serializable]
     public class DisplayedCharacter
     {
-        public Character.Characters character;
+        public IDs characterID;
         public Sprite image;
         
     }

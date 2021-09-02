@@ -3,13 +3,13 @@
 public class SpaceStoneRequest : UserRequest
 {
     public InfinityStone infinityStone;
-    public Character character;
+    public IDs characterID;
     public Vector2Int teleportPosition;
 
-    public SpaceStoneRequest(InfinityStone infinityStone, Character character, Vector2Int teleportPosition) : base(UserAction.Blue)
+    public SpaceStoneRequest(InfinityStone infinityStone, IDs characterID, Vector2Int teleportPosition) : base(UserAction.Blue)
     {
         this.infinityStone = infinityStone;
-        this.character = character;
+        this.characterID = characterID;
         this.teleportPosition = teleportPosition;
     }
 }

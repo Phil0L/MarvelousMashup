@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class LongRangeAttackRequest : UserRequest
 {
-    public Character character;
+    public IDs characterID;
     public Vector2Int attackPosition;
     public IFieldContent attacked;
 
-    public LongRangeAttackRequest(Character character, Vector2Int attackPosition, IFieldContent attacked) : base(UserAction.LongRange)
+    public LongRangeAttackRequest(IDs characterID, Vector2Int attackPosition, IFieldContent attacked) : base(UserAction.LongRange)
     {
-        this.character = character;
+        this.characterID = characterID;
         this.attackPosition = attackPosition;
         this.attacked = attacked;
     }

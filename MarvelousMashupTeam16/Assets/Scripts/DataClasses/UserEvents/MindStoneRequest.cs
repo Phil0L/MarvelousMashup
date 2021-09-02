@@ -3,14 +3,14 @@
 public class MindStoneRequest : UserRequest
 {
     public InfinityStone infinityStone;
-    public Character character;
+    public IDs characterID;
     public Vector2Int attackPosition;
     public IFieldContent attacked;
 
-    public MindStoneRequest(InfinityStone infinityStone, Character character, Vector2Int attackPosition, IFieldContent attacked) : base(UserAction.Yellow)
+    public MindStoneRequest(InfinityStone infinityStone, IDs characterID, Vector2Int attackPosition, IFieldContent attacked) : base(UserAction.Yellow)
     {
         this.infinityStone = infinityStone;
-        this.character = character;
+        this.characterID = characterID;
         this.attackPosition = attackPosition;
         this.attacked = attacked;
     }

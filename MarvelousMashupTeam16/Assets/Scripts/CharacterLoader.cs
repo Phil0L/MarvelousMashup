@@ -17,29 +17,31 @@ public class CharacterLoader : MonoBehaviour
     private Dictionary<Transform, Tuple<Vector3, Action>> drops = new Dictionary<Transform, Tuple<Vector3, Action>>();
     private Dictionary<Transform, Tuple<List<Vector2Int>, int, Action>> moves = new Dictionary<Transform, Tuple<List<Vector2Int>, int, Action>>();
     
-    public Sprite GetSprite(Character.Characters chr)
+    public Sprite GetSprite(IDs characterID)
     {
+        //TODO bin mir nicht sicher, ob das mit den Sprites so funktioniert.
         foreach (var sp in sprites)
         {
-            if (sp.character == chr)
+            if (sp.characterID.Equals(characterID))
                 return sp.image;
         }
         return sprites[0].image;
     }
 
-    public CharacterController CharacterToPosition(Character.Characters character, Vector2Int position,
+    public CharacterController CharacterToPosition(IDs characterID, Vector2Int position,
         AnimationType animationType = AnimationType.Instant, Action callback = null)
     {
+        //TODO hier gibt es noch Probleme bez Transform, weil Character.ID ein Int sein muss.
         if (animationType == AnimationType.Instant)
         {
-            Transform current = transform.Find(character.ToString());
+            Transform current = transform.Find(characterID.ToString());
             if (current == null)
             {
                 var chr = Instantiate(prefab, transform);
                 var pos = tileMap.GetCellCenterWorld(new Vector3Int(position.x, position.y, 0)) + generalTileOffset;
                 chr.transform.position = pos;
-                chr.sprite = GetSprite(character);
-                chr.name = character.ToString();
+                chr.sprite = GetSprite(characterID);
+                chr.name = CharacterConfigStore.Character(characterID).name;
                 callback?.Invoke();
                 return chr.GetComponent<CharacterController>();
             }
@@ -56,13 +58,13 @@ public class CharacterLoader : MonoBehaviour
 
         if (animationType == AnimationType.Drop)
         {
-            Transform current = transform.Find(character.ToString());
+            Transform current = transform.Find(characterID.ToString());
             if (current == null)
             {
                 var chr = Instantiate(prefab, transform);
                 var pos = tileMap.GetCellCenterWorld(new Vector3Int(position.x, position.y, 0)) + generalTileOffset;
-                chr.sprite = GetSprite(character);
-                chr.name = character.ToString();
+                chr.sprite = GetSprite(characterID);
+                chr.name = characterID.ToString();
                 var transform1 = chr.transform;
                 transform1.position = pos + new Vector3(0, dropHeight, 0);
                 drops.Add(transform1, new Tuple<Vector3, Action>(pos, callback));
@@ -81,11 +83,11 @@ public class CharacterLoader : MonoBehaviour
 
         if (animationType == AnimationType.Move)
         {
-            Transform current = transform.Find(character.ToString());
-            Vector2Int currentPosition = Game.State().FindHeroPosition(character);
+            Transform current = transform.Find(characterID.ToString());
+            Vector2Int currentPosition = Game.State().FindHeroPosition(characterID);
             if (current == null || currentPosition.x == -1)
             {
-                return CharacterToPosition(character, position);
+                return CharacterToPosition(characterID, position);
             }
 
             var path = Game.Controller().Pathfinding.PathFind(currentPosition, position);
@@ -149,7 +151,7 @@ public class CharacterLoader : MonoBehaviour
     [Serializable]
     public class DisplayedCharacter
     {
-        public Character.Characters character;
+        public int characterID;
         public Sprite image;
         
         

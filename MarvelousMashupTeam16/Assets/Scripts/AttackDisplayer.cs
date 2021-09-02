@@ -75,7 +75,7 @@ public class AttackDisplayer : MonoBehaviour
             return;
         }
 
-        var turn = Game.State().CurrentTurn();
+        var turn = CharacterConfigStore.Character(Game.State().CurrentTurn());
         if (turn == null || turn.enemy)
         {
             Deactivate();

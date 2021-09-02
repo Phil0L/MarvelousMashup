@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class CloseRangeAttackRequest : UserRequest
 {
-    public Character character;
+    public IDs characterID;
     public Vector2Int attackPosition;
     public IFieldContent attacked;
     
 
-    public CloseRangeAttackRequest(Character character, Vector2Int attackPosition, IFieldContent attacked) : base(UserAction.CloseRange)
+    public CloseRangeAttackRequest(IDs characterID, Vector2Int attackPosition, IFieldContent attacked) : base(UserAction.CloseRange)
     {
-        this.character = character;
+        this.characterID = characterID;
         this.attackPosition = attackPosition;
         this.attacked = attacked;
     }

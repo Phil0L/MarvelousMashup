@@ -89,11 +89,11 @@ public class CharacterChooser : MonoBehaviour
         readyButton.interactable = true;
     }
     
-    private Sprite GetSprite(Character.Characters chr)
+    private Sprite GetSprite(IDs characterID)
     {
         foreach (var sp in sprites)
         {
-            if (sp.character == chr)
+            if (sp.characterID.Equals(characterID))
                 return sp.image;
         }
         return sprites[0].image;
@@ -102,7 +102,7 @@ public class CharacterChooser : MonoBehaviour
     [Serializable]
     public class DisplayedCharacter
     {
-        public Character.Characters character;
+        public IDs characterID;
         public Sprite image;
         
     }

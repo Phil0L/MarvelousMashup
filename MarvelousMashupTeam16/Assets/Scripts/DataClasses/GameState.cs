@@ -25,7 +25,7 @@ public class GameState
     private readonly List<Action<UserRequest>> _subscriptions;
 
 
-    private Character _turnsCharacter;
+    private IDs _turnsCharacter;
     
     public GameField this[int i, int j]
     {
@@ -41,11 +41,11 @@ public class GameState
 
     public bool IsOutOfBounds(Vector2Int position) => position.x < 0 || position.y < 0 || position.x >= Width() || position.y >= Height();
 
-    public Character FindHero(Character.Characters hero)
+    public Character FindHero(IDs characterID)
     {
         foreach (GameField gameField in _arr)
         {
-            if (gameField.item is Character item && item.characterID == hero)
+            if (gameField.item is Character item && item.characterID.Equals(characterID))
                 return item;
         }
         return null;
@@ -67,21 +67,21 @@ public class GameState
         return null;
     }
     
-    public Vector2Int FindHeroPosition(Character.Characters hero)
+    public Vector2Int FindHeroPosition(IDs characterID)
     {
         for (int x = 0; x < Width(); x++)
         {
             for (int y = 0; y < Height(); y++)
             {
-                if (_arr[x, y].item is Character item && item.characterID == hero)
+                if (_arr[x, y].item is Character item && item.characterID.Equals(characterID))
                     return new Vector2Int(x, y);
             }
         }
         return new Vector2Int(-1, -1);
     }
 
-    public Transform TransformOf(Character.Characters character) =>
-        Game.Controller().GroundLoader.tilemap.transform.Find(character.ToString());
+    public Transform TransformOf(String character) =>
+        Game.Controller().GroundLoader.tilemap.transform.Find(character);
 
     public Transform TransformOf(InfinityStone infinityStone) =>
         Game.Controller().GroundLoader.tilemap.transform.Find(infinityStone.ToString());
@@ -109,16 +109,16 @@ public class GameState
         }
     }
 
-    public void MoveHero(Character.Characters character, Vector2Int position, Action callback = null)
+    public void MoveHero(IDs characterID, Vector2Int position, Action callback = null)
     {
-        var heroPosition = FindHeroPosition(character);
+        var heroPosition = FindHeroPosition(characterID);
         GameField previous = this[heroPosition.x, heroPosition.y];
-        if (previous.item is Character characterItem && characterItem.characterID == character)
+        if (previous.item is Character characterItem && characterItem.characterID.Equals(characterID))
         {
             GameField field = this[position.x, position.y];
             if (field.IsWalkable())
             {
-                Game.Controller().CharacterLoader.CharacterToPosition(character, position,
+                Game.Controller().CharacterLoader.CharacterToPosition(characterID, position,
                     CharacterLoader.AnimationType.Move, callback);
                 this[position.x, position.y].item = characterItem;
                 this[heroPosition.x, heroPosition.y].item = null;
@@ -126,16 +126,16 @@ public class GameState
         }
     }
 
-    public void TeleportHero(Character.Characters character, Vector2Int position, Action callback = null)
+    public void TeleportHero(IDs characterID, Vector2Int position, Action callback = null)
     {
-        var heroPosition = FindHeroPosition(character);
+        var heroPosition = FindHeroPosition(characterID);
         GameField previous = this[heroPosition.x, heroPosition.y];
-        if (previous.item is Character characterItem && characterItem.characterID == character)
+        if (previous.item is Character characterItem && characterItem.characterID == characterID)
         {
             GameField field = this[position.x, position.y];
             if (field.IsWalkable())
             {
-                Game.Controller().CharacterLoader.CharacterToPosition(character, position,
+                Game.Controller().CharacterLoader.CharacterToPosition(characterID, position,
                     CharacterLoader.AnimationType.Drop, callback);
                 this[position.x, position.y].item = characterItem;
                 this[heroPosition.x, heroPosition.y].item = null;
@@ -143,24 +143,13 @@ public class GameState
         }
     }
 
-    public void SetCurrentTurn(Character character) => _turnsCharacter = character;
+    public void SetCurrentTurn(IDs characterID) => _turnsCharacter = characterID;
 
-    public Character CurrentTurn() => _turnsCharacter;
+    public IDs CurrentTurn() => _turnsCharacter;
 
-    public List<Character.Characters> CurrentCharacters()
-    {
-        var chars = new List<Character.Characters>();
-        foreach (var field in _arr)
-        {
-            if (field.item is Character ch)
-            {
-                chars.Add(ch.characterID);
-            }
-        }
-
-        return chars;
-    }
-    
+    /**
+	 * Lists all Characters which are in the Grid.
+	*/
     public List<Character> CurrentCharactersDetail()
     {
         var chars = new List<Character>();

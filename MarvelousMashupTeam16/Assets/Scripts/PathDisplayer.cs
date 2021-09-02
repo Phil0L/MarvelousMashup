@@ -62,13 +62,13 @@ public class PathDisplayer : MonoBehaviour
         }
 
         var turn = Game.State().CurrentTurn();
-        if (turn == null || turn.enemy)
+        if (turn == null || CharacterConfigStore.Character(turn).enemy)
         {
             Deactivate();
             return;
         }
 
-        var from = Game.State().FindHeroPosition(turn.characterID);
+        var from = Game.State().FindHeroPosition(turn);
         if (from.x == -1)
         {
             Deactivate();

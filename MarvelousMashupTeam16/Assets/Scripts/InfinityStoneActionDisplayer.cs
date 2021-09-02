@@ -74,7 +74,7 @@ public class InfinityStoneActionDisplayer : MonoBehaviour
     public void Green()
     {
         active = 5;
-        callback(Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID));
+        callback(Game.State().FindHeroPosition(Game.State().CurrentTurn()));
         Deactivate();
     }
 
@@ -118,7 +118,7 @@ public class InfinityStoneActionDisplayer : MonoBehaviour
             case 3:
                 if (!Game.State().IsOutOfBounds(mPoint2) 
                     && Game.State()[mPoint2.x, mPoint2.y].IsEmpty()
-                    && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID), mPoint2) == 1)
+                    && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn()), mPoint2) == 1)
                 {
                     if (redMode != 1)
                     {
@@ -132,7 +132,7 @@ public class InfinityStoneActionDisplayer : MonoBehaviour
                 }
                 if (!Game.State().IsOutOfBounds(mPoint2) && 
                     Game.State()[mPoint2.x, mPoint2.y].tile == MapTile.ROCK
-                    && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID), mPoint2) == 1)
+                    && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn()), mPoint2) == 1)
                 {
                     if (redMode != 2)
                     {
@@ -149,7 +149,7 @@ public class InfinityStoneActionDisplayer : MonoBehaviour
             case 6:
                 if (!Game.State().IsOutOfBounds(mPoint2) 
                     && Game.State()[mPoint2.x, mPoint2.y].item is Character {HP: 0, enemy: false} 
-                    && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID), mPoint2) == 1)
+                    && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn()), mPoint2) == 1)
                 {
                     if (!_tileMarker) _tileMarker = Instantiate(tileMarkerRevive);
                     if (_tileMarker) _tileMarker.SetPosition(mPoint2);
@@ -174,7 +174,7 @@ public class InfinityStoneActionDisplayer : MonoBehaviour
                 case 3:
                     if (!Game.State().IsOutOfBounds(lastPosition) 
                         && (Game.State()[lastPosition.x, lastPosition.y].IsEmpty() || Game.State()[lastPosition.x, lastPosition.y].tile == MapTile.ROCK) 
-                        && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID), lastPosition) == 1)
+                        && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn()), lastPosition) == 1)
                     {
                         callback(lastPosition);
                         Deactivate();
@@ -183,7 +183,7 @@ public class InfinityStoneActionDisplayer : MonoBehaviour
                 case 6:
                     if (!Game.State().IsOutOfBounds(lastPosition) 
                         && Game.State()[lastPosition.x, lastPosition.y].item is Character {HP: 0, enemy: false} 
-                        && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID), lastPosition) == 1)
+                        && Distance(Game.State().FindHeroPosition(Game.State().CurrentTurn()), lastPosition) == 1)
                     {
                         callback(mPoint2);
                         Deactivate();

@@ -49,11 +49,11 @@ public class TestController : MonoBehaviour
 [CustomEditor(typeof(TestController))]
 public class TestControllerEditor : Editor
 {
-    public Character.Characters characterSummon;
+    public IDs characterSummonID;
     public int stoneSummon;
-    public Character.Characters characterTurn;
+    public IDs characterTurnID;
 
-    private int _characterTurnI;
+    private IDs _characterTurnI;
 
     public override void OnInspectorGUI()
     {
@@ -63,7 +63,7 @@ public class TestControllerEditor : Editor
         TestController controller = (TestController) target;
 
         GUILayout.BeginHorizontal();
-        characterSummon = (Character.Characters) EditorGUILayout.EnumPopup("Summon Character", characterSummon);
+        characterSummonID = (Character.Characters) EditorGUILayout.EnumPopup("Summon Character", characterSummonID);
         if (GUILayout.Button("Summon"))
         {
             controller.OnGridSelected(

@@ -1,11 +1,11 @@
 ﻿public class TimeStoneRequest : UserRequest
 {
     public InfinityStone infinityStone;
-    public Character character;
+    public IDs characterID;
 
-    public TimeStoneRequest(InfinityStone infinityStone, Character character) : base(UserAction.Green)
+    public TimeStoneRequest(InfinityStone infinityStone, IDs characterID) : base(UserAction.Green)
     {
         this.infinityStone = infinityStone;
-        this.character = character;
+        this.characterID = characterID;
     }
 }
