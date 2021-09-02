@@ -20,4 +20,9 @@ public class PopUpManager : MonoBehaviour
         popUp.gameObject.SetActive(false);
         return popUp;
     }
+
+    public void DestroyAll()
+    {
+        foreach (Transform popup in transform) Destroy(popup.gameObject);
+    }
 }

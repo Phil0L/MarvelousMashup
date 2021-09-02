@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 public class PopUp : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class PopUp : MonoBehaviour
         PopUpManager popUpManager = PopUpManager.manager;
         PopUp popUp = popUpManager.GetNewPopUp();
         return popUp;
+    }
+
+    public static void Clear()
+    {
+        PopUpManager popUpManager = PopUpManager.manager;
+        popUpManager.DestroyAll();
     }
     
     public enum Bubbles
@@ -103,7 +110,10 @@ public class PopUp : MonoBehaviour
     public PopUp Bubble(Bubbles bubble)
     {
         this.bubble = bubble;
-        this.bubbleImage.sprite = bubbles[(int) bubble];
+        bubbleImage.sprite = bubbles[(int) bubble];
+        bubbleImage.transform.localPosition += new Vector3(bubbleOffsets[(int) bubble].x, bubbleOffsets[(int) bubble].y, 0);
+        foreach (Transform text in bubbleImage.transform)
+            text.localPosition -= new Vector3(bubbleOffsets[(int) bubble].x, bubbleOffsets[(int) bubble].y, 0);
         return this;
     }
 
@@ -122,6 +132,7 @@ public class PopUp : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        
     }
 
     public void Hide()

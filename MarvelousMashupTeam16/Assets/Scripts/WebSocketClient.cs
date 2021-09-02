@@ -68,6 +68,12 @@ public class WebSocketClient
         }
     }
 
+    public void Destroy()
+    {
+        socket = null;
+        listener = new List<Action<string>>();
+    }
+
     public void Send(string data)
     {
         if (socket is {State: WebSocketState.Open})
@@ -75,6 +81,7 @@ public class WebSocketClient
             byte[] sendBytes = Encoding.UTF8.GetBytes(data);
             var sendBuffer = new ArraySegment<byte>(sendBytes);
             socket.SendAsync(sendBuffer, WebSocketMessageType.Text, true, CancellationToken.None);
+            Debug.Log("Outgoing message: '" + data + "'");
         }
     }
 
@@ -105,6 +112,8 @@ public class WebSocketClient
             if (result.MessageType == WebSocketMessageType.Close)
             {
                 Debug.LogWarning("Connection closed from server");
+                // Destroy();
+                // Server.Connection = null;
                 return;
             }
 

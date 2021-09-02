@@ -17,9 +17,11 @@ public class CharacterChooser : MonoBehaviour
     public List<int> selected;
 
     public List<DisplayedCharacter> sprites;
+    public static CharacterChooser Instance;
     
     private void Awake()
     {
+        Instance = this;
         characters = new List<Character>();
         selected = new List<int>();
         readyButton.gameObject.SetActive(false);
@@ -67,12 +69,24 @@ public class CharacterChooser : MonoBehaviour
 
     public void Ready()
     {
-        List<Character> heroes = new List<Character>();
-        foreach (var s in selected) heroes.Add(characters[s]);
-        var waitPopUp = PopUp.Create()
-            .Title("Waiting...")
-            .Text("Your opponent hasn't chosen his Heroes yet.\nYou have to wait until he has decided.");
-        waitPopUp.Show();
+        Deactivate();
+        // List<Character> heroes = new List<Character>();
+        // foreach (var s in selected) heroes.Add(characters[s]);
+        bool[] values = new bool[12];
+        for (int i = 0; i < 12; i++) values[i] = selected.Contains(i);
+        CharacterSelection cs = new CharacterSelection(values);
+        if (Server.IsAttached()) Server.Connection.Send(cs);
+        else Debug.LogWarning("Server is not attached!");
+    }
+
+    public void Deactivate()
+    {
+        readyButton.interactable = false;
+    }
+
+    public void ReActivateButton()
+    {
+        readyButton.interactable = true;
     }
     
     private Sprite GetSprite(Character.Characters chr)

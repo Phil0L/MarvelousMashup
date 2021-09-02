@@ -1,5 +1,10 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+[JsonConverter(typeof(StringEnumConverter))]
 public enum MessageType
 {
+    NULL,
     HELLO_CLIENT,
     HELLO_SERVER,
     RECONNECT,

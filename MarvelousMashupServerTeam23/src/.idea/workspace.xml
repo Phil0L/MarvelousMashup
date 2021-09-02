@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2868d5ee-2ff8-47ef-b891-939db25a19bd" name="Default Changelist" comment="" />
+    <list default="true" id="2868d5ee-2ff8-47ef-b891-939db25a19bd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Prefabs/PopUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Prefabs/PopUp.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scenes/JoinMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scenes/JoinMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/DataClasses/Comms/Enums/MessageType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/DataClasses/Comms/Enums/MessageType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/DataClasses/Comms/Enums/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/DataClasses/Comms/Enums/Role.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/DataClasses/Comms/Login/HelloServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/DataClasses/Comms/Login/HelloServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/MapConfigStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/MapConfigStore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/ServerConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/ServerConnector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/WebSocketClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../MarvelousMashupTeam16/Assets/Scripts/WebSocketClient.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +30,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -29,6 +41,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1620385309409</updated>
+      <workItem from="1630337834601" duration="485000" />
     </task>
     <servers />
   </component>
@@ -42,5 +55,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

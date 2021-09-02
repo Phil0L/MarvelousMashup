@@ -1,1 +1,1 @@
-.\gradlew run --args="--conf-match matchconfig_1.json --conf-chars marvelheros.json --conf-scenario asgard.json"
+.\gradlew run --args="--conf-match match.game.json --conf-chars marvelheros.character.json --conf-scenario map.scenario.json"
