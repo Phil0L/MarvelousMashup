@@ -8,6 +8,7 @@ import communication.messages.events.game.*;
 import communication.messages.events.gamestate.GamestateEvent;
 import communication.messages.events.notification.Ack;
 import communication.messages.events.notification.Nack;
+import communication.messages.events.portal.TeleportedEvent;
 import communication.messages.objects.Entities;
 import communication.messages.objects.ExtractorEntities;
 import communication.messages.objects.InfinityStone;
@@ -58,7 +59,8 @@ public class ExtractorMessage {
      * Position of the acting Entity. In case of a MoveRequest start position of the move.
      *
      * Used for the MeleeAttackRequest, RangeAttackRequest, MoveRequest,ExchangeInfinityStoneRequest,
-     * UseInfinityStoneRequest, ExchangeInfinityStoneEvent, UseInfinityStoneEvent, MeleeAttackEvent, MoveEvent.
+     * UseInfinityStoneRequest, ExchangeInfinityStoneEvent, UseInfinityStoneEvent, MeleeAttackEvent, MoveEvent,
+     * TeleportedEvent.
      */
     public int[] originField;
 
@@ -66,7 +68,7 @@ public class ExtractorMessage {
      * Position of the target Entity. In case of a MoveRequest target position of the move.
      * Used for the MeleeAttackRequest, RangeAttackRequest, MoveRequest,ExchangeInfinityStoneRequest,
      * UseInfinityStoneRequest, ExchangeInfinityStoneEvent, UseInfinityStoneEvent, MeleeAttackEvent, TakenDamageEvent,
-     * ConsumedMPEvent, HealedEvent, MoveEvent, DestroyedEntityEvent, ConsumedAPEvent.
+     * ConsumedMPEvent, HealedEvent, MoveEvent, DestroyedEntityEvent, ConsumedAPEvent, TeleportedEvent.
      */
     public int[] targetField;
 
@@ -161,6 +163,27 @@ public class ExtractorMessage {
     public int playerWon;
 
     /**
+     * Entity that is teleported.
+     *
+     * Used by TeleportedEvent.
+     */
+    public IDs teleportedEntity;
+
+    /**
+     * Origin portal of teleportation.
+     *
+     * Used by TeleportedEvent.
+     */
+    public IDs originPortal;
+
+    /**
+     * Target portal of teleportation.
+     *
+     * Used by TeleportedEvent.
+     */
+    public IDs targetPortal;
+
+    /**
      *
      * creates a Message object by using the attributes of the ExtractorMessage object. The exact class of the object
      * is determined by the eventType or the requestType of the object.
@@ -221,6 +244,8 @@ public class ExtractorMessage {
                     return this.toSpawnEntityEvent();
                 case WinEvent:
                     return this.toWinEvent();
+                case TeleportedEvent:
+                    return this.toTeleportedEvent();
                 default:
                     return null;
             }
@@ -645,6 +670,15 @@ public class ExtractorMessage {
         return new PauseStopEvent();
     }
 
+    /**
+     * Creates a TeleportedEvent by using the attributes of the ExtractorMessage class.
+     *
+     * @author Luka Stoehr
+     * @return TeleportedEvent containing all necessary attributes
+     */
+    public TeleportedEvent toTeleportedEvent(){
+        return new TeleportedEvent(this.teleportedEntity, this.originField, this.targetField, this.originPortal, this.targetPortal);
+    };
     /**
      * constructor of the Message-class if the Message is an event
      *

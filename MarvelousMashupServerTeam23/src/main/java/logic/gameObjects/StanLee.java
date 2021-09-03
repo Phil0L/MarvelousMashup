@@ -2,6 +2,8 @@ package logic.gameObjects;
 
 import communication.messages.enums.EntityID;
 import communication.messages.events.entity.DestroyedEntityEvent;
+import communication.messages.objects.Entities;
+import communication.messages.objects.NPC;
 import logic.model.Model;
 
 import java.util.Collections;
@@ -40,7 +42,21 @@ public class StanLee extends Placeable{
             return false;
         }
 
-        /**
+    /**
+     * Translates this Placeable object to an Entities object that is needed for some
+     * network messages.
+     *
+     * @return Entity
+     * @author Luka Stoehr
+     */
+    @Override
+    public Entities toEntity() {
+        StanLee s = this;
+        NPC npc = new NPC(s.ID, s.getPosAsArray(), 0, new int[0]);
+        return npc;
+    }
+
+    /**
          * This method handles StanLees turn. It only works, if StanLee is in turnOrder and turnCount points to StanLee
          * (this means it has to bee StanLee's turn in this round for this method to work). It also has
          * to be the 7th round (model.round==6, because it starts with 0), because StanLee only appears in round 7.

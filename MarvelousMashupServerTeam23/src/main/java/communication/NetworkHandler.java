@@ -108,16 +108,14 @@ public class NetworkHandler extends WebSocketServer {
 
         controller.SpectatorList.remove(conn);
         System.out.println("SERVER: Connection to " + ((conn.getAttachment()) == null ? "unknown remote" :
-            ((Attachment) (conn.getAttachment())).profile == null ? "unknown profile" :
                 ((Attachment) (conn.getAttachment())).profile.name + ":" +
                         ((Attachment) (conn.getAttachment())).profile.deviceID) + " closed");
 
         //if the disconnected WebSocket was associated with a Player, start the timer for the reconnect
-        if(conn.getAttachment() != null){
-            if (controller != null && controller.turnTimer != null)
-                controller.turnTimer.stop();
+        if(!(conn.getAttachment() == null)){
+            controller.turnTimer.stop();
             Attachment attachment = conn.getAttachment();
-            if(attachment != null && attachment.profile != null && (checkPlayerIdentity(attachment.profile)) != null){
+            if(attachment != null && (checkPlayerIdentity(attachment.profile)) != null){
                 Player player = checkPlayerIdentity(attachment.profile);
                 player.timeoutTimer = new SimpleTimer(configuration.matchConfig.maxResponseTime) {
                     @Override
@@ -141,7 +139,7 @@ public class NetworkHandler extends WebSocketServer {
      */
     @Override
     public void onMessage(WebSocket conn, String message) {
-        System.out.println("SERVER: Message Received:"+message);
+        System.out.println("SERVER: "+message);
 
         Attachment attachment = conn.getAttachment();
         Profile profile;
@@ -168,7 +166,6 @@ public class NetworkHandler extends WebSocketServer {
 
                         String optionals1 = "";
                         conn.send(gson_.toJson(new HelloClient(optionals1, controller.runningGame)));
-                        System.out.println("SERVER: Sending Hello Client");
                         break;
 
                     case RECONNECT:
@@ -456,7 +453,9 @@ public class NetworkHandler extends WebSocketServer {
 
         }
         catch(JsonSyntaxException e){
-            System.err.println("SERVER: Error while trying to parse message has occurred.\nCannot parse:\n  " + message.replaceAll("\n", "\n  "));
+            System.out.println("SERVER: Error while trying to parse message has occurred. Connection closed.");
+            e.printStackTrace();
+            conn.close(-1);   //Connection is terminated if the protocol is violated.
         }
     }
 
@@ -568,15 +567,13 @@ public class NetworkHandler extends WebSocketServer {
      * @return method returns the player the profile is associated with or null if there is no player with the same profile found
      */
     public Player checkPlayerIdentity(Profile profile){
-        try {
-            if (controller.model.playerOne.profile.equals(profile)) {   //check first player profile
-                return controller.model.playerOne;
-            } else if (controller.model.playerTwo.profile.equals(profile)) {   //check second player profile
-                return controller.model.playerTwo;
-            } else {      //profile doesn't belong to a player --> return null
-                return null;
-            }
-        }catch (NullPointerException e){
+        if(controller.model.playerOne.profile.equals(profile)){   //check first player profile
+            return controller.model.playerOne;
+        }
+        else if(controller.model.playerTwo.profile.equals(profile)){   //check second player profile
+            return controller.model.playerTwo;
+        }
+        else{      //profile doesn't belong to a player --> return null
             return null;
         }
     }

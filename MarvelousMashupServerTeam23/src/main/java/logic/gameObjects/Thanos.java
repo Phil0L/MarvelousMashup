@@ -4,6 +4,8 @@ import communication.messages.enums.EntityID;
 import communication.messages.events.character.MoveEvent;
 import communication.messages.events.entity.ConsumedMPEvent;
 import communication.messages.events.entity.DestroyedEntityEvent;
+import communication.messages.objects.Entities;
+import communication.messages.objects.NPC;
 import logic.model.Model;
 
 import java.util.Collections;
@@ -166,6 +168,19 @@ public class Thanos extends Placeable implements Attackable{
         }else{
             return false;
         }
+    }
+
+    /**
+     * Translates this Placeable object to an Entities object that is needed for some
+     * network messages.
+     *
+     * @return Entity
+     * @author Luka Stoehr
+     */
+    @Override
+    public Entities toEntity() {
+        Thanos t = this;
+        return new NPC(t.ID, t.getPosAsArray(), t.movementPoints, t.inventoryToArray());
     }
 
     /**

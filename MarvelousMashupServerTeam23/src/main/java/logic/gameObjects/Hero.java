@@ -7,6 +7,7 @@ import communication.messages.events.character.MeleeAttackEvent;
 import communication.messages.events.character.MoveEvent;
 import communication.messages.events.character.RangedAttackEvent;
 import communication.messages.events.entity.*;
+import communication.messages.objects.Entities;
 import communication.messages.objects.InGameCharacter;
 import logic.model.Model;
 import parameter.ConfigHero;
@@ -459,7 +460,17 @@ public class Hero extends  Placeable implements Attackable{
                 );
                 this.model.checkMaxNrInftyStones();
                 return true;
-        } else {
+        } else if(target instanceof Portal){
+            model.field[oldPos.getX()][oldPos.getY()] = null;
+            model.field[newPosition.getX()][newPosition.getY()] = this;
+            this.reduceMP(1);
+            this.model.controller.eventList.add(
+                    // MoveEvent for this Hero
+                    new MoveEvent(this.getIDs(), oldPos.toArray(), newPosition.toArray())
+            );
+            boolean success = ((Portal) target).teleport(this);
+            return success;
+        }else{
                 return false;   // Can't walk into Thanos
         }
     }
@@ -566,5 +577,17 @@ public class Hero extends  Placeable implements Attackable{
                 maxActionPoints == hero.maxActionPoints && nearAttackDamage == hero.nearAttackDamage &&
                 farAttackDamage == hero.farAttackDamage && farAttackDistance == hero.farAttackDistance &&
                 atomized == hero.atomized && name.equals(hero.name) && Objects.equals(inventory, hero.inventory);
+    }
+
+    /**
+     * Translates this Placeable object to an Entities object that is needed for some
+     * network messages.
+     * @author Luka Stoehr
+     * @return Entity object
+     */
+    @Override
+    public Entities toEntity() {
+        Hero h = this;
+        return new InGameCharacter(h.name, h.PID, h.ID, h.getHealthPoints(), h.getMovementPoints(), h.getActionPoints(), h.inventoryToArray(), h.getPosAsArray());
     }
 }

@@ -2,6 +2,7 @@ package logic.gameObjects;
 
 import communication.messages.enums.EntityID;
 import communication.messages.events.character.MoveEvent;
+import communication.messages.objects.Entities;
 import logic.model.Model;
 
 import java.awt.*;
@@ -74,6 +75,18 @@ public abstract class InfinityStone extends Placeable{
             return false;
         }
 
+    }
+
+    /**
+     * Translates this Placeable object to an Entities object that is needed for some
+     * network messages.
+     * @author Luka Stoehr
+     * @return Entity
+     */
+    @Override
+    public Entities toEntity(){
+        InfinityStone s = this;
+        return new communication.messages.objects.InfinityStone(s.ID, s.getPosAsArray());
     }
 }
 
