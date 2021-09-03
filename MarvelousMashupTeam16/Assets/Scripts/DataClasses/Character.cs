@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [Serializable]
-public class Character : IFieldContent
+public class Character : IFieldContent, IID
 {
     [SerializeField] public Characters characterID;
     [SerializeField] public string name;
