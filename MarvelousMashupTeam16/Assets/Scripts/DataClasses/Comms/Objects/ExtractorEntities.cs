@@ -7,7 +7,7 @@ public class ExtractorEntities
     public EntityType entityType;
 
     /**
-     * ID of an Entities object. Used for all Entities objects.
+     * ID of an Entities object. Used for all Entities objects. 
      */
     public int ID;
 
@@ -22,7 +22,7 @@ public class ExtractorEntities
     public string name;
 
     /**
-     * Player ID of the Entities (indicate the related player) used for a Character
+     * Player ID of the Entities (indicate the related player) used for a Character (P1 or P2)
      */
     public int PID;
 

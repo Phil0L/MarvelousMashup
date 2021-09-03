@@ -1,12 +1,12 @@
 public class InfinityStone : Entities, IFieldContent
 {
     
-    public const int GREEN = 1;
-    public const int YELLOW = 2;
-    public const int PURPLE = 3;
-    public const int BLUE = 4;
-    public const int RED = 5;
-    public const int ORANGE = 6;
+    public const int GREEN = 1; // time
+    public const int YELLOW = 2; // mind
+    public const int PURPLE = 3; // power
+    public const int BLUE = 4; // space
+    public const int RED = 5; // reality
+    public const int ORANGE = 6; // soul
 
 
     public int stone;

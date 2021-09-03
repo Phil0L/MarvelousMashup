@@ -178,13 +178,9 @@ public class LoginController : MonoBehaviour
 
                     Server.ServerCaller.GameStarted();
 
-                    MainThread.ExecuteDelayed(() =>
-                    {
-                        Debug.Log("Login Completed");
-                        SceneManager.LoadScene("Game");
-                        active = false;
-                    }, 3);
-
+                    Debug.Log("Login Completed");
+                    active = false;
+                    SceneManager.LoadScene("Game");
                     break;
 
                 case MessageType.ERROR:

@@ -219,7 +219,7 @@ public class GameState
     public string YourName() => PartyConfigStore.You();
     
     public string OpponentName() => PartyConfigStore.Opponent();
-    
+
     public static class SubscriptionCaller
     {
         public static void CallAllSubscriptions(UserRequest request)

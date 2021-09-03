@@ -19,6 +19,15 @@ public class CharacterConfigStore : MonoBehaviour, IConfigStore
         }
         return null;
     }
+    
+    public static Character Character(string character)
+    {
+        foreach (var car in Characters())
+        {
+            if (car.name == character) return car;
+        }
+        return null;
+    }
 
     public static void SetCharacters(List<Character> chars)
     {

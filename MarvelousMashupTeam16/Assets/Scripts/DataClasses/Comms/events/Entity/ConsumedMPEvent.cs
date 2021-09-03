@@ -15,7 +15,6 @@ public class ConsumedMPEvent : Message
      * @param amount The amount of movement points the targetEntity consumes
      *
      */
-
     public ConsumedMPEvent(IDs targetEntity, int[] targetField, int amount) : base(EventType.ConsumedMPEvent){
         
         this.targetEntity = targetEntity;
