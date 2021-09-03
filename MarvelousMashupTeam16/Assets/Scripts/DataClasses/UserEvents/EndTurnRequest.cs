@@ -1,9 +1,9 @@
 ﻿public class EndTurnRequest : UserRequest
 {
-    public IDs characterID;
+    public Character character;
 
-    public EndTurnRequest(IDs characterID) : base(UserAction.EndTurn)
+    public EndTurnRequest(Character character) : base(UserAction.EndTurn)
     {
-        this.characterID = characterID;
+        this.character = character;
     }
 }

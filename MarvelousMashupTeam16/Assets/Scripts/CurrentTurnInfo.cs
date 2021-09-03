@@ -30,7 +30,7 @@ public class CurrentTurnInfo : MonoBehaviour
                 Game.Controller().PathDisplayer.Deactivate();
                 CharacterMoveRequest cmr = new CharacterMoveRequest(
                     Game.State().CurrentTurn(),
-                    Game.State().FindHeroPosition(Game.State().CurrentTurn()),
+                    Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID),
                     pos,
                     Game.Controller().Pathfinding.GetPath());
                 GameState.SubscriptionCaller.CallAllSubscriptions(cmr);
@@ -53,7 +53,7 @@ public class CurrentTurnInfo : MonoBehaviour
         });
         LongRange.OnClick(() =>
         {
-            Game.Controller().AttackDisplayer.SetMaxLength(CharacterConfigStore.Character(Game.State().CurrentTurn()).rangeCombatReach);
+            Game.Controller().AttackDisplayer.SetMaxLength(Game.State().CurrentTurn().rangeCombatReach);
             Game.Controller().AttackDisplayer.SetColor(Game.Controller().AttackDisplayer.attackColor);
             Game.Controller().AttackDisplayer.Activate();
             Game.Controller().AttackDisplayer.OnSelected(pos =>
@@ -77,7 +77,7 @@ public class CurrentTurnInfo : MonoBehaviour
                     Game.State().CurrentTurn(),
                     Game.State()[pos.x, pos.y].item as Character,
                     pos,
-                    Game.State().FindHeroPosition(Game.State().CurrentTurn()));
+                    Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID));
                 GameState.SubscriptionCaller.CallAllSubscriptions(spr);
             });
             
@@ -171,8 +171,7 @@ public class CurrentTurnInfo : MonoBehaviour
     private void Update()
     {
         if (Game.State().CurrentTurn() == null) return;
-        IDs characterID = Game.State().CurrentTurn();
-        Character character = CharacterConfigStore.Character(characterID);
+        Character character = Game.State().CurrentTurn();
         
         HealthDisplayer.SetHealth(character.HP, character.maxHP);
         Sprite.sprite = Game.Controller().CharacterLoader.GetSprite(character.characterID);
@@ -185,62 +184,62 @@ public class CurrentTurnInfo : MonoBehaviour
         StonePass.Set(character.infinityStones.Count, !character.enemy);
         NextCharacter.Set(1, !character.enemy);
         
-        if (HasStone(characterID, InfinityStone.RED))
+        if (HasStone(character, InfinityStone.RED))
         {
             Red.gameObject.SetActive(true);
-            Red.Set(GetStone(characterID, InfinityStone.RED).cooldown, !character.enemy);
+            Red.Set(GetStone(character, InfinityStone.RED).cooldown, !character.enemy);
         }
         else Red.gameObject.SetActive(false);
         
-        if (HasStone(characterID, InfinityStone.ORANGE))
+        if (HasStone(character, InfinityStone.ORANGE))
         {
             Orange.gameObject.SetActive(true);
-            Orange.Set(GetStone(characterID, InfinityStone.ORANGE).cooldown, !character.enemy);
+            Orange.Set(GetStone(character, InfinityStone.ORANGE).cooldown, !character.enemy);
         }
         else Orange.gameObject.SetActive(false);
         
-        if (HasStone(characterID, InfinityStone.YELLOW))
+        if (HasStone(character, InfinityStone.YELLOW))
         {
             Yellow.gameObject.SetActive(true);
-            Yellow.Set(GetStone(characterID, InfinityStone.YELLOW).cooldown, !character.enemy);
+            Yellow.Set(GetStone(character, InfinityStone.YELLOW).cooldown, !character.enemy);
         }
         else Yellow.gameObject.SetActive(false);
         
-        if (HasStone(characterID, InfinityStone.GREEN))
+        if (HasStone(character, InfinityStone.GREEN))
         {
             Green.gameObject.SetActive(true);
-            Green.Set(GetStone(characterID, InfinityStone.GREEN).cooldown, !character.enemy);
+            Green.Set(GetStone(character, InfinityStone.GREEN).cooldown, !character.enemy);
         }
         else Green.gameObject.SetActive(false);
         
-        if (HasStone(characterID, InfinityStone.BLUE))
+        if (HasStone(character, InfinityStone.BLUE))
         {
             Blue.gameObject.SetActive(true);
-            Blue.Set(GetStone(characterID, InfinityStone.BLUE).cooldown, !character.enemy);
+            Blue.Set(GetStone(character, InfinityStone.BLUE).cooldown, !character.enemy);
         }
         else Blue.gameObject.SetActive(false);
         
-        if (HasStone(characterID, InfinityStone.PURPLE))
+        if (HasStone(character, InfinityStone.PURPLE))
         {
             Violet.gameObject.SetActive(true);
-            Violet.Set(GetStone(characterID, InfinityStone.PURPLE).cooldown, !character.enemy);
+            Violet.Set(GetStone(character, InfinityStone.PURPLE).cooldown, !character.enemy);
         }
         else Violet.gameObject.SetActive(false);
         
     }
 
-    private static bool HasStone(IDs characterID, int stone)
+    private static bool HasStone(Character character, int stone)
     {
-        foreach (var ist in CharacterConfigStore.Character(characterID).infinityStones)
+        foreach (var ist in character.infinityStones)
         {
             if (ist.stone == stone) return true;
         }
         return false;
     }
     
-    private static InfinityStone GetStone(IDs characterID, int stone)
+    private static InfinityStone GetStone(Character character, int stone)
     {
-        foreach (var ist in CharacterConfigStore.Character(characterID).infinityStones)
+        foreach (var ist in character.infinityStones)
         {
             if (ist.stone == stone) return ist;
         }

@@ -39,8 +39,8 @@ public class ConsumedAPEvent : Message, EntityEvent {
     */
    public void Execute()
    {
-       Character affected = CharacterConfigStore.Character(targetEntity);
-	   affected.changeAP(this.amount);
+       //TODO 
+       //Characters.GetCharacterByID();
    }
 
 }

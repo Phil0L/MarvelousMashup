@@ -9,13 +9,13 @@ public class CharacterConfigStore : MonoBehaviour, IConfigStore
     private static Characters _characters = new Characters();
     
     public Characters GetCharacters() => _characters;
-    public static List<Character> Characters() => _characters.characters;
+    public static Character[] Characters() => _characters.characters.ToArray();
 
-    public static Character Character(IDs characterID)
+    public static Character Character(Character.Characters character)
     {
         foreach (var car in Characters())
         {
-            if (car.characterID == characterID) return car;
+            if (car.characterID == character) return car;
         }
         return null;
     }

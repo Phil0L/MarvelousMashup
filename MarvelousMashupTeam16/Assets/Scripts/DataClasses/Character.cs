@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 [Serializable]
 public class Character : IFieldContent
 {
-    [SerializeField] public IDs characterID;
+    [SerializeField] public Characters characterID;
     [SerializeField] public string name;
     [SerializeField] public int HP;
     [SerializeField] public int MP;
@@ -25,13 +25,13 @@ public class Character : IFieldContent
         infinityStones = new List<InfinityStone>();
     }
     
-    public Character(IDs characterID)
+    public Character(Characters characterID)
     {
         this.characterID = characterID;
         infinityStones = new List<InfinityStone>();
     }
 
-    public Character(IDs characterID, string name, int hp, int mp, int ap, int meleeDamage, int rangeCombatDamage, int rangeCombatReach)
+    public Character(Characters characterID, string name, int hp, int mp, int ap, int meleeDamage, int rangeCombatDamage, int rangeCombatReach)
     {
         this.characterID = characterID;
         this.name = name;
@@ -46,9 +46,36 @@ public class Character : IFieldContent
         this.rangeCombatReach = rangeCombatReach;
         infinityStones = new List<InfinityStone>();
     }
-
-	public void changeAP(int amount) {
-		this.AP = this.AP - amount;
-	}
-
+    
+    public enum Characters
+    {
+        Unassigned,
+        RocketRacoon,
+        Quicksilver,
+        Hulk,
+        BlackWidow,
+        Hawkeye,
+        CaptainAmerica,
+        Spiderman,
+        DrStrange,
+        IronMan,
+        BlackPanther,
+        Thor,
+        CaptainMarvel,
+        Groot,
+        Starlord,
+        Gamora,
+        AntMan,
+        Vision,
+        Deadpool,
+        Loki,
+        SilverSurfer,
+        Mantis,
+        GhostRider,
+        JesicaJones,
+        ScarletWitch,
+        Thanos,
+        StanLee,
+        Goose
+    }
 }
