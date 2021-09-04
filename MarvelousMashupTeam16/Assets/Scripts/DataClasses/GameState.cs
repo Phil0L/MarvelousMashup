@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 // ReSharper disable once CheckNamespace
 public class GameState
@@ -218,7 +219,11 @@ public class GameState
 
     public string YourName() => PartyConfigStore.You();
     
-    public string OpponentName() => PartyConfigStore.Opponent();
+    public string OpponentName() => PartyConfigStore.Opponent(); 
+
+    public void DestroyObject(Character character) => Object.Destroy(TransformOf(character.characterID));
+    
+    public void DestroyObject(InfinityStone infinityStone) => Object.Destroy(TransformOf(infinityStone));
 
     public static class SubscriptionCaller
     {

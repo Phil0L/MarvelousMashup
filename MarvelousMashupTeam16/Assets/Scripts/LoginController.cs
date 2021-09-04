@@ -178,11 +178,10 @@ public class LoginController : MonoBehaviour
 
                     scenarioConfig = gameStructure.scenarioconfig;
                     MapConfigStore.SetMap(scenarioConfig);
-                    Debug.Log($"Setting the map to {scenarioConfig}");
 
                     Server.ServerCaller.GameStarted();
                     GameController controller = gameObject.AddComponent<GameController>();
-                    controller.OnActive(() =>
+                    controller.OnActive(() => MainThread.ExecuteDelayed(() => 
                     {
                         Debug.Log("Login Completed!");
                         active = false;
@@ -190,7 +189,7 @@ public class LoginController : MonoBehaviour
                         {
                             controller.OnMessageAgain(events);
                         }
-                    });
+                    }, 30));
 
                     SceneManager.LoadScene("Game");
                     break;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -7,12 +8,14 @@ public class GameController : MonoBehaviour
 {
     private Deserializer _deserializer;
     private Action _loginCallback;
+    private List<string> _receivedMessages;
 
     private bool _isAwake;
 
     private void Awake()
     {
         _deserializer = new Deserializer();
+        _receivedMessages = new List<string>();
         if (Server.IsAttached())
         {
             Server.Connection.OnMessage(message => MainThread.Execute(() => OnMessage(message)));
@@ -25,11 +28,14 @@ public class GameController : MonoBehaviour
     private void OnMessage(string message)
     {
         // check if event
+        _receivedMessages.Add(message);
+
         ExtractorMessageType obj = JsonConvert.DeserializeObject<ExtractorMessageType>(message);
         if (obj.messageType == MessageType.EVENTS)
         {
-            // split in seperate messages
-            ExtractorMessageStructure exMessageStruct = JsonConvert.DeserializeObject<ExtractorMessageStructure>(message);
+            // split in separate messages
+            ExtractorMessageStructure exMessageStruct =
+                JsonConvert.DeserializeObject<ExtractorMessageStructure>(message);
             MessageStructure messageStruct = exMessageStruct.toMessageStructure();
 
 
@@ -41,7 +47,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void OnMessageAgain(string message) => OnMessage(message);
+    public void OnMessageAgain(string message)
+    {
+        if (!_receivedMessages.Contains(message))
+            OnMessage(message);
+    }
 
     public void OnActive(Action callback)
     {

@@ -30,7 +30,7 @@ public class SpawnEntityEvent : Message, EntityEvent
                 {
                     eId = igc.PID == 1 ? EntityID.P1 : EntityID.P2;
                     var character = CharacterConfigStore.Character(igc.name);
-                    Game.State().SummonHero(character, new Vector2Int(entity.position[0], entity.position[1]));
+                    Game.State().SummonHero(character, new Vector2Int(entity.position[1], entity.position[0]));
                     obj = character;
                 }
                 break;
@@ -41,19 +41,19 @@ public class SpawnEntityEvent : Message, EntityEvent
                     if (npc.ID == 0) 
                     {
                         Character character = new Character(Character.Characters.Goose) {MP = npc.MP};
-                        Game.State().SummonHero(character, new Vector2Int(entity.position[0], entity.position[1]));
+                        Game.State().SummonHero(character, new Vector2Int(entity.position[1], entity.position[0]));
                         obj = character;
                     }
                     if (npc.ID == 1) 
                     {
                         Character character = new Character(Character.Characters.StanLee);
-                        Game.State().SummonHero(character, new Vector2Int(entity.position[0], entity.position[1]));
+                        Game.State().SummonHero(character, new Vector2Int(entity.position[1], entity.position[0]));
                         obj = character;
                     }
                     if (npc.ID == 2)
                     {
                         Character character = new Character(Character.Characters.Thanos);
-                        Game.State().SummonHero(character, new Vector2Int(entity.position[0], entity.position[1]));
+                        Game.State().SummonHero(character, new Vector2Int(entity.position[1], entity.position[0]));
                         obj = character;
                     }
                 }
@@ -74,10 +74,17 @@ public class SpawnEntityEvent : Message, EntityEvent
                         inf.stone = InfinityStone.ORANGE;
                     if (entity.ID == 5) // assumed purple
                         inf.stone = InfinityStone.PURPLE;
+
+                    inf.cooldown = PartyConfigStore.CooldownOf(inf.stone);
+                    inf.defaultcooldownTime = PartyConfigStore.CooldownOf(inf.stone);
+                    
+                    Game.State().SummonInfinityStone(inf, new Vector2Int(entity.position[1], entity.position[0]));
                 }
                 break;
             case EntityType.Rock:
                 eId = EntityID.Rocks;
+                obj = entity as Rock;
+                Game.State()[entity.position[1], entity.position[0]].tile = MapTile.ROCK;
                 break;
             //TODO: add portal
         }
