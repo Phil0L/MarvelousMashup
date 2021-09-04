@@ -659,13 +659,13 @@ public class Controller {
      * @param heroArray an Array of Heroes
      * @return returns the converted Array of ConfigHeroes
      */
-    public ConfigHero[] toConfigHeroArray(Hero[] heroArray){
+    public ConfigHero[] toConfigHeroArray(Hero[] heroArray, Configuration config){
 
         // create a new ArrayList which temporarily stores the heroes
         ArrayList<ConfigHero> configHeroes = new ArrayList<>();
 
         // uses stream API to transform a Hero into a ConfigHero and stores it into the list
-        Arrays.stream(heroArray).forEach((Hero hero)-> configHeroes.add(hero.toConfigHero()));
+        Arrays.stream(heroArray).forEach((Hero hero)-> configHeroes.add(hero.toConfigHero(config)));
 
         // Casts the List into a Array which the suitable Typ (ATTENTION toArray() without the Array as a parameter
         // and cast afterwords does not work.)

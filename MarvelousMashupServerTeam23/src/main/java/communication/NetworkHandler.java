@@ -191,8 +191,8 @@ public class NetworkHandler extends WebSocketServer {
                                         "PlayerOne",
                                         this.controller.model.playerOne.profile.name,
                                         this.controller.model.playerTwo.profile.name,
-                                        controller.toConfigHeroArray(this.controller.model.playerOne.playerTeam),
-                                        controller.toConfigHeroArray(this.controller.model.playerTwo.playerTeam),
+                                        controller.toConfigHeroArray(this.controller.model.playerOne.playerTeam, configuration),
+                                        controller.toConfigHeroArray(this.controller.model.playerTwo.playerTeam, configuration),
                                         this.configuration.matchConfig,
                                         this.configuration.scenarioConfig
                                 )));
@@ -212,8 +212,8 @@ public class NetworkHandler extends WebSocketServer {
                                         "PlayerTwo",
                                         this.controller.model.playerOne.profile.name,
                                         this.controller.model.playerTwo.profile.name,
-                                        controller.toConfigHeroArray(this.controller.model.playerOne.playerTeam),
-                                        controller.toConfigHeroArray(this.controller.model.playerTwo.playerTeam),
+                                        controller.toConfigHeroArray(this.controller.model.playerOne.playerTeam, configuration),
+                                        controller.toConfigHeroArray(this.controller.model.playerTwo.playerTeam, configuration),
                                         this.configuration.matchConfig,
                                         this.configuration.scenarioConfig
                                 )));
@@ -305,8 +305,8 @@ public class NetworkHandler extends WebSocketServer {
                                 conn.send(gson_.toJson(new GameStructure(
                                         "Spectator", controller.model.playerOne.profile.name,
                                         controller.model.playerTwo.profile.name,
-                                        controller.toConfigHeroArray(controller.model.playerOne.playerTeam),
-                                        controller.toConfigHeroArray(controller.model.playerTwo.playerTeam),
+                                        controller.toConfigHeroArray(controller.model.playerOne.playerTeam, configuration),
+                                        controller.toConfigHeroArray(controller.model.playerTwo.playerTeam, configuration),
                                         controller.configuration.matchConfig, controller.configuration.scenarioConfig
                                 )));
                                 Message[] gameState = {controller.getGameState()};
@@ -385,8 +385,8 @@ public class NetworkHandler extends WebSocketServer {
                                 controller.model.playerOne.profile.conn.send(gson_.toJson(
                                         new GameStructure("PlayerOne", controller.model.playerOne.profile.name,
                                                 controller.model.playerTwo.profile.name,
-                                                controller.toConfigHeroArray(controller.model.playerOne.playerTeam),
-                                                controller.toConfigHeroArray(controller.model.playerTwo.playerTeam),
+                                                controller.toConfigHeroArray(controller.model.playerOne.playerTeam, configuration),
+                                                controller.toConfigHeroArray(controller.model.playerTwo.playerTeam, configuration),
                                                 controller.configuration.matchConfig, controller.configuration.scenarioConfig)));
 
                                 attachment = controller.model.playerOne.profile.conn.getAttachment();
@@ -396,8 +396,8 @@ public class NetworkHandler extends WebSocketServer {
                                 controller.model.playerTwo.profile.conn.send(gson_.toJson(
                                         new GameStructure("PlayerTwo", controller.model.playerOne.profile.name,
                                                 controller.model.playerTwo.profile.name,
-                                                controller.toConfigHeroArray(controller.model.playerOne.playerTeam),
-                                                controller.toConfigHeroArray(controller.model.playerTwo.playerTeam),
+                                                controller.toConfigHeroArray(controller.model.playerOne.playerTeam, configuration),
+                                                controller.toConfigHeroArray(controller.model.playerTwo.playerTeam, configuration),
                                                 controller.configuration.matchConfig, controller.configuration.scenarioConfig)));
 
                                 attachment = controller.model.playerTwo.profile.conn.getAttachment();
@@ -408,8 +408,8 @@ public class NetworkHandler extends WebSocketServer {
                                     specConn.send(gson_.toJson(
                                             new GameStructure("Spectator", controller.model.playerOne.profile.name,
                                                     controller.model.playerTwo.profile.name,
-                                                    controller.toConfigHeroArray(controller.model.playerOne.playerTeam),
-                                                    controller.toConfigHeroArray(controller.model.playerTwo.playerTeam),
+                                                    controller.toConfigHeroArray(controller.model.playerOne.playerTeam, configuration),
+                                                    controller.toConfigHeroArray(controller.model.playerTwo.playerTeam, configuration),
                                                     controller.configuration.matchConfig, controller.configuration.scenarioConfig)));
                                 }
 
