@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ public class MainThread : MonoBehaviour
 
         foreach (var task in tasks.ToArray())
         {
-            task();
+            task?.Invoke();
             tasks.Remove(task);
         }
     }

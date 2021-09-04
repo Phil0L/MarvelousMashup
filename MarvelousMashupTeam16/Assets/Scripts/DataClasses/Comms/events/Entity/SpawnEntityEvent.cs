@@ -62,7 +62,18 @@ public class SpawnEntityEvent : Message, EntityEvent
                 eId = EntityID.InfinityStones;
                 if (entity is InfinityStone inf)
                 {
-                    
+                    if (entity.ID == 0) // assumed blue
+                        inf.stone = InfinityStone.BLUE;
+                    if (entity.ID == 1) // assumed red
+                        inf.stone = InfinityStone.RED;
+                    if (entity.ID == 2) // assumed green
+                        inf.stone = InfinityStone.GREEN;
+                    if (entity.ID == 3) // assumed yellow
+                        inf.stone = InfinityStone.YELLOW;
+                    if (entity.ID == 4) // assumed orange
+                        inf.stone = InfinityStone.ORANGE;
+                    if (entity.ID == 5) // assumed purple
+                        inf.stone = InfinityStone.PURPLE;
                 }
                 break;
             case EntityType.Rock:

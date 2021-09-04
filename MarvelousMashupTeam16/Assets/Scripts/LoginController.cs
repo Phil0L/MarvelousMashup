@@ -15,11 +15,14 @@ public class LoginController : MonoBehaviour
     [HideInInspector] public Map scenarioConfig;
     [HideInInspector] public int playerType; // 0 = spectator, 1 = player1, 2 = player2
 
+    private List<string> _events;
+
     public bool active;
 
     private void Start()
     {
         active = true;
+        _events = new List<string>();
         Server.OnConnected(() => MainThread.Execute(OnConnected));
         DontDestroyOnLoad(this);
     }
@@ -28,7 +31,7 @@ public class LoginController : MonoBehaviour
     {
         Server.Connection.OnMessage(message =>
         {
-            if (active) 
+            if (active)
                 MainThread.Execute(() => OnMessage(message));
         });
         Server.Connection.Send(new HelloServer(
@@ -175,11 +178,20 @@ public class LoginController : MonoBehaviour
 
                     scenarioConfig = gameStructure.scenarioconfig;
                     MapConfigStore.SetMap(scenarioConfig);
+                    Debug.Log($"Setting the map to {scenarioConfig}");
 
                     Server.ServerCaller.GameStarted();
+                    GameController controller = gameObject.AddComponent<GameController>();
+                    controller.OnActive(() =>
+                    {
+                        Debug.Log("Login Completed!");
+                        active = false;
+                        foreach (var events in _events)
+                        {
+                            controller.OnMessageAgain(events);
+                        }
+                    });
 
-                    Debug.Log("Login Completed");
-                    active = false;
                     SceneManager.LoadScene("Game");
                     break;
 
@@ -200,7 +212,12 @@ public class LoginController : MonoBehaviour
 
                 case MessageType.EVENTS:
                     // not supported
-                    Debug.LogWarning("Received Event Message while in Login");
+                    if (active)
+                    {
+                        Debug.LogWarning("Received Event Message while in Login");
+                        _events.Add(message);
+                    }
+                        
                     break;
 
                 case MessageType.REQUESTS:
@@ -225,6 +242,7 @@ public class LoginController : MonoBehaviour
         {
             Debug.LogError("Connection closed with code: " + code + ".");
         }
+
         active = false;
     }
 }

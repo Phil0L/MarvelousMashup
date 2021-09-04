@@ -212,6 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 69638333}
   - component: {fileID: 69638334}
+  - component: {fileID: 69638335}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -245,6 +246,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4401a889d8183534499130eb72ec8060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &69638335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69638332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff625a86a4f7ad47b85787cf8e85302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party:
+    spaceStoneCD: 0
+    realityStoneCD: 0
+    mindStoneCD: 0
+    powerStoneCD: 0
+    timeStoneCD: 0
+    soulStoneCD: 0
+    mindStoneDMG: 0
+    maxGameTime: 0
+    maxAnimationTime: 0
+    maxResponseTime: 0
+    maxPauseTime: 0
+    maxRoundTime: 0
+    maxRounds: 0
+  map:
+    width: 0
+    height: 0
+    mapContent: 
+    author: 
+    name: My Map
+  characters:
+    characters: []
 --- !u!1 &119032198
 GameObject:
   m_ObjectHideFlags: 0

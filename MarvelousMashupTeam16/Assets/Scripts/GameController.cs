@@ -1,14 +1,25 @@
+using System;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     private Deserializer _deserializer;
+    private Action _loginCallback;
+
+    private bool _isAwake;
 
     private void Awake()
     {
         _deserializer = new Deserializer();
-        Server.OnGameStarted(() => Server.Connection.OnMessage(OnMessage));
+        if (Server.IsAttached())
+        {
+            Server.Connection.OnMessage(message => MainThread.Execute(() => OnMessage(message)));
+            _loginCallback?.Invoke();
+            _isAwake = true;
+        }
+        else Debug.LogWarning("There is no server attached! Login phase has probably not finished correctly.");
     }
 
     private void OnMessage(string message)
@@ -22,12 +33,19 @@ public class GameController : MonoBehaviour
             MessageStructure messageStruct = exMessageStruct.toMessageStructure();
 
 
-            foreach (Message msg in messageStruct.messages)
+            foreach (Message msg in messageStruct.messages.ToArray())
             {
                 //processes the messages in the messageStructure
                 _deserializer.PreExtractor(msg);
             }
         }
-        
+    }
+
+    public void OnMessageAgain(string message) => OnMessage(message);
+
+    public void OnActive(Action callback)
+    {
+        if (_isAwake) callback();
+        else _loginCallback = callback;
     }
 }
