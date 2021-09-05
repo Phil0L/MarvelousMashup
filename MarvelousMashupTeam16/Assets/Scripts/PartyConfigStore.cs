@@ -7,11 +7,20 @@ public class PartyConfigStore : MonoBehaviour, IConfigStore
     private static Party _party = new Party();
     private static string yourName;
     private static string opponentName;
+    private static int playerNumber;
     
     public  Party GetParty() => _party;
     public static Party Party() => _party;
     public static string You() => yourName;
     public static string Opponent() => opponentName;
+
+    public static string Winner(int id)
+    {
+        if (id == playerNumber) return "You";
+        if (playerNumber == 0 && id == 1) return You();
+        return Opponent();
+
+    }
 
     public static int CooldownOf(int stone)
     {
@@ -26,10 +35,11 @@ public class PartyConfigStore : MonoBehaviour, IConfigStore
 
     public static void SetParty(Party party) => _party = party;
 
-    public static void SetNames(string you, string other)
+    public static void SetNames(string you, string other, int id)
     {
         yourName = you;
         opponentName = other;
+        playerNumber = id;
     }
 
     public void LoadJson(string json)

@@ -1,3 +1,5 @@
+using UnityEngine.SceneManagement;
+
 /**
  * This message is sent to all clients if one of the players has won the game
  *
@@ -27,6 +29,15 @@ public class WinEvent : Message, GameEvent
 
     public void Execute()
     {
-        //TODO: WIN SCREEN!!!!!
+        string winnerName = PartyConfigStore.Winner(playerWon);
+        PopUp.Create()
+            .Title($"{winnerName} Wins!!!")
+            .Bubble(PopUp.Bubbles.Action)
+            .AddAction(new PopUp.PopUpAction("Main Menu", up =>
+            {
+                up.Destroy();
+                SceneManager.LoadScene("MainMenu");
+            }))
+            .Show();
     }
 }

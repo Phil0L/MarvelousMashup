@@ -148,7 +148,8 @@ public class LoginController : MonoBehaviour
                     playerTwoName = gameStructure.playerTwoName;
                     PartyConfigStore.SetNames(
                         playerType == 1 ? playerOneName : playerTwoName,
-                        playerType != 1 ? playerTwoName : playerOneName);
+                        playerType != 1 ? playerTwoName : playerOneName,
+                        playerType);
 
                     playerOneHeroes = gameStructure.playerOneCharacters;
                     playerTwoHeroes = gameStructure.playerTwoCharacters;
