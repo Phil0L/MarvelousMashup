@@ -5,8 +5,8 @@
  *
  */
 
-public class WinEvent : Message {
-
+public class WinEvent : Message, GameEvent 
+{
     /**
      * integer which contains the number of the player that has won the game
      */
@@ -23,5 +23,10 @@ public class WinEvent : Message {
     public WinEvent(int playerWon) : base(EventType.WinEvent)
     {
         this.playerWon = playerWon;
+    }
+
+    public void Execute()
+    {
+        //TODO: WIN SCREEN!!!!!
     }
 }

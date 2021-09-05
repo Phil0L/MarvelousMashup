@@ -4,7 +4,7 @@
  *
  * @author Sarah Engele
  */
-public class TimeoutWarningEvent : Message
+public class TimeoutWarningEvent : Message, GameEvent
 {
     /**
      * might be something like "You will be disconnected soon."
@@ -30,5 +30,11 @@ public class TimeoutWarningEvent : Message
     {
         this.message = message;
         this.timeLeft = timeLeft;
+    }
+
+    public void Execute()
+    {
+        if (Server.IsAttached())
+            Server.Connection.Send(new Req());
     }
 }
