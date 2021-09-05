@@ -1517,7 +1517,6 @@ MonoBehaviour:
   leaving: {fileID: 1825587849}
   coming: {fileID: 1451988105}
   sprites:
-  - {fileID: 21300000, guid: dc0137c62f17d5a48b3f418c928e636d, type: 3}
   - {fileID: 21300000, guid: 1ed4e50cf2fecd448ad51715284685a9, type: 3}
   - {fileID: 21300000, guid: 9e22b375cd49b2c4e985389c0b1da332, type: 3}
   - {fileID: 21300000, guid: 8c92b263633d29b4b829572700c78c00, type: 3}
@@ -1534,13 +1533,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8aac742dd9c68494396b6524d2a19cf6, type: 3}
   - {fileID: 21300000, guid: e749ac5ae35a8f54d8e27b645c23fa1e, type: 3}
   - {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
-  - {fileID: 21300000, guid: 586ac6c022bdc944e9ae5284babae08b, type: 3}
   - {fileID: 21300000, guid: 890d6399f13064345a66aeaaba03a7d1, type: 3}
   - {fileID: 21300000, guid: 1b84d1211c69daa498f58cb79a45c188, type: 3}
   - {fileID: 21300000, guid: 251df70ccb59f1b47972b6e622fdf0a9, type: 3}
   - {fileID: 21300000, guid: 4c2b5886b7c80ef428de100d7973d5c6, type: 3}
   - {fileID: 21300000, guid: fbbd7603b2b82654a8e469068f0e472d, type: 3}
   - {fileID: 21300000, guid: 395448644dc29774d8da9a25a708af15, type: 3}
+  - {fileID: 21300000, guid: 16134bbc88dfbfe43a32976516bf980d, type: 3}
+  - {fileID: 21300000, guid: 5ebf6aa4c178e4447b9158d12903b804, type: 3}
+  - {fileID: 21300000, guid: 4c2b5886b7c80ef428de100d7973d5c6, type: 3}
   movingDistance: 200
   leaveTime: 400
   speed: 5

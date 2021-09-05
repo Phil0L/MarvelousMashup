@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,30 @@ public class IDTracker
     
     public static IID Get(IDs id)
     {
-        return IdentifiersDictionary[id];
+        try
+        {
+            return IdentifiersDictionary[id];
+        }
+        catch (KeyNotFoundException)
+        {
+            return null;
+        }
+        
     }
 
     public static IID Remove(IDs id)
     {
-        var iid = IdentifiersDictionary[id];
-        IdentifiersDictionary.Remove(id);
-        return iid;
+        try
+        {
+            var iid = IdentifiersDictionary[id];
+            IdentifiersDictionary.Remove(id);
+            return iid;
+        }
+        catch (KeyNotFoundException)
+        {
+            return null;
+        }
+        
     } 
 }
 

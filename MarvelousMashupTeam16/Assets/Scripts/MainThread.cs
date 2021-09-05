@@ -24,18 +24,20 @@ public class MainThread : MonoBehaviour
 
     private void Update()
     {
-        foreach (var delay in delays.ToArray())
+        for(int i = 0; i < delays.Count; i++)
         {
-            delays.Remove(delay);
+            var delay = delays[i];
+            delays.RemoveAt(i);
             if (delay.Item2 > 0) delays.Add(new Tuple<Action, int>(delay.Item1, delay.Item2 -1));
             else tasks.Add(delay.Item1);
         }
 
-        foreach (var task in tasks.ToArray())
+        for (int i = 0; i < tasks.Count; i++)
         {
-            task?.Invoke();
-            tasks.Remove(task);
+            tasks[i]?.Invoke();
+            tasks.RemoveAt(i);
         }
+        
     }
     
     

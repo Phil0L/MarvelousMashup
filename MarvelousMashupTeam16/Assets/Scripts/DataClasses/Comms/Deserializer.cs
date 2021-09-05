@@ -9,6 +9,7 @@ public class Deserializer
     public void PreExtractor(Message message) {
 	    if (message is EntityEvent ev) ev.Execute();
 	    if (message is GameEvent gv) gv.Execute();
-	    Debug.Log(message);
+	    if (message is CharacterEvent cv) cv.Execute();
+	    // Debug.Log(message);
     }
 }

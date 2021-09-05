@@ -20,6 +20,7 @@ public class SpawnEntityEvent : Message, EntityEvent
 
     public void Execute()
     {
+        if (entity == null) return;
         EntityID eId = 0;
         int iId = entity.ID;
         IID obj = null;

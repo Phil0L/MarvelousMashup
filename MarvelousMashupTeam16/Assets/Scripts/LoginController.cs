@@ -72,8 +72,7 @@ public class LoginController : MonoBehaviour
                     //     string msg_playerReady = JsonConvert.SerializeObject(obj_playerReady);
                     //     Server.Connection.Send(msg_playerReady);
                     // }
-
-                    // TODO: client has a reconnect
+                    
                     else
                     {
                         // There is a running game (boolean runningGame was true) and the client wants to reconnect
@@ -186,9 +185,10 @@ public class LoginController : MonoBehaviour
                     {
                         Debug.Log("Login Completed!");
                         active = false;
-                        foreach (var events in _events)
+                        foreach (var events in _events.ToArray())
                         {
                             controller.OnMessageAgain(events);
+                            _events.Remove(events);
                         }
                     }, 30));
 

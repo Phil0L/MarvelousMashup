@@ -27,9 +27,10 @@ public class GameController : MonoBehaviour
 
     private void OnMessage(string message)
     {
+        if (_receivedMessages.Contains(message)) Debug.LogWarning("This message has already been processed!");
         // check if event
         _receivedMessages.Add(message);
-
+        
         ExtractorMessageType obj = JsonConvert.DeserializeObject<ExtractorMessageType>(message);
         if (obj.messageType == MessageType.EVENTS)
         {
