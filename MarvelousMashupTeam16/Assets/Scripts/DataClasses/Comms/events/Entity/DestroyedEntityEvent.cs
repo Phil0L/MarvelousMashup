@@ -29,6 +29,7 @@ public class DestroyedEntityEvent : Message, EntityEvent
                 break;
             case EntityID.Rocks:
                 Game.State()[targetField[1], targetField[0]].tile = MapTile.GRASS;
+                Game.Controller().GroundLoader.UpdateTile(targetField.ToVector());
                 break;
             case EntityID.InfinityStones:
                 InfinityStone infinityStone = IDTracker.Get(targetEntity) as InfinityStone;

@@ -6,7 +6,8 @@
  *
  */
 
-public class MeleeAttackEvent : Message {
+public class MeleeAttackEvent : Message, CharacterEvent
+{
 
     /**
      * The entity that wants to start a melee attack
@@ -55,4 +56,14 @@ public class MeleeAttackEvent : Message {
         this.amount = amount;
     }
 
+    public void Execute()
+    {
+        Character origin = IDTracker.Get(originEntity) as Character;
+        if (origin == null) return;
+           
+        Character target = IDTracker.Get(targetEntity) as Character;
+        if (target == null) return;
+
+        Game.State().AttackCloseRange(origin, originField.ToVector(), target, targetField.ToVector(), amount);
+    }
 }

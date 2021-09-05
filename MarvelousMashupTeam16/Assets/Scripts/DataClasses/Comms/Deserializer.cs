@@ -2,16 +2,13 @@ using Newtonsoft.Json;
 using UnityEngine;
 
 /*
- * This class desirializes the messages for general gameplay coming from the network stack. 
+ * This class deserializes the messages for general gameplay coming from the network stack. 
  */
-
 public class Deserializer
 {
     public void PreExtractor(Message message) {
-	    if (message is EntityEvent ev)
-		{
-			ev.Execute();
-		}
-		Debug.Log(message);
+	    if (message is EntityEvent ev) ev.Execute();
+	    if (message is GameEvent gv) gv.Execute();
+	    Debug.Log(message);
     }
 }
