@@ -21,6 +21,13 @@ public class IDTracker
     {
         return IdentifiersDictionary[id];
     }
+
+    public static IID Remove(IDs id)
+    {
+        var iid = IdentifiersDictionary[id];
+        IdentifiersDictionary.Remove(id);
+        return iid;
+    } 
 }
 
 

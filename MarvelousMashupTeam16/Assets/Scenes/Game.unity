@@ -5642,7 +5642,7 @@ MonoBehaviour:
   - character: 26
     image: {fileID: 21300000, guid: 8c92b263633d29b4b829572700c78c00, type: 3}
   - character: 27
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: 5ebf6aa4c178e4447b9158d12903b804, type: 3}
 --- !u!114 &1206165234
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-public class InfinityStone : Entities, IFieldContent
+public class InfinityStone : Entities, IFieldContent, IID
 {
     
     public const int GREEN = 1; // time

@@ -62,18 +62,18 @@ public class SpawnEntityEvent : Message, EntityEvent
                 eId = EntityID.InfinityStones;
                 if (entity is InfinityStone inf)
                 {
-                    if (entity.ID == 0) // assumed blue
+                    if (entity.ID == 0)
                         inf.stone = InfinityStone.BLUE;
-                    if (entity.ID == 1) // assumed red
-                        inf.stone = InfinityStone.RED;
-                    if (entity.ID == 2) // assumed green
-                        inf.stone = InfinityStone.GREEN;
-                    if (entity.ID == 3) // assumed yellow
+                    if (entity.ID == 1)
                         inf.stone = InfinityStone.YELLOW;
-                    if (entity.ID == 4) // assumed orange
-                        inf.stone = InfinityStone.ORANGE;
-                    if (entity.ID == 5) // assumed purple
+                    if (entity.ID == 2)
+                        inf.stone = InfinityStone.RED;
+                    if (entity.ID == 3)
                         inf.stone = InfinityStone.PURPLE;
+                    if (entity.ID == 4)
+                        inf.stone = InfinityStone.GREEN;
+                    if (entity.ID == 5)
+                        inf.stone = InfinityStone.ORANGE;
 
                     inf.cooldown = PartyConfigStore.CooldownOf(inf.stone);
                     inf.defaultcooldownTime = PartyConfigStore.CooldownOf(inf.stone);
@@ -85,6 +85,7 @@ public class SpawnEntityEvent : Message, EntityEvent
                 eId = EntityID.Rocks;
                 obj = entity as Rock;
                 Game.State()[entity.position[1], entity.position[0]].tile = MapTile.ROCK;
+                Game.State()[entity.position[1], entity.position[0]].tileData = ((Rock) entity).HP;
                 break;
             //TODO: add portal
         }
