@@ -1,4 +1,4 @@
-public class HealedEvent : Message
+public class HealedEvent : Message, EntityEvent
 {
     
     /**
@@ -33,4 +33,10 @@ public class HealedEvent : Message
         this.amount = amount;
     }
 
+    public void Execute()
+    {
+        Character character = IDTracker.Get(targetEntity) as Character;
+        if (character != null)
+            character.HP += amount;
+    }
 }
