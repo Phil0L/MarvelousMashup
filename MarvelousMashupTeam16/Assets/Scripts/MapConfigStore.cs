@@ -7,7 +7,7 @@ using UnityEngine;
 public class MapConfigStore : MonoBehaviour, IConfigStore
 {
     
-    private static Map _grid = new Map(10, 10);
+    private static Map _grid = new Map();
 
     public Map GetMap() => _grid;
     public static Map Map() => _grid;
@@ -18,6 +18,7 @@ public class MapConfigStore : MonoBehaviour, IConfigStore
         _grid = newMap;
         _grid.width = newMap.scenario.GetLength(0);
         _grid.height = newMap.scenario.GetLength(1);
+        _grid.mapContent = newMap.ToString();
     }
     
     public void LoadJson(string json)

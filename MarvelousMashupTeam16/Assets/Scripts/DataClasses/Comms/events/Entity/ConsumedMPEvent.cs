@@ -15,7 +15,6 @@ public class ConsumedMPEvent : Message, EntityEvent
      * @param amount The amount of movement points the targetEntity consumes
      *
      */
-
     public ConsumedMPEvent(IDs targetEntity, int[] targetField, int amount) : base(EventType.ConsumedMPEvent){
         
         this.targetEntity = targetEntity;
@@ -25,8 +24,8 @@ public class ConsumedMPEvent : Message, EntityEvent
 
     public void Execute()
     {
-        Character affected = IDTracker.Get(this.targetEntity) as Character;
-        affected.MP -= this.amount;
+        Character character = IDTracker.Get(targetEntity) as Character;
+        if (character != null)
+            character.MP -= amount;
     }
-
 }

@@ -6,8 +6,8 @@
  *
  */
 
-public class TurnEvent : Message {
-
+public class TurnEvent : Message, GameEvent 
+{
     /**
      * The amount of moves during this round
      */
@@ -31,5 +31,14 @@ public class TurnEvent : Message {
      
         this.turnCount = turnCount;
         this.nextCharacter = nextCharacter;
+    }
+
+    public void Execute()
+    {
+        Character character = IDTracker.Get(nextCharacter) as Character;
+        if (character == null) return;
+        character.AP = character.maxAP;
+        character.MP = character.maxMP;
+        Game.State().SetCurrentTurn(character);
     }
 }

@@ -17,7 +17,6 @@ public class ConfigDisplay : MonoBehaviour
         if ((mcs = GetComponent<MapConfigStore>()) != null)
         {
             map = mcs.GetMap();
-            map.mapContent = map.ToString();
         }
         CharacterConfigStore ccs;
         if ((ccs = GetComponent<CharacterConfigStore>()) != null)

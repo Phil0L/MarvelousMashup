@@ -5,13 +5,13 @@
  * @author Sarah Engele
  *
  */
-
-public class RoundSetupEvent : Message {
-
+public class RoundSetupEvent : Message, GameEvent
+{
     /**
      * the number of the next round that is about to start
      */
     public int roundCount;
+
     /**
      * array which lets the clients know the order in which the characters are allowed to make their moves
      */
@@ -26,11 +26,14 @@ public class RoundSetupEvent : Message {
      * @param characterOrder array which lets the clients know the order in which the characters are allowed to make
      *                       their moves
      */
-
     public RoundSetupEvent(int roundCount, IDs[] characterOrder) : base(EventType.RoundSetupEvent)
     {
-     this.roundCount = roundCount;
+        this.roundCount = roundCount;
         this.characterOrder = characterOrder;
     }
 
+    public void Execute()
+    {
+        // TODO: No need for this yet!
+    }
 }

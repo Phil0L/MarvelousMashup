@@ -5,17 +5,18 @@
  *  @author Sarah Engele
  *
  */
-
-public class MoveEvent : Message {
-
+public class MoveEvent : Message, CharacterEvent
+{
     /**
      * The entity that wants to move
      */
     public IDs originEntity;
+
     /**
      * The position of the originEntity on the game field
      */
     public int[] originField;
+
     /**
      * The position on the game field where the originEntity wants to go next
      */
@@ -35,9 +36,16 @@ public class MoveEvent : Message {
      */
     public MoveEvent(IDs originEntity, int[] originField, int[] targetField) : base(EventType.MoveEvent)
     {
-     
         this.originEntity = originEntity;
         this.originField = originField;
         this.targetField = targetField;
+    }
+
+    public void Execute()
+    {
+        Character origin = IDTracker.Get(originEntity) as Character;
+        if (origin == null) return;
+        
+        Game.State().MoveHero(origin.characterID, targetField.ToVector());
     }
 }

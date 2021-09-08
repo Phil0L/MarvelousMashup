@@ -879,7 +879,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -3225,7 +3225,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -6279,7 +6279,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -7235,107 +7235,11 @@ MonoBehaviour:
   - {fileID: 851914379}
   - {fileID: 1110731317}
   readyButton: {fileID: 1065566259}
-  characters:
-  - characterID: 3
-    name: Fat boi
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 4
-    name: Black
-    HP: 175
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 45
-    rangeCombatReach: 48
-  - characterID: 11
-    name: Hammer
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 6
-    name: Cap
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 13
-    name: I am Groot
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 12
-    name: Cap 2.0
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 8
-    name: Its Strange
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 5
-    name: Bowww
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 9
-    name: Ferrum
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 21
-    name: ooof
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 17
-    name: bzzzzzz
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
-  - characterID: 24
-    name: Witch
-    HP: 193
-    MP: 17
-    AP: 7
-    meleeDamage: 47
-    rangeCombatDamage: 7
-    rangeCombatReach: 9
+  characters: []
   selected: 
   sprites:
-  - character: 1
-    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
+  - character: 0
+    image: {fileID: 0}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -7382,6 +7286,8 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 21adffc48487cd446ba2ab4342ed32f8, type: 3}
   - character: 24
     image: {fileID: 21300000, guid: 890d6399f13064345a66aeaaba03a7d1, type: 3}
+  - character: 1
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
 --- !u!1 &749692150
 GameObject:
   m_ObjectHideFlags: 0
@@ -7853,7 +7759,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -12116,7 +12022,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -12766,7 +12672,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -13267,7 +13173,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -15586,7 +15492,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -18193,7 +18099,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -21782,7 +21688,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -22338,7 +22244,7 @@ MonoBehaviour:
   Selected: 0
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3

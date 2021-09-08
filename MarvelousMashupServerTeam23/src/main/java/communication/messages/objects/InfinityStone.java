@@ -1,6 +1,5 @@
 package communication.messages.objects;
 
-import com.google.gson.Gson;
 import communication.messages.enums.EntityType;
 
 /**

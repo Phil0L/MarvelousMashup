@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 // ReSharper disable once CheckNamespace
 public class GameState
@@ -212,7 +213,7 @@ public class GameState
         callback?.Invoke();
     }
 
-    public void DestroyEntity(IDs id) => IDTracker.DestroyIID(id);
+    public void DestroyEntity(IDs id) => IDTracker.Remove(id);
 
     public List<Character> YourCharacters() => CurrentCharactersDetail().Where(c => !c.enemy).ToList();
     
@@ -220,8 +221,12 @@ public class GameState
 
     public string YourName() => PartyConfigStore.You();
     
-    public string OpponentName() => PartyConfigStore.Opponent();
+    public string OpponentName() => PartyConfigStore.Opponent(); 
+
+    public void DestroyObject(Character character) => Object.Destroy(TransformOf(character.characterID));
     
+    public void DestroyObject(InfinityStone infinityStone) => Object.Destroy(TransformOf(infinityStone));
+
     public static class SubscriptionCaller
     {
         public static void CallAllSubscriptions(UserRequest request)

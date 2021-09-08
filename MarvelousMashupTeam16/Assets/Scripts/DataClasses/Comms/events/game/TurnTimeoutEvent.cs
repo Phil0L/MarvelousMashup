@@ -5,9 +5,8 @@
  * @author Sarah Engele
  *
  */
-public class TurnTimeoutEvent : Message {
-
-
+public class TurnTimeoutEvent : Message, GameEvent 
+{
     /**
      * the constructor of the TurnTimeoutEvent-Class. Creates a TurnTimeoutEvent-MessageObject.
      *
@@ -16,5 +15,14 @@ public class TurnTimeoutEvent : Message {
     public TurnTimeoutEvent() : base(EventType.TurnTimeoutEvent)
     {
         
+    }
+
+    public void Execute()
+    {
+        Info.Set()
+            .Text("You took too long to make a move!")
+            .Cooldown(3000)
+            .NewRandomSprite()
+            .Show();
     }
 }

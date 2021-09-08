@@ -18,8 +18,6 @@ public class Main {
 
     static int port = 1218;
 
-    private static final boolean USE_DEFAULT_CONFIGS = false;
-
 
     /**
      * This methode starts the server. It needs at least the path to the match config, to the scenario config and to the
@@ -29,17 +27,12 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        if (USE_DEFAULT_CONFIGS){
-            scenarioConfigPath = "asgard.json";
-            characterConfigPath = "marvelheros.json";
-            matchConfigPath = "matchconfig_1.json";
-        }else{
-            compute(args);
-        }
+        Configuration configuration;
+        compute(args);
 
         //Reads config files
         try {
-            Configuration configuration = new Configuration(scenarioConfigPath, characterConfigPath, matchConfigPath);
+            configuration = new Configuration(scenarioConfigPath, characterConfigPath, matchConfigPath);
 
             /**
              * Source of next block: Gomoku template
@@ -54,20 +47,23 @@ public class Main {
             networkHandler.start();
             // create ShutdownHook to catch CTRL+C and shutdown networkHandler peacefully
             // see: https://docs.oracle.com/javase/8/docs/technotes/guides/lang/hook-design.html
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                try {
-                    System.out.println("ShutdownHook executed.");
-                    Thread.sleep(500);
-                    System.out.println("Application shutting down.");
-                    // shutdown networkHandler
-                    networkHandler.stop();
-                } catch (InterruptedException ie) {
-                    System.out.printf("InterruptedException: %s", ie);
-                    Thread.currentThread().interrupt();
-                } catch (IOException ioe) {
-                    System.out.printf("IOException: %s", ioe);
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        System.out.println("ShutdownHook executed.");
+                        Thread.sleep(500);
+                        System.out.println("Application shutting down.");
+                        // shutdown networkHandler
+                        networkHandler.stop();
+                    } catch (InterruptedException ie) {
+                        System.out.printf("InterruptedException: %s", ie);
+                        Thread.currentThread().interrupt();
+                    } catch (IOException ioe) {
+                        System.out.printf("IOException: %s", ioe);
+                    }
                 }
-            }));
+            });
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,14 +145,14 @@ public class Main {
                     pathReplay(inputArray[i+1]);
                     break;
                 default:
-                    System.err.println("Wrong input. If you need help, please type in \"--help\" or \"-h\"");
+                    System.out.println("Wrong input. If you need help, please type in \"--help\" or \"-h\"");
             }
 
         }
 
 
         if(scenarioConfigPath.equals("") || matchConfigPath.equals("") || characterConfigPath.equals("")){
-            System.err.println("There were paths missing. Please try again with 3 paths to each config file.");
+            System.out.println("There were paths missing. Please try again with 3 paths to each config file.");
             System.exit(0);
         }
 
@@ -200,7 +196,7 @@ public class Main {
      * @param n how much information is supposed to be locked
      */
     public static void setLogLevel(int n){
-        System.err.println("log-level is not supported by this server.");
+        System.out.println("log-level is not supported by this server.");
 
     }
 
@@ -210,7 +206,7 @@ public class Main {
      * @author Sarah Engele
      */
     public static void verboseLogLevel(){
-        System.err.println("verbose is not supported by this server.");
+        System.out.println("verbose is not supported by this server.");
     }
 
     /**
@@ -257,7 +253,7 @@ public class Main {
      * @author Sarah Engele
      */
     private static void checkConfigFiles() {
-        System.err.println("check-conf is not supported by this server.");
+        System.out.println("check-conf is not supported by this server.");
         System.exit(0);
     }
 
@@ -267,7 +263,7 @@ public class Main {
      * @author Sarah Engele
      */
     private static void pathReplay(String path) {
-        System.err.println("replay is not supported by this server.");
+        System.out.println("replay is not supported by this server.");
     }
 
 }

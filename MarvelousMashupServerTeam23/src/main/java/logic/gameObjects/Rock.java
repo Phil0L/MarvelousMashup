@@ -3,6 +3,7 @@ package logic.gameObjects;
 import communication.messages.enums.EntityID;
 import communication.messages.events.entity.DestroyedEntityEvent;
 import communication.messages.events.entity.TakenDamageEvent;
+import communication.messages.objects.Entities;
 import logic.model.Model;
 
 /**
@@ -66,5 +67,18 @@ public class Rock extends Placeable implements Attackable{
     @Override
     public boolean move(Position newPosition) {
         return false;
+    }
+
+    /**
+     * Translates this Placeable object to an Entities object that is needed for some
+     * network messages.
+     *
+     * @return Entity object
+     * @author Luka Stoehr
+     */
+    @Override
+    public Entities toEntity() {
+        Rock r = this;
+        return new communication.messages.objects.Rock(r.ID, r.healthPoints, r.getPosAsArray());
     }
 }

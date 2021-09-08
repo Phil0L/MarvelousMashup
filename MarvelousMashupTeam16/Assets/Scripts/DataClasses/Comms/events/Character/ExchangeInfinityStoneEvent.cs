@@ -7,7 +7,8 @@
  *
  */
 
-public class ExchangeInfinityStoneEvent : Message {
+public class ExchangeInfinityStoneEvent : Message, CharacterEvent
+{
 
     /**
      * The entity that owns an Infinity Stone and wants to hand it over to the targetEntity
@@ -56,4 +57,18 @@ public class ExchangeInfinityStoneEvent : Message {
         this.stoneType = stoneType;
     }
 
+    public void Execute()
+    {
+        InfinityStone infinityStone = IDTracker.Get(stoneType) as InfinityStone;
+        if (infinityStone == null) return;
+        
+        Character origin = IDTracker.Get(originEntity) as Character;
+        if (origin == null) return;
+        
+        Character target = IDTracker.Get(targetEntity) as Character;
+        if (target == null) return;
+
+        origin.infinityStones.Remove(infinityStone);
+        target.infinityStones.Add(infinityStone);
+    }
 }

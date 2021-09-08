@@ -1,4 +1,6 @@
 
+using Newtonsoft.Json;
+
 /**
  *
  * The ExtractorMessage class is used to extract all objects, which are subclasses of Message in case they are stored
@@ -145,6 +147,14 @@ public class ExtractorMessage {
      * contains the number of the player who waon the game. Used in WinEvent.
      */
     public int playerWon;
+
+    /*
+     * Empty Constructor for Json Parsing
+     */
+    [JsonConstructor]
+    public ExtractorMessage()
+    {
+    }
 
     /**
      *

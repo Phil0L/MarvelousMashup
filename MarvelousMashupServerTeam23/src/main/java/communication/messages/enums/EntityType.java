@@ -13,5 +13,6 @@ public enum EntityType {
     Character,
     InfinityStone,
     Rock,
-    NPC
+    NPC,
+    Portal
 }

@@ -2,6 +2,8 @@ package logic.gameObjects;
 
 import communication.messages.enums.EntityID;
 import communication.messages.events.entity.DestroyedEntityEvent;
+import communication.messages.objects.Entities;
+import communication.messages.objects.NPC;
 import logic.model.Model;
 
 import java.util.Collections;
@@ -39,6 +41,19 @@ public class Goose extends Placeable{
     }
 
     /**
+     * Translates this Placeable object to an Entities object that is needed for some
+     * network messages.
+     *
+     * @return Entity
+     * @author Luka Stoehr
+     */
+    @Override
+    public Entities toEntity() {
+        Goose g = this;
+        return new NPC(g.ID, g.getPosAsArray(), 0, new int[0]);
+    }
+
+    /**
      * This method handles all actions of Goose, if it is called when its Gooses turn. The method only
      * works correctly if Goose is in turnOrder and turnCount points to Goose and in the first 6 rounds.
      * In that case, Goose spawns on a random free field, disappears again and leaves one of the
@@ -70,7 +85,19 @@ public class Goose extends Placeable{
             if(model.powerStone.getPosition() == null) unplacedStones.add(model.powerStone);
             if(model.timeStone.getPosition() == null) unplacedStones.add(model.timeStone);
             if(model.soulStone.getPosition() == null) unplacedStones.add(model.soulStone);
-            if(unplacedStones.size() == 0) return;  //All stones are already placed
+            //Remove the ones from the list that are already in the inventory of a hero
+            for(Hero h: model.playerOne.playerTeam){
+                for(InfinityStone stone: h.inventory){
+                    unplacedStones.remove(stone);
+                }
+            }
+            for(Hero h: model.playerTwo.playerTeam){
+                for(InfinityStone stone: h.inventory){
+                    unplacedStones.remove(stone);
+                }
+            }
+
+            if(unplacedStones.size() == 0) return;  //All stones are already in the game
             //Shuffle
             Collections.shuffle(unplacedStones);
             //Take Goose from field again

@@ -15,11 +15,14 @@ public class LoginController : MonoBehaviour
     [HideInInspector] public Map scenarioConfig;
     [HideInInspector] public int playerType; // 0 = spectator, 1 = player1, 2 = player2
 
+    private List<string> _events;
+
     public bool active;
 
     private void Start()
     {
         active = true;
+        _events = new List<string>();
         Server.OnConnected(() => MainThread.Execute(OnConnected));
         DontDestroyOnLoad(this);
     }
@@ -28,7 +31,7 @@ public class LoginController : MonoBehaviour
     {
         Server.Connection.OnMessage(message =>
         {
-            if (active) 
+            if (active)
                 MainThread.Execute(() => OnMessage(message));
         });
         Server.Connection.Send(new HelloServer(
@@ -69,8 +72,7 @@ public class LoginController : MonoBehaviour
                     //     string msg_playerReady = JsonConvert.SerializeObject(obj_playerReady);
                     //     Server.Connection.Send(msg_playerReady);
                     // }
-
-                    // TODO: client has a reconnect
+                    
                     else
                     {
                         // There is a running game (boolean runningGame was true) and the client wants to reconnect
@@ -145,7 +147,8 @@ public class LoginController : MonoBehaviour
                     playerTwoName = gameStructure.playerTwoName;
                     PartyConfigStore.SetNames(
                         playerType == 1 ? playerOneName : playerTwoName,
-                        playerType != 1 ? playerTwoName : playerOneName);
+                        playerType != 1 ? playerTwoName : playerOneName,
+                        playerType);
 
                     playerOneHeroes = gameStructure.playerOneCharacters;
                     playerTwoHeroes = gameStructure.playerTwoCharacters;
@@ -177,14 +180,19 @@ public class LoginController : MonoBehaviour
                     MapConfigStore.SetMap(scenarioConfig);
 
                     Server.ServerCaller.GameStarted();
-
-                    MainThread.ExecuteDelayed(() =>
+                    GameController controller = gameObject.AddComponent<GameController>();
+                    controller.OnActive(() => MainThread.ExecuteDelayed(() => 
                     {
-                        Debug.Log("Login Completed");
-                        SceneManager.LoadScene("Game");
+                        Debug.Log("Login Completed!");
                         active = false;
-                    }, 3);
+                        foreach (var events in _events.ToArray())
+                        {
+                            controller.OnMessageAgain(events);
+                            _events.Remove(events);
+                        }
+                    }, 30));
 
+                    SceneManager.LoadScene("Game");
                     break;
 
                 case MessageType.ERROR:
@@ -204,7 +212,12 @@ public class LoginController : MonoBehaviour
 
                 case MessageType.EVENTS:
                     // not supported
-                    Debug.LogWarning("Received Event Message while in Login");
+                    if (active)
+                    {
+                        Debug.LogWarning("Received Event Message while in Login");
+                        _events.Add(message);
+                    }
+                        
                     break;
 
                 case MessageType.REQUESTS:
@@ -229,6 +242,7 @@ public class LoginController : MonoBehaviour
         {
             Debug.LogError("Connection closed with code: " + code + ".");
         }
+
         active = false;
     }
 }

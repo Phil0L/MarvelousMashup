@@ -4,9 +4,8 @@
  * @author Sarah Engele
  *
  */
-public class PauseStopEvent : Message {
-
-
+public class PauseStopEvent : Message, GameEvent
+{
     /**
      * the constructor of the PauseStopEvent-Class. Creates a PauseStopEvent-MessageObject.
      *
@@ -16,5 +15,10 @@ public class PauseStopEvent : Message {
     {
        
     }
+    public void Execute()
+    {
+        // TODO: No need for this yet!
+    }
+    
 }
 

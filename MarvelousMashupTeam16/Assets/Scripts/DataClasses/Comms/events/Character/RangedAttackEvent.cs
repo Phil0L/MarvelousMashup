@@ -5,25 +5,28 @@
  *  @author Sarah Engele
  *
  */
-
-public class RangedAttackEvent : Message {
-
+public class RangedAttackEvent : Message, CharacterEvent
+{
     /**
      * The entity that wants to start a ranged attack
      */
     public IDs originEntity;
+
     /**
      * The entity the originEntity wants to attack
      */
     public IDs targetEntity;
+
     /**
      * The position of the originEntity on the game field
      */
     public int[] originField;
+
     /**
      * The position of the targetEntity on the game field
      */
     public int[] targetField;
+
     /**
      * The amount of damage that is going to be caused to the target entity
      */
@@ -43,11 +46,9 @@ public class RangedAttackEvent : Message {
      *
      *
      */
-
     public RangedAttackEvent(IDs originEntity, IDs targetEntity, int[] originField,
-                               int[] targetField, int amount) : base(EventType.RangedAttackEvent)
+        int[] targetField, int amount) : base(EventType.RangedAttackEvent)
     {
-     
         this.originEntity = originEntity;
         this.targetEntity = targetEntity;
         this.originField = originField;
@@ -55,4 +56,14 @@ public class RangedAttackEvent : Message {
         this.amount = amount;
     }
 
+    public void Execute()
+    {
+        Character origin = IDTracker.Get(originEntity) as Character;
+        if (origin == null) return;
+
+        Character target = IDTracker.Get(targetEntity) as Character;
+        if (target == null) return;
+
+        Game.State().AttackLongRange(origin, originField.ToVector(), target, targetField.ToVector(), amount);
+    }
 }

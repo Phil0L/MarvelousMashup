@@ -1,10 +1,12 @@
+using UnityEngine.SceneManagement;
+
 /**
  * This message lets the client know that the servers next move will be disconnecting the client
  *
  * @author Sarah Engele
  */
-public class TimeoutEvent : Message {
-
+public class TimeoutEvent : Message, GameEvent
+{
     /**
      * might be something like "You have been disconnected."
      */
@@ -21,5 +23,10 @@ public class TimeoutEvent : Message {
     public TimeoutEvent(string message) : base(EventType.TimeoutEvent)
     {
         this.message = message;
+    }
+    
+    public void Execute()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

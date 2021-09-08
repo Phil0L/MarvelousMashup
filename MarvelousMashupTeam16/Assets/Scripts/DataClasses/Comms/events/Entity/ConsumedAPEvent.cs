@@ -38,7 +38,8 @@ public class ConsumedAPEvent : Message, EntityEvent
     */
     public void Execute()
     {
-        Character affected = IDTracker.Get(targetEntity) as Character;
-        affected.AP -= amount;
+        Character character = IDTracker.Get(targetEntity) as Character;
+        if (character != null)
+            character.AP -= amount;
     }
 }

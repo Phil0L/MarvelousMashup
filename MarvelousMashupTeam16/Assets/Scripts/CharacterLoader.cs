@@ -38,6 +38,8 @@ public class CharacterLoader : MonoBehaviour
                 var chr = Instantiate(prefab, transform);
                 var pos = tileMap.GetCellCenterWorld(new Vector3Int(position.x, position.y, 0)) + generalTileOffset;
                 chr.transform.position = pos;
+                if (character == Character.Characters.Thanos || character == Character.Characters.StanLee || character == Character.Characters.Goose)
+                    chr.GetComponent<CharacterController>().healthDisplayer.gameObject.SetActive(false);
                 chr.sprite = GetSprite(character);
                 chr.name = character.ToString();
                 callback?.Invoke();
@@ -65,6 +67,8 @@ public class CharacterLoader : MonoBehaviour
                 chr.name = character.ToString();
                 var transform1 = chr.transform;
                 transform1.position = pos + new Vector3(0, dropHeight, 0);
+                if (character == Character.Characters.Thanos || character == Character.Characters.StanLee || character == Character.Characters.Goose)
+                    chr.GetComponent<CharacterController>().healthDisplayer.gameObject.SetActive(false);
                 drops.Add(transform1, new Tuple<Vector3, Action>(pos, callback));
                 return chr.GetComponent<CharacterController>();
             }

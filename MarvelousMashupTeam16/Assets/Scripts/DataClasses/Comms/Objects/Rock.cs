@@ -1,4 +1,4 @@
-public class Rock : Entities
+public class Rock : Entities, IID
 {
     
     /**
