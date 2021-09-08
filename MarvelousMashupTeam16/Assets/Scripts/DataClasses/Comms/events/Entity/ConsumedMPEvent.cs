@@ -1,4 +1,4 @@
-public class ConsumedMPEvent : Message
+public class ConsumedMPEvent : Message, EntityEvent
 {
     public IDs targetEntity;
     public int[] targetField;
@@ -21,6 +21,12 @@ public class ConsumedMPEvent : Message
         this.targetEntity = targetEntity;
         this.targetField = targetField;
         this.amount = amount;
+    }
+
+    public void Execute()
+    {
+        Character affected = IDTracker.Get(this.targetEntity) as Character;
+        affected.MP -= this.amount;
     }
 
 }

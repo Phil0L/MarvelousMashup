@@ -1,4 +1,6 @@
-public class DestroyedEntityEvent : Message
+using UnityEngine;
+
+public class DestroyedEntityEvent : Message, EntityEvent
 {
     public int[] targetField;
     public IDs targetEntity;
@@ -15,5 +17,10 @@ public class DestroyedEntityEvent : Message
         this.targetEntity = targetEntity;
         this.targetField = targetField;
 
+    }
+
+    public void Execute()
+    {
+        Game.State().DestroyEntity(targetEntity);
     }
 }

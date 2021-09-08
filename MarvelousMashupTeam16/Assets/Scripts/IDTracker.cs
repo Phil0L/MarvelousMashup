@@ -21,6 +21,12 @@ public class IDTracker
     {
         return IdentifiersDictionary[id];
     }
+
+    public static void DestroyIID(IDs id)
+    {
+        IdentifiersDictionary.Remove(id);
+    }
+    
 }
 
 

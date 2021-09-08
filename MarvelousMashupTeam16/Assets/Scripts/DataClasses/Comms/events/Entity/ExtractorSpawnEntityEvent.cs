@@ -1,3 +1,7 @@
+/*
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * Wir sind uns nicht ganz sicher, ob dieses Ding nicht unnätig ist. 
+ */
 public class ExtractorSpawnEntityEvent : Message
 {
     /**

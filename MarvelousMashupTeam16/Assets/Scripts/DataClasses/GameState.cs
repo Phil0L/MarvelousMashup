@@ -212,6 +212,8 @@ public class GameState
         callback?.Invoke();
     }
 
+    public void DestroyEntity(IDs id) => IDTracker.DestroyIID(id);
+
     public List<Character> YourCharacters() => CurrentCharactersDetail().Where(c => !c.enemy).ToList();
     
     public List<Character> OpponentCharacters() => CurrentCharactersDetail().Where(c => c.enemy).ToList();
