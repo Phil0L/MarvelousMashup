@@ -81,4 +81,15 @@ public class GamestateEvent : Message {
         return winCondition == that.winCondition && Array.Equals(entities, that.entities) && Array.Equals(mapSize, that.mapSize) && Array.Equals(turnOrder, that.turnOrder) && activeCharacter.Equals(that.activeCharacter) && Array.Equals(stoneCooldowns, that.stoneCooldowns);
     }
 
+    public void Execute()
+    {
+        //TODO: parse entities (optional (theoretical))
+        //TODO: parse mapsize (optional (theoretical))
+        //TODO: parse turnorder
+        Character currentTurnCharacter = IDTracker.Get(activeCharacter) as Character;
+        if (currentTurnCharacter != null) Game.State().SetCurrentTurn(currentTurnCharacter);
+        //TODO: parse stone cooldowns (optional (theoretical))
+        //TODO: parse wincondition (optional (theoretical))
+    }
+
 }
