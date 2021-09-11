@@ -82,12 +82,7 @@ public class MainMenu : MonoBehaviour
             if (itemName == "Quit") Application.Quit();
             if (itemName == "Editor") SceneManager.LoadScene("Editor");
             if (itemName == "Play") SceneManager.LoadScene("JoinMenu");
-            if (itemName == "Credits") PopUp.Create()
-                .Title("Sopra Team 16!")
-                .Text("Philipp Letschka\nCornelius Huber\nEnrique Rempp")
-                .Bubble(PopUp.Bubbles.Square)
-                .AddAction(new PopUp.PopUpAction("Respect", up => up.Destroy()))
-                .Show();
+            if (itemName == "Credits") SceneManager.LoadScene("Credits");
         }
     }
 
