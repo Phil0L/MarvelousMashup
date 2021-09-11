@@ -86,6 +86,7 @@ public class SpawnEntityEvent : Message, EntityEvent
                 eId = EntityID.Rocks;
                 obj = entity as Rock;
                 Game.State()[entity.position[1], entity.position[0]].tile = MapTile.ROCK;
+                Game.State()[entity.position[1], entity.position[0]].item = (IFieldContent) obj;
                 Game.State()[entity.position[1], entity.position[0]].tileData = ((Rock) entity).HP;
                 Game.Controller().GroundLoader.UpdateTile(entity.position.ToVector());
                 break;
