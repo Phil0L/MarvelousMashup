@@ -46,6 +46,7 @@ public class CurrentTurnInfo : MonoBehaviour
                 Game.Controller().AttackDisplayer.Deactivate();
                 CloseRangeAttackRequest crar = new CloseRangeAttackRequest(
                     Game.State().CurrentTurn(),
+                    Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID),
                     pos,
                     Game.State()[pos.x,pos.y].item);
                 GameState.SubscriptionCaller.CallAllSubscriptions(crar);
@@ -61,6 +62,7 @@ public class CurrentTurnInfo : MonoBehaviour
                 Game.Controller().AttackDisplayer.Deactivate();
                 LongRangeAttackRequest lrar = new LongRangeAttackRequest(
                     Game.State().CurrentTurn(),
+                    Game.State().FindHeroPosition(Game.State().CurrentTurn().characterID),
                     pos,
                     Game.State()[pos.x,pos.y].item);
                 GameState.SubscriptionCaller.CallAllSubscriptions(lrar);

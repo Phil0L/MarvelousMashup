@@ -61,4 +61,13 @@ public static class IDGetter
         var myKey = IDTracker.IdentifiersDictionary.FirstOrDefault(x => x.Value == obj).Key;
         return myKey;
     }
+    
+    public static IDs GetIDCasted(this IFieldContent obj)
+    {
+        if (obj is Character c) return GetID(c);
+        if (obj is InfinityStone i) return GetID(i);
+        if (obj is Rock r) return GetID(r);
+        // TODO: Add Portal (maybe)
+        return default;
+    }
 }

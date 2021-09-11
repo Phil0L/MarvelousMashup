@@ -4,12 +4,12 @@ public class RealityStoneRequest : UserRequest
 {
     public InfinityStone infinityStone;
     public Character character;
-    public Vector2Int teleportPosition;
+    public Vector2Int stonePosition;
 
-    public RealityStoneRequest(InfinityStone infinityStone, Character character, Vector2Int teleportPosition) : base(UserAction.Red)
+    public RealityStoneRequest(InfinityStone infinityStone, Character character, Vector2Int stonePosition) : base(UserAction.Red)
     {
         this.infinityStone = infinityStone;
         this.character = character;
-        this.teleportPosition = teleportPosition;
+        this.stonePosition = stonePosition;
     }
 }
