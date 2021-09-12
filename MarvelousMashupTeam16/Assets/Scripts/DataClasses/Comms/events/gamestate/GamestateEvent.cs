@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 /**
  *  Message-Class, which is sent at the end of EACH AND EVERY message from the server to inform
@@ -88,6 +89,7 @@ public class GamestateEvent : Message {
         //TODO: parse turnorder
         Character currentTurnCharacter = IDTracker.Get(activeCharacter) as Character;
         if (currentTurnCharacter != null) Game.State().SetCurrentTurn(currentTurnCharacter);
+        else Debug.LogWarning("Current character was not been able to determine!");
         //TODO: parse stone cooldowns (optional (theoretical))
         //TODO: parse wincondition (optional (theoretical))
     }

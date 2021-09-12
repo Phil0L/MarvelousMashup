@@ -40,5 +40,9 @@ public class IDs
         IDs iDs = (IDs) o;
         return ID == iDs.ID && entityID == iDs.entityID;
     }
-    
+
+    public override string ToString()
+    {
+        return $"<{entityID} | {ID}>";
+    }
 }

@@ -87,7 +87,7 @@ public class WebSocketClient
 
     public void Send(Object data)
     {
-        Send(JsonConvert.SerializeObject(data));
+        Send(JsonConvert.SerializeObject(data).Replace("\"Null\"", "null"));
     }
     
     private void Read()

@@ -22,7 +22,7 @@ public class IDTracker
     {
         try
         {
-            return IdentifiersDictionary[id];
+            return IdentifiersDictionary.FirstOrDefault(x => x.Key.Equals(id)).Value;
         }
         catch (KeyNotFoundException)
         {
@@ -35,7 +35,7 @@ public class IDTracker
     {
         try
         {
-            var iid = IdentifiersDictionary[id];
+            var iid = IdentifiersDictionary.FirstOrDefault(x => x.Key.Equals(id)).Value;
             IdentifiersDictionary.Remove(id);
             return iid;
         }
@@ -58,7 +58,7 @@ public static class IDGetter
 {
     public static IDs GetID(this IID obj)
     {
-        var myKey = IDTracker.IdentifiersDictionary.FirstOrDefault(x => x.Value == obj).Key;
+        var myKey = IDTracker.IdentifiersDictionary.FirstOrDefault(x => x.Value.Equals(obj)).Key;
         return myKey;
     }
     

@@ -81,6 +81,11 @@ public class PathDisplayer : MonoBehaviour
         if (lastPosition.x != -1)
             points = Game.Controller().Pathfinding.PathFind(from, lastPosition);
         else return;
+        if (points.Count > maxLength + 1)
+        {
+            points = points.GetRange(0, maxLength +1);
+            lastPosition = points[maxLength];
+        }
         var positions = points.Select(p => new Vector3Int(p.x, p.y, 0)).Select(p => tm.GetCellCenterWorld(p)).ToArray();
         LineRenderer.startColor = color;
         LineRenderer.endColor = LighterColor(color);

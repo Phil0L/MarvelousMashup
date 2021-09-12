@@ -24,6 +24,7 @@ public class CurrentTurnInfo : MonoBehaviour
     {
         Move.OnClick(() =>
         {
+            Game.Controller().PathDisplayer.SetMaxLength(Game.State().CurrentTurn().MP);
             Game.Controller().PathDisplayer.Activate();
             Game.Controller().PathDisplayer.OnSelected(pos =>
             {

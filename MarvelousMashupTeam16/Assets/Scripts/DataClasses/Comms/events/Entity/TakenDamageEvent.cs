@@ -45,6 +45,9 @@ public class TakenDamageEvent : Message, EntityEvent
                 break;
             case EntityID.Rocks:
                 Game.State()[targetField[1], targetField[0]].tileData -= amount;
+                if (Game.State()[targetField[1], targetField[0]].tileData <= 0)
+                    Game.State()[targetField[1], targetField[0]].tile = MapTile.GRASS;
+                Game.Controller().GroundLoader.UpdateTile(targetField.ToVector());
                 break;
         }
     }

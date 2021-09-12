@@ -6,14 +6,16 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    private static GameController _instance;
     private Deserializer _deserializer;
     private Action _loginCallback;
     private List<string> _receivedMessages;
 
     private bool _isAwake;
 
-    private void Awake()
+    private void Start()
     {
+        _instance = this;
         _deserializer = new Deserializer();
         _receivedMessages = new List<string>();
         if (Server.IsAttached())
@@ -54,88 +56,96 @@ public class GameController : MonoBehaviour
     {
         if (!Server.IsAttached()) return;
         WebSocketClient wsc = Server.Connection;
-        if (ur is CharacterMoveRequest cmr)
+        switch (ur)
         {
-            wsc.Send(new MoveRequest(cmr.character.GetID(), cmr.previousPosition.ToArray(), cmr.newPosition.ToArray()));
-        }
-
-        if (ur is LongRangeAttackRequest lrar)
-        {
-            wsc.Send(new RangedAttackRequest(lrar.character.GetID(), lrar.attacked.GetIDCasted(), 
-                lrar.characterPosition.ToArray(), lrar.attackPosition.ToArray(), lrar.character.rangeCombatDamage));
-        }
-
-        if (ur is CloseRangeAttackRequest crar)
-        {
-            wsc.Send(new RangedAttackRequest(crar.character.GetID(), crar.attacked.GetIDCasted(),
-                crar.characterPosition.ToArray(), crar.attackPosition.ToArray(), crar.character.rangeCombatDamage));
-        }
-
-        if (ur is EndTurnRequest etr)
-        {
-            wsc.Send(new EndRoundRequest());
-        }
-
-        if (ur is StonePassRequest spr)
-        {
-            wsc.Send(new ExchangeInfinityStoneRequest(spr.character.GetID(), spr.receivingCharacter.GetID(), 
-                spr.fromPosition.ToArray(), spr.position.ToArray(), spr.infinityStone.GetID()));
-        }
-
-        if (ur is SpaceStoneRequest ssr)
-        {
-            wsc.Send(new UseInfinityStoneRequest(ssr.character.GetID(), 
-                Game.State().FindHeroPosition(ssr.character.characterID).ToArray(), 
-                ssr.teleportPosition.ToArray(), ssr.infinityStone.GetID()));
-        }
-
-        if (ur is PowerStoneRequest psr)
-        {
-            wsc.Send(new UseInfinityStoneRequest(psr.character.GetID(),
-                Game.State().FindHeroPosition(psr.character.characterID).ToArray(), psr.attackPosition.ToArray(),
-                psr.infinityStone.GetID()));
-        }
-
-        if (ur is MindStoneRequest msr)
-        {
-            wsc.Send(new UseInfinityStoneRequest(msr.character.GetID(),
-                Game.State().FindHeroPosition(msr.character.characterID).ToArray(), msr.attackPosition.ToArray(),
-                msr.infinityStone.GetID()));
-        }
-
-        if (ur is TimeStoneRequest tsr)
-        {
-            wsc.Send(new UseInfinityStoneRequest(tsr.character.GetID(),
-                Game.State().FindHeroPosition(tsr.character.characterID).ToArray(),
-                Game.State().FindHeroPosition(tsr.character.characterID).ToArray(),
-                tsr.infinityStone.GetID()));
-        }
-
-        if (ur is SoulStoneRequest sosr)
-        {
-            wsc.Send(new UseInfinityStoneRequest(sosr.character.GetID(),
-                Game.State().FindHeroPosition(sosr.character.characterID).ToArray(),
-                Game.State().FindHeroPosition(sosr.revived.characterID).ToArray(),
-                sosr.infinityStone.GetID()));
-        }
-
-        if (ur is RealityStoneRequest rsr)
-        {
-            wsc.Send(new UseInfinityStoneRequest(rsr.character.GetID(),
-                Game.State().FindHeroPosition(rsr.character.characterID).ToArray(), rsr.stonePosition.ToArray(),
-                rsr.infinityStone.GetID()));
+            case CharacterMoveRequest cmr:
+                List<MoveRequest> moves = new List<MoveRequest>();
+                for (int i = 0; i < cmr.path.Count - 1; i++)
+                {
+                    int fromIndex = i;
+                    int toIndex = i + 1;
+                    moves.Add(new MoveRequest(cmr.character.GetID(), 
+                        cmr.path[fromIndex].ToArray(), cmr.path[toIndex].ToArray()));
+                }
+                wsc.Send(moves.ToArray().ToStructure(MessageType.REQUESTS));
+                break;
+            case LongRangeAttackRequest lrar:
+                wsc.Send(new RangedAttackRequest(lrar.character.GetID(), lrar.attacked.GetIDCasted(),
+                        lrar.characterPosition.ToArray(), lrar.attackPosition.ToArray(),
+                        lrar.character.rangeCombatDamage)
+                    .ToStructure(MessageType.REQUESTS));
+                break;
+            case CloseRangeAttackRequest crar:
+                wsc.Send(new MeleeAttackRequest(crar.character.GetID(), crar.attacked.GetIDCasted(),
+                        crar.characterPosition.ToArray(), crar.attackPosition.ToArray(),
+                        crar.character.rangeCombatDamage)
+                    .ToStructure(MessageType.REQUESTS));
+                break;
+            case EndTurnRequest _:
+                wsc.Send(new EndRoundRequest().ToStructure(MessageType.REQUESTS));
+                break;
+            case StonePassRequest spr:
+                wsc.Send(new ExchangeInfinityStoneRequest(spr.character.GetID(), spr.receivingCharacter.GetID(),
+                        spr.fromPosition.ToArray(), spr.position.ToArray(), spr.infinityStone.GetID())
+                    .ToStructure(MessageType.REQUESTS));
+                break;
+            case SpaceStoneRequest ssr:
+                wsc.Send(new UseInfinityStoneRequest(ssr.character.GetID(),
+                    Game.State().FindHeroPosition(ssr.character.characterID).ToArray(),
+                    ssr.teleportPosition.ToArray(), ssr.infinityStone.GetID()).ToStructure(MessageType.REQUESTS));
+                break;
+            case PowerStoneRequest psr:
+                wsc.Send(new UseInfinityStoneRequest(psr.character.GetID(),
+                    Game.State().FindHeroPosition(psr.character.characterID).ToArray(), psr.attackPosition.ToArray(),
+                    psr.infinityStone.GetID()).ToStructure(MessageType.REQUESTS));
+                break;
+            case MindStoneRequest msr:
+                wsc.Send(new UseInfinityStoneRequest(msr.character.GetID(),
+                    Game.State().FindHeroPosition(msr.character.characterID).ToArray(), msr.attackPosition.ToArray(),
+                    msr.infinityStone.GetID()).ToStructure(MessageType.REQUESTS));
+                break;
+            case TimeStoneRequest tsr:
+                wsc.Send(new UseInfinityStoneRequest(tsr.character.GetID(),
+                    Game.State().FindHeroPosition(tsr.character.characterID).ToArray(),
+                    Game.State().FindHeroPosition(tsr.character.characterID).ToArray(),
+                    tsr.infinityStone.GetID()).ToStructure(MessageType.REQUESTS));
+                break;
+            case SoulStoneRequest sosr:
+                wsc.Send(new UseInfinityStoneRequest(sosr.character.GetID(),
+                    Game.State().FindHeroPosition(sosr.character.characterID).ToArray(),
+                    Game.State().FindHeroPosition(sosr.revived.characterID).ToArray(),
+                    sosr.infinityStone.GetID()).ToStructure(MessageType.REQUESTS));
+                break;
+            case RealityStoneRequest rsr:
+                wsc.Send(new UseInfinityStoneRequest(rsr.character.GetID(),
+                    Game.State().FindHeroPosition(rsr.character.characterID).ToArray(), rsr.stonePosition.ToArray(),
+                    rsr.infinityStone.GetID()).ToStructure(MessageType.REQUESTS));
+                break;
         }
     }
 
-    public void OnMessageAgain(string message)
+    public static void OnMessageAgain(string message)
     {
-        if (!_receivedMessages.Contains(message))
-            OnMessage(message);
+        if (_instance == null) return;
+        _instance.OnMessage(message);
     }
 
     public void OnActive(Action callback)
     {
         if (_isAwake) callback();
         else _loginCallback = callback;
+    }
+}
+
+public static class Structure
+{
+    public static MessageStructure ToStructure(this Message message, MessageType messageType)
+    {
+        return new MessageStructure(messageType, new[] {message}, null, null);
+    }
+    
+    public static MessageStructure ToStructure(this Message[] message, MessageType messageType)
+    {
+        return new MessageStructure(messageType, message, null, null);
     }
 }

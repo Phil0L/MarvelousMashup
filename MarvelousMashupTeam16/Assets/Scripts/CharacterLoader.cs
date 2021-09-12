@@ -93,7 +93,10 @@ public class CharacterLoader : MonoBehaviour
             }
 
             var path = Game.Controller().Pathfinding.PathFind(currentPosition, position);
-            moves.Add(current, new Tuple<List<Vector2Int>, int, Action>(path, 0, callback));
+            if (!moves.ContainsKey(current))
+                moves.Add(current, new Tuple<List<Vector2Int>, int, Action>(path, 0, callback));
+            else 
+                moves[current].Item1.AddRange(path);
             return current.GetComponent<CharacterController>();
         }
         return null;
@@ -103,6 +106,11 @@ public class CharacterLoader : MonoBehaviour
     {
         foreach (var d in drops.ToList())
         {
+            if (!d.Key)
+            {
+                drops.Remove(d.Key);
+                continue;
+            }
             d.Key.position = Vector3.MoveTowards(d.Key.position, d.Value.Item1, dropSpeed);
             if (Vector3.Distance(d.Key.position, d.Value.Item1) < dropSpeed)
             {
@@ -114,6 +122,11 @@ public class CharacterLoader : MonoBehaviour
 
         foreach (var m in moves.ToList())
         {
+            if (!m.Key)
+            {
+                drops.Remove(m.Key);
+                continue;
+            }
             var i = m.Value.Item2;
             var pos = new Vector3Int(m.Value.Item1[i].x, m.Value.Item1[i].y, 0);
             var posW = tileMap.GetCellCenterWorld(pos) + generalTileOffset;

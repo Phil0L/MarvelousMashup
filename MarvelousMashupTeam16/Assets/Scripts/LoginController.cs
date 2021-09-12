@@ -179,20 +179,21 @@ public class LoginController : MonoBehaviour
                     scenarioConfig = gameStructure.scenarioconfig;
                     MapConfigStore.SetMap(scenarioConfig);
 
+                    Debug.Log("Login Completed!");
+                    SceneManager.LoadScene("Game");
                     Server.ServerCaller.GameStarted();
-                    GameController controller = gameObject.AddComponent<GameController>();
-                    controller.OnActive(() => MainThread.ExecuteDelayed(() => 
+                    //Debug.LogError("MainThread called");
+                    MainThread.ExecuteDelayed(() => 
                     {
-                        Debug.Log("Login Completed!");
+                        //Debug.LogError("MainThread executed");
                         active = false;
+                        if (_events.Count > 0) Debug.Log("Early Events have been Re-Applied");
                         foreach (var events in _events.ToArray())
                         {
-                            controller.OnMessageAgain(events);
+                            GameController.OnMessageAgain(events);
                             _events.Remove(events);
                         }
-                    }, 30));
-
-                    SceneManager.LoadScene("Game");
+                    }, 30);
                     break;
 
                 case MessageType.ERROR:

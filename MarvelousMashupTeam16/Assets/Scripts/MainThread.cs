@@ -6,10 +6,16 @@ public class MainThread : MonoBehaviour
 {
     private static List<Action> tasks = new List<Action>();
     private static List<Tuple<Action, int>> delays = new List<Tuple<Action, int>>();
+    private static MainThread _instance;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (_instance == null)
+        {
+            DontDestroyOnLoad(this);
+            _instance = this;
+        }
+        else Destroy(gameObject);
     }
 
     public static void Execute(Action callback)
