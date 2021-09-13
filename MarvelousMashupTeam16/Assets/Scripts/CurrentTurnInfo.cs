@@ -55,7 +55,7 @@ public class CurrentTurnInfo : MonoBehaviour
         });
         LongRange.OnClick(() =>
         {
-            Game.Controller().AttackDisplayer.SetMaxLength(Game.State().CurrentTurn().rangeCombatReach);
+            Game.Controller().AttackDisplayer.SetMaxLength(Game.State().CurrentTurn().rangeCombatReach - 1);
             Game.Controller().AttackDisplayer.SetColor(Game.Controller().AttackDisplayer.attackColor);
             Game.Controller().AttackDisplayer.Activate();
             Game.Controller().AttackDisplayer.OnSelected(pos =>

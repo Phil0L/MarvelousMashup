@@ -61,8 +61,8 @@ public class RangedAttackEvent : Message, CharacterEvent
         Character origin = IDTracker.Get(originEntity) as Character;
         if (origin == null) return;
 
-        Character target = IDTracker.Get(targetEntity) as Character;
-        if (target == null) return;
+        var target = IDTracker.Get(targetEntity) as IFieldContent;
+        if (target == null || target is InfinityStone) return;
 
         Game.State().AttackLongRange(origin, originField.ToVector(), target, targetField.ToVector(), amount);
     }

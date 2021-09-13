@@ -181,17 +181,17 @@ public class GameState
         Game.Controller().ArrowDispenser.SummonArrow(attackerPosition, attackedPosition, () =>
         {
             AttackIndicator.Summon(attackedPosition);
-            // if (attacked is Character c)
-            //     c.HP -= damage;
-            // else
-            // {
-            //     Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
-            //     if (Game.State()[attackedPosition.x, attackedPosition.y].tileData <= 0)
-            //         Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
-            //     Game.Controller().GroundLoader.UpdateTile(attackedPosition);
-            // }
-            //
-            //
+            if (attacked is Character c)
+                c.HP -= damage;
+            else
+            {
+                Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
+                if (Game.State()[attackedPosition.x, attackedPosition.y].tileData <= 0)
+                    Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
+                Game.Controller().GroundLoader.UpdateTile(attackedPosition);
+            }
+            
+            
             attacker.AP -= 1;
             callback?.Invoke();
         });
@@ -200,15 +200,15 @@ public class GameState
     public void AttackCloseRange(Character attacker, Vector2Int attackerPosition, IFieldContent attacked, Vector2Int attackedPosition, int damage, Action callback = null)
     {
         AttackIndicator.Summon(attackedPosition);
-        // if (attacked is Character c)
-        //     c.HP -= damage;
-        // else
-        // {
-        //     Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
-        //     if (Game.State()[attackedPosition.x, attackedPosition.y].tileData <= 0)
-        //         Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
-        //     Game.Controller().GroundLoader.UpdateTile(attackedPosition);
-        // }
+        if (attacked is Character c)
+            c.HP -= damage;
+        else
+        {
+            Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
+            if (Game.State()[attackedPosition.x, attackedPosition.y].tileData <= 0)
+                Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
+            Game.Controller().GroundLoader.UpdateTile(attackedPosition);
+        }
         attacker.AP -= 1;
         callback?.Invoke();
     }

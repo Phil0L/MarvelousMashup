@@ -34,7 +34,9 @@ public class TakenDamageEvent : Message, EntityEvent
 
     public void Execute()
     {
-        switch (targetEntity.entityID)
+        // Due to the damage being applied after the animation of the attack finished, this is unnessecary
+        
+        /*switch (targetEntity.entityID)
         {
             case EntityID.P1:
             case EntityID.P2:
@@ -49,6 +51,6 @@ public class TakenDamageEvent : Message, EntityEvent
                     Game.State()[targetField[1], targetField[0]].tile = MapTile.GRASS;
                 Game.Controller().GroundLoader.UpdateTile(targetField.ToVector());
                 break;
-        }
+        }*/
     }
 }
