@@ -17,6 +17,7 @@ public class Game : MonoBehaviour
     public ButtonInfoManager ButtonInfoManager;
     public ArrowDispenser ArrowDispenser;
     public CurrentTurnInfo CurrentTurnInfo;
+    public GameInfoDisplayer GameInfoDisplayer;
 
     public static GameState State()
     {

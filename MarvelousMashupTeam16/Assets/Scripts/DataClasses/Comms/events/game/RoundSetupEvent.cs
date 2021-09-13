@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 /**
  * This message is sent to all clients to inform them at the beginning of a new round in which order their characters
  * are allowed to make moves.
@@ -34,6 +37,21 @@ public class RoundSetupEvent : Message, GameEvent
 
     public void Execute()
     {
-        // TODO: No need for this yet!
+        Game.Controller().GameInfoDisplayer.SetRoundCount(roundCount + 1);
+
+        List<Character.Characters> charactersList = new List<Character.Characters>();
+        foreach (var id in characterOrder)
+        {
+            Character character = IDTracker.Get(id) as Character;
+            if (character != null)
+                charactersList.Add(character.characterID);
+        }
+
+        Game.Controller().GameInfoDisplayer.SetCharacters(charactersList);
+    }
+
+    public override string ToString()
+    {
+        return "RoundSetupEvent: " + string.Join(", ", characterOrder.Select(co => co.ToString()));
     }
 }

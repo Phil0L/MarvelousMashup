@@ -20,6 +20,8 @@ public class GameState
                 this[x, y] = field;
             }
         }
+        Game.Controller().GameInfoDisplayer.SetNameOne(PartyConfigStore.You());
+        Game.Controller().GameInfoDisplayer.SetNameOne(PartyConfigStore.Opponent());
     }
     
     private readonly GameField[,] _arr;
