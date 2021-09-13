@@ -96,7 +96,7 @@ public class CharacterLoader : MonoBehaviour
             if (!moves.ContainsKey(current))
                 moves.Add(current, new Tuple<List<Vector2Int>, int, Action>(path, 0, callback));
             else 
-                moves[current].Item1.AddRange(path);
+                moves[current].Item1.AddRange(path.GetRange(1, path.Count-1));
             return current.GetComponent<CharacterController>();
         }
         return null;

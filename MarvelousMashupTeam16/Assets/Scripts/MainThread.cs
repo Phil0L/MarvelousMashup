@@ -35,14 +35,14 @@ public class MainThread : MonoBehaviour
             var delay = delays[i];
             delays.RemoveAt(i);
             if (delay.Item2 > 0) delays.Add(new Tuple<Action, int>(delay.Item1, delay.Item2 -1));
-            else tasks.Add(delay.Item1);
+            else delay.Item1?.Invoke();
         }
 
         for (int i = 0; i < tasks.Count; i++)
         {
             tasks[i]?.Invoke();
-            tasks.RemoveAt(i);
         }
+        tasks.Clear();
         
     }
     

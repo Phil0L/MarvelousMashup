@@ -45,7 +45,13 @@ public class MoveEvent : Message, CharacterEvent
     {
         Character origin = IDTracker.Get(originEntity) as Character;
         if (origin == null) return;
-        
+
         Game.State().MoveHero(origin.characterID, targetField.ToVector());
+    }
+
+
+    public override string ToString()
+    {
+        return $"MoveEvent: {{{originField.ToVector()}, {targetField.ToVector()}}}";
     }
 }

@@ -13,4 +13,6 @@ public class Deserializer
 	    if (message is GamestateEvent gs) gs.Execute();
 	    Debug.Log(message);
     }
+
+    private bool HasOverrideToString(object obj) => obj.ToString() != obj.GetType().ToString();
 }
