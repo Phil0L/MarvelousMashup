@@ -15,7 +15,7 @@ public class CharacterMultipleAction : MonoBehaviour
         if (count <= 0 || !active) Image.color = new Color(1, 1, 1, 0.7f);
         else Image.color = Color.white;
         
-        if (count <= 1) TextImage.gameObject.SetActive(false);
+        if (count <= 0) TextImage.gameObject.SetActive(false);
         else TextImage.gameObject.SetActive(true);
 
         Text.text = "x" + count;
