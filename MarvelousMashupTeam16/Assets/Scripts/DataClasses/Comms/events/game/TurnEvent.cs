@@ -42,7 +42,7 @@ public class TurnEvent : Message, GameEvent
         Game.State().SetCurrentTurn(character);
         if (!character.enemy) Info.Set()
             .Text("It's your turn!")
-            .Cooldown(1000)
+            .Cooldown(500)
             .NewRandomSprite()
             .Show();
     }

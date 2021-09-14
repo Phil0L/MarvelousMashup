@@ -70,7 +70,20 @@ public class CameraController : MonoBehaviour
     private void FocusCamera(float z)
     {
        var dims = GetMapDimension();
-       Vector3 pos = new Vector3(dims.x + (dims.z - dims.x) / 2, dims.y + (dims.w - dims.y) / 2, Camera.main.transform.position.z);
+       Vector3 pos;
+       if (Game.State().CurrentTurn() != null)
+       {
+           var currentTurn = Game.State().CurrentTurn();
+           var currentPosition = Game.State().FindHeroPosition(currentTurn.characterID);
+           var worldPos = Game.Controller().GroundLoader.tilemap
+               .GetCellCenterWorld(new Vector3Int(currentPosition.x, currentPosition.y, 0));
+           pos = worldPos;
+           pos.z = Camera.main.transform.position.z;
+       }
+       else
+       {
+           pos = new Vector3(dims.x + (dims.z - dims.x) / 2, dims.y + (dims.w - dims.y) / 2, Camera.main.transform.position.z);
+       }
        Camera.main.orthographicSize = z;
        Camera.main.transform.position = pos;
     }
