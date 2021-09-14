@@ -31,7 +31,7 @@ namespace MarvelousEditor
 
         public int selectedTabHeight = 90;
         public int unselectedTabHeight = 60;
-        [Range(0,0.1f)] public float fadeSpeed;
+        [Range(0,10f)] public float fadeSpeed;
         private Pages showingPage;
 
         void Start()
@@ -98,24 +98,24 @@ namespace MarvelousEditor
             switch (showingPage)
             {
                 case Pages.CONFIG:
-                    config.GetComponent<CanvasGroup>().alpha += fadeSpeed;
-                    character.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
-                    map.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                    config.GetComponent<CanvasGroup>().alpha += fadeSpeed * Time.deltaTime;
+                    character.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
+                    map.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
                     break;
                 case Pages.MAP:
-                    config.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
-                    character.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
-                    map.GetComponent<CanvasGroup>().alpha += fadeSpeed;
+                    config.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
+                    character.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
+                    map.GetComponent<CanvasGroup>().alpha += fadeSpeed * Time.deltaTime;
                     break;
                 case Pages.CHARACTER:
-                    config.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
-                    character.GetComponent<CanvasGroup>().alpha += fadeSpeed;
-                    map.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                    config.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
+                    character.GetComponent<CanvasGroup>().alpha += fadeSpeed * Time.deltaTime;
+                    map.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
                     break;
                 default:
-                    config.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
-                    character.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
-                    map.GetComponent<CanvasGroup>().alpha -= fadeSpeed;
+                    config.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
+                    character.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
+                    map.GetComponent<CanvasGroup>().alpha -= fadeSpeed * Time.deltaTime;
                     break;
             }
         

@@ -1304,7 +1304,7 @@ MonoBehaviour:
   defaultPage: 1
   selectedTabHeight: 90
   unselectedTabHeight: 60
-  fadeSpeed: 0.0125
+  fadeSpeed: 4.5
 --- !u!114 &1253766135
 MonoBehaviour:
   m_ObjectHideFlags: 0

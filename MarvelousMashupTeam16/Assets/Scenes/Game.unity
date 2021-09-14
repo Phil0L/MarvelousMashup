@@ -315,9 +315,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 965134392}
     m_Modifications:
+    - target: {fileID: 4102294284826040464, guid: 0262fb497c3c2dc44af303c6cbf9366d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4102294284826040470, guid: 0262fb497c3c2dc44af303c6cbf9366d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4102294285049068960, guid: 0262fb497c3c2dc44af303c6cbf9366d, type: 3}
       propertyPath: m_Pivot.x
@@ -411,6 +415,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4458af37e88183545a4324645c0cfd1f, type: 3}
+    - target: {fileID: 4102294285560391042, guid: 0262fb497c3c2dc44af303c6cbf9366d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0262fb497c3c2dc44af303c6cbf9366d, type: 3}
 --- !u!1001 &42378630
@@ -7049,7 +7057,7 @@ MonoBehaviour:
   generalTileOffset: {x: 0, y: 0.6, z: -0.55}
   sprites:
   - character: 1
-    image: {fileID: 21300000, guid: 70f1e41d945a1e84bac3464a33533998, type: 3}
+    image: {fileID: 21300000, guid: f71d3955dc827e54c99888bdd70e1bf8, type: 3}
   - character: 2
     image: {fileID: 21300000, guid: e2dd89222046ffb4ea53fd7449b8a167, type: 3}
   - character: 3
@@ -7577,9 +7585,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 45
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 47
+    m_MaxSize: 45
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
