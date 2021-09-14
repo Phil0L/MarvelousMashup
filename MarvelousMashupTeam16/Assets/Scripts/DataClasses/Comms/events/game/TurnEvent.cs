@@ -40,5 +40,10 @@ public class TurnEvent : Message, GameEvent
         character.AP = character.maxAP;
         character.MP = character.maxMP;
         Game.State().SetCurrentTurn(character);
+        if (!character.enemy) Info.Set()
+            .Text("It's your turn!")
+            .Cooldown(1000)
+            .NewRandomSprite()
+            .Show();
     }
 }

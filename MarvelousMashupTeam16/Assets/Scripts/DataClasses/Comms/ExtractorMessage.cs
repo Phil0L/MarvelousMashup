@@ -147,6 +147,27 @@ public class ExtractorMessage {
      * contains the number of the player who waon the game. Used in WinEvent.
      */
     public int playerWon;
+    
+    /**
+     * Entity that is teleported.
+     *
+     * Used by TeleportedEvent.
+     */
+    public IDs teleportedEntity;
+
+    /**
+     * Origin portal of teleportation.
+     *
+     * Used by TeleportedEvent.
+     */
+    public IDs originPortal;
+
+    /**
+     * Target portal of teleportation.
+     *
+     * Used by TeleportedEvent.
+     */
+    public IDs targetPortal;
 
     /*
      * Empty Constructor for Json Parsing
@@ -218,6 +239,8 @@ public class ExtractorMessage {
                     return this.toSpawnEntityEvent();
                 case EventType.WinEvent:
                     return this.toWinEvent();
+                case EventType.TeleportedEvent:
+                    return this.toTeleportedEvent();
                 default:
                     return null;
             }
@@ -630,6 +653,10 @@ public class ExtractorMessage {
      */
     public PauseStopEvent toPauseStopEvent(){
         return new PauseStopEvent();
+    }
+    
+    public TeleportedEvent toTeleportedEvent(){
+        return new TeleportedEvent(teleportedEntity, originField, targetField, originPortal, targetPortal);
     }
 
     /**

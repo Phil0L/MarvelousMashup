@@ -20,9 +20,11 @@ public class Pathfinding : MonoBehaviour
         {
             for (int y = 0; y < gs.Height(); y++)
             {
-                world[x, y] = gs[x, y].IsWalkable();
+                world[x, y] = gs[x, y].IsWalkable() && gs[x, y].tile != MapTile.PORTAL;
             }
         }
+        if (gs[to.x, to.y].tile == MapTile.PORTAL)
+            world[to.x, to.y] = true;
 
         var start = new Tile {X = from.x, Y = from.y};
         var finish = new Tile {X = to.x, Y = to.y};

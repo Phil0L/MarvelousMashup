@@ -28,6 +28,7 @@ public enum EventType
     TurnTimeoutEvent,
     DisconnectEvent,
     PauseStartEvent,
-    PauseStopEvent
-    
+    PauseStopEvent,
+    TeleportedEvent
+
 }

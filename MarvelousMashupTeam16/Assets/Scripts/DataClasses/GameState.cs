@@ -205,9 +205,6 @@ public class GameState
                     Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
                 Game.Controller().GroundLoader.UpdateTile(attackedPosition);
             }
-
-
-            attacker.AP -= 1;
             callback?.Invoke();
         });
     }
@@ -225,13 +222,9 @@ public class GameState
                 Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
             Game.Controller().GroundLoader.UpdateTile(attackedPosition);
         }
-
-        attacker.AP -= 1;
         callback?.Invoke();
     }
-
-    public void DestroyEntity(IDs id) => IDTracker.Remove(id);
-
+    
     public List<Character> YourCharacters() => CurrentCharactersDetail().Where(c => !c.enemy).ToList();
 
     public List<Character> OpponentCharacters() => CurrentCharactersDetail().Where(c => c.enemy).ToList();

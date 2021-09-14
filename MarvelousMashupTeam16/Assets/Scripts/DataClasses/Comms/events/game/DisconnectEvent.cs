@@ -23,6 +23,10 @@ public class DisconnectEvent : Message, GameEvent
 
     public void Execute()
     {
-        SceneManager.LoadScene("MainMenu");
+        Info.Set()
+            .NewRandomSprite()
+            .Text("You have been disconnected from the Server!")
+            .Cooldown(3000)
+            .Show();
     }
 }

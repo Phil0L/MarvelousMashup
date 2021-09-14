@@ -8,5 +8,6 @@ public enum EntityID
     P1,
     P2,
     Rocks,
-    InfinityStones
+    InfinityStones,
+    Portals
 }

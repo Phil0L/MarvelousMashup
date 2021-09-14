@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -40,6 +41,19 @@ public class CharacterLoader : MonoBehaviour
                 chr.transform.position = pos;
                 if (character == Character.Characters.Thanos || character == Character.Characters.StanLee || character == Character.Characters.Goose)
                     chr.GetComponent<CharacterController>().healthDisplayer.gameObject.SetActive(false);
+                switch (character)
+                {
+                    case Character.Characters.AntMan:
+                        var charPos = chr.GetComponent<CharacterController>().healthDisplayer.transform.position;
+                        charPos.y -= 0.4f;
+                        chr.GetComponent<CharacterController>().healthDisplayer.transform.position = charPos;
+                        break;
+                    case Character.Characters.RocketRacoon:
+                        var charPos2 = chr.GetComponent<CharacterController>().healthDisplayer.transform.position;
+                        charPos2.y -= 0.15f;
+                        chr.GetComponent<CharacterController>().healthDisplayer.transform.position = charPos2;
+                        break;
+                }
                 chr.sprite = GetSprite(character);
                 chr.name = character.ToString();
                 callback?.Invoke();
@@ -69,6 +83,19 @@ public class CharacterLoader : MonoBehaviour
                 transform1.position = pos + new Vector3(0, dropHeight, 0);
                 if (character == Character.Characters.Thanos || character == Character.Characters.StanLee || character == Character.Characters.Goose)
                     chr.GetComponent<CharacterController>().healthDisplayer.gameObject.SetActive(false);
+                switch (character)
+                {
+                    case Character.Characters.AntMan:
+                        var charPos = chr.GetComponent<CharacterController>().healthDisplayer.transform.position;
+                        charPos.y -= 0.4f;
+                        chr.GetComponent<CharacterController>().healthDisplayer.transform.position = charPos;
+                        break;
+                    case Character.Characters.RocketRacoon:
+                        var charPos2 = chr.GetComponent<CharacterController>().healthDisplayer.transform.position;
+                        charPos2.y -= 0.15f;
+                        chr.GetComponent<CharacterController>().healthDisplayer.transform.position = charPos2;
+                        break;
+                }
                 drops.Add(transform1, new Tuple<Vector3, Action>(pos, callback));
                 return chr.GetComponent<CharacterController>();
             }
@@ -76,8 +103,19 @@ public class CharacterLoader : MonoBehaviour
             {
                 var pos = tileMap.GetCellCenterWorld(new Vector3Int(position.x, position.y, 0)) + generalTileOffset;
                 var transform1 = current.transform;
-                transform1.position = pos + new Vector3(0, dropHeight, 0);
-                drops.Add(transform1, new Tuple<Vector3, Action>(pos, callback));
+                if (moves.ContainsKey(transform1))
+                {
+                    StartCoroutine(WaitUntilFree(transform1, () =>
+                    {
+                        transform1.position = pos + new Vector3(0, dropHeight, 0);
+                        drops.Add(transform1, new Tuple<Vector3, Action>(pos, callback));
+                    }));
+                }
+                else
+                {
+                    transform1.position = pos + new Vector3(0, dropHeight, 0);
+                    drops.Add(transform1, new Tuple<Vector3, Action>(pos, callback));
+                }
                 return current.GetComponent<CharacterController>();
             }
             
@@ -100,6 +138,12 @@ public class CharacterLoader : MonoBehaviour
             return current.GetComponent<CharacterController>();
         }
         return null;
+    }
+
+    private IEnumerator WaitUntilFree(Transform transform, Action callback)
+    {
+        yield return new WaitWhile(() => moves.ContainsKey(transform));
+        callback();
     }
 
     private void FixedUpdate()
