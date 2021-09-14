@@ -78,7 +78,7 @@ public class SpawnEntityEvent : Message, EntityEvent
 
                     inf.cooldown = PartyConfigStore.CooldownOf(inf.stone);
                     inf.defaultcooldownTime = PartyConfigStore.CooldownOf(inf.stone);
-                    
+                    obj = inf;
                     Game.State().SummonInfinityStone(inf, new Vector2Int(entity.position[1], entity.position[0]));
                 }
                 break;

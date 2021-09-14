@@ -35,7 +35,7 @@ public class InfinityStone : Entities, IFieldContent, IID
      * @return boolean which is true when both objects are equal (entityType, ID, position)
      */
     public override bool Equals(object o) {
-        return base.Equals(o);
+        return o is InfinityStone inf && inf.stone == stone;
     }
     
     public override string ToString()

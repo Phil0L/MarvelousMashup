@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class DestroyedEntityEvent : Message, EntityEvent
 {
     public int[] targetField;
@@ -33,7 +35,10 @@ public class DestroyedEntityEvent : Message, EntityEvent
                 break;
             case EntityID.InfinityStones:
                 InfinityStone infinityStone = IDTracker.Get(targetEntity) as InfinityStone;
-                if (infinityStone != null) Game.State().DestroyObject(infinityStone);
+                if (infinityStone != null)
+                {
+                    Game.State().DestroyObject(infinityStone);
+                }
                 break;
         }
         IDTracker.Remove(targetEntity);

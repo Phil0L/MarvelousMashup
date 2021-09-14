@@ -16,40 +16,54 @@ public class GameState
         {
             for (int y = 0; y < map.height; y++)
             {
-                var field = new GameField { tile = map.scenario[x, y], tileData = Game.Controller().GroundLoader.defaultRockHealth };
+                var field = new GameField
+                    {tile = map.scenario[x, y], tileData = Game.Controller().GroundLoader.defaultRockHealth};
                 this[x, y] = field;
             }
         }
+
         Game.Controller().GameInfoDisplayer.SetNameOne(PartyConfigStore.You());
         Game.Controller().GameInfoDisplayer.SetNameOne(PartyConfigStore.Opponent());
     }
-    
+
     private readonly GameField[,] _arr;
     private readonly List<Action<UserRequest>> _subscriptions;
 
 
     private Character _turnsCharacter;
-    
+
     public GameField this[int i, int j]
     {
-        get => _arr[i,j];
-        private set => _arr[i,j] = value;
+        get => _arr[i, j];
+        private set => _arr[i, j] = value;
     }
 
     public void Subscribe(Action<UserRequest> callback) => _subscriptions.Add(callback);
 
     public int Height() => _arr.GetLength(1);
-    
+
     public int Width() => _arr.GetLength(0);
 
-    public bool IsOutOfBounds(Vector2Int position) => position.x < 0 || position.y < 0 || position.x >= Width() || position.y >= Height();
+    public bool IsOutOfBounds(Vector2Int position) =>
+        position.x < 0 || position.y < 0 || position.x >= Width() || position.y >= Height();
 
     public Character FindHero(Character.Characters hero)
     {
-        foreach (GameField gameField in _arr)
+        foreach (Character chara in CurrentCharactersDetail())
         {
-            if (gameField.item is Character item && item.characterID == hero)
-                return item;
+            if (chara.characterID == hero)
+                return chara;
+        }
+
+        return null;
+    }
+    
+    public Character FindHero(string name)
+    {
+        foreach (Character chara in CurrentCharactersDetail())
+        {
+            if (chara.name == name)
+                return chara;
         }
         return null;
     }
@@ -63,13 +77,15 @@ public class GameState
                 if (inf.stone == stone) return inf;
             }
         }
+
         foreach (GameField gameField in _arr)
         {
             if (gameField.item is InfinityStone item && item.stone == stone) return item;
         }
+
         return null;
     }
-    
+
     public Vector2Int FindHeroPosition(Character.Characters hero)
     {
         for (int x = 0; x < Width(); x++)
@@ -80,6 +96,7 @@ public class GameState
                     return new Vector2Int(x, y);
             }
         }
+
         return new Vector2Int(-1, -1);
     }
 
@@ -92,24 +109,20 @@ public class GameState
     public void SummonHero(Character character, Vector2Int position, Action callback = null)
     {
         GameField field = this[position.x, position.y];
-        if (field.IsEmpty())
-        {
-            var controller = Game.Controller().CharacterLoader.CharacterToPosition(character.characterID, position,
-                    CharacterLoader.AnimationType.Drop, callback);
-            controller.character = character;
-            this[position.x, position.y].item = character;
-        }
+        if (!field.IsEmpty()) Debug.LogWarning("Summoning Hero on occupied field.");
+        var controller = Game.Controller().CharacterLoader.CharacterToPosition(character.characterID, position,
+            CharacterLoader.AnimationType.Drop, callback);
+        controller.character = character;
+        this[position.x, position.y].item = character;
     }
-    
+
     public void SummonInfinityStone(InfinityStone infinityStone, Vector2Int position, Action callback = null)
     {
         GameField field = this[position.x, position.y];
-        if (field.IsEmpty())
-        {
-            Game.Controller().InfinityStoneLoader.InfinityStoneToPosition(infinityStone, position,
-                InfinityStoneLoader.AnimationType.Drop, callback);
-            this[position.x, position.y].item = infinityStone;
-        }
+        if (!field.IsEmpty()) Debug.LogWarning("Summoning InfinityStone on occupied field.");
+        Game.Controller().InfinityStoneLoader.InfinityStoneToPosition(infinityStone, position,
+            InfinityStoneLoader.AnimationType.Drop, callback);
+        this[position.x, position.y].item = infinityStone;
     }
 
     public void MoveHero(Character.Characters character, Vector2Int position, Action callback = null)
@@ -163,7 +176,7 @@ public class GameState
 
         return chars;
     }
-    
+
     public List<Character> CurrentCharactersDetail()
     {
         var chars = new List<Character>();
@@ -178,7 +191,8 @@ public class GameState
         return chars;
     }
 
-    public void AttackLongRange(Character attacker, Vector2Int attackerPosition, IFieldContent attacked, Vector2Int attackedPosition, int damage, Action callback = null)
+    public void AttackLongRange(Character attacker, Vector2Int attackerPosition, IFieldContent attacked,
+        Vector2Int attackedPosition, int damage, Action callback = null)
     {
         Game.Controller().ArrowDispenser.SummonArrow(attackerPosition, attackedPosition, () =>
         {
@@ -192,14 +206,15 @@ public class GameState
                     Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
                 Game.Controller().GroundLoader.UpdateTile(attackedPosition);
             }
-            
-            
+
+
             attacker.AP -= 1;
             callback?.Invoke();
         });
     }
 
-    public void AttackCloseRange(Character attacker, Vector2Int attackerPosition, IFieldContent attacked, Vector2Int attackedPosition, int damage, Action callback = null)
+    public void AttackCloseRange(Character attacker, Vector2Int attackerPosition, IFieldContent attacked,
+        Vector2Int attackedPosition, int damage, Action callback = null)
     {
         AttackIndicator.Summon(attackedPosition);
         if (attacked is Character c)
@@ -211,6 +226,7 @@ public class GameState
                 Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
             Game.Controller().GroundLoader.UpdateTile(attackedPosition);
         }
+
         attacker.AP -= 1;
         callback?.Invoke();
     }
@@ -218,12 +234,12 @@ public class GameState
     public void DestroyEntity(IDs id) => IDTracker.Remove(id);
 
     public List<Character> YourCharacters() => CurrentCharactersDetail().Where(c => !c.enemy).ToList();
-    
+
     public List<Character> OpponentCharacters() => CurrentCharactersDetail().Where(c => c.enemy).ToList();
 
     public string YourName() => PartyConfigStore.You();
-    
-    public string OpponentName() => PartyConfigStore.Opponent(); 
+
+    public string OpponentName() => PartyConfigStore.Opponent();
 
     public void DestroyObject(Character character)
     {
@@ -232,7 +248,8 @@ public class GameState
             Object.Destroy(TransformOf(character.characterID).gameObject);
         }
         catch (NullReferenceException)
-        { }
+        {
+        }
     }
 
     public void DestroyObject(InfinityStone infinityStone)
@@ -242,7 +259,8 @@ public class GameState
             Object.Destroy(TransformOf(infinityStone).gameObject);
         }
         catch (NullReferenceException)
-        { }
+        {
+        }
     }
 
     public static class SubscriptionCaller
@@ -256,5 +274,4 @@ public class GameState
             }
         }
     }
-    
 }
