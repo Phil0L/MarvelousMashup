@@ -1,5 +1,5 @@
 ![version](https://img.shields.io/badge/version-1.1-green)
-![coverage](https://img.shields.io/badge/coverage-90%25-yellowgreen)
+![coverage](https://img.shields.io/badge/coverage-100%25-yellowgreen)
 ![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 

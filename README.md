@@ -30,11 +30,24 @@ Durch die Freiheit eines modularen System lassen sich dementsprechend auch Laste
   * [Meilenstein 5](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/meilenstein5)
 
 
-## [Editor](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupEditorTeam16)
-![version](https://img.shields.io/badge/version-1.2-blue)
+## [Client](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupTeam16)
+![version](https://img.shields.io/badge/version-1.18-blue)
 ![coverage](https://img.shields.io/badge/coverage-90%25-green)
 
+Der Client des Spiels.
+
+Link zu dem Client:
+
+https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupTeam16
+
+
+## [Editor](https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/tree/master/MarvelousMashupEditorTeam16)
+![version](https://img.shields.io/badge/version-1.3-blue)
+![coverage](https://img.shields.io/badge/coverage-100%25-green)
+
 Der Editor des Spiels.
+
+Der Editor ist auch im Client verfügbar. Dieser hat eine aktuellere Version.
 
 Link zu dem Editor:
 
@@ -64,7 +77,6 @@ https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/
 * **Developer**
   * Philipp Letschka
   * Cornelius Huber
-  * René Müller
 ---
 
 * **Artists**
@@ -74,6 +86,7 @@ https://gitlab.informatik.uni-ulm.de/sopra/ws20-marvelous-mashup/teams/team16/-/
 * Previous Members
   * Mika Witteczek
   * Michael Walter
+  * René Müller
 ---
 
 * Other Contributers
