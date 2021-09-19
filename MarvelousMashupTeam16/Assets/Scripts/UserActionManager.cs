@@ -15,6 +15,7 @@ public class UserActionManager : MonoBehaviour
 
     public void Cancel()
     {
+        Debug.Log("Canceled Action!");
         switch (activeAction)
         {
             case UserAction.Red:

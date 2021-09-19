@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
 
     public void OnUserInteraction(UserRequest ur)
     {
+        Debug.Log($"Client issued {ur.GetType().Name}");
         if (!Server.IsAttached()) return;
         WebSocketClient wsc = Server.Connection;
         switch (ur)

@@ -10,7 +10,7 @@ public class AttackDisplayer : MonoBehaviour
 {
     public LineRenderer LineRenderer;
     public bool active;
-    private bool debug;
+    public bool debug;
     public float lineWidth;
     public Color attackColor;
     public TileMarker tmPrefab;
@@ -201,6 +201,7 @@ public class AttackDisplayer : MonoBehaviour
         return p1;
     }
 
+    // TODO: Not working correctly!!! (works like 84% of the time)
     private List<Vector2Int> GetCollisionPoints(Vector2Int start, Vector2Int end)
     {
         var outputArray = new List<Vector2Int>();
@@ -209,6 +210,7 @@ public class AttackDisplayer : MonoBehaviour
         float dy = end.y - start.y;
         float absdx = Mathf.Abs(dx);
         float absdy = Mathf.Abs(dy);
+        
 
         int x = start.x;
         int y = start.y;
@@ -217,44 +219,60 @@ public class AttackDisplayer : MonoBehaviour
         // slope < 1
         if (absdx > absdy)
         {
-            float d = 2 * absdy - absdx;
-
+            // case when slope is less than 1
+            //float d = 2 * absdy - absdx;
+            float d = 0.5f;
+            float slope = Mathf.Abs(absdy / absdx);
             for (int i = 0; i < absdx; i++)
             {
                 x = dx < 0 ? x - 1 : x + 1;
-                if (d < 0)
+                if (d + slope / 2 < 1) // d < 0
                 {
-                    d = d + 2 * absdy;
+                    //d += 2 * absdy;
+                    d += slope;
+                    if (d + slope / 2 > 1)
+                    {
+                        outputArray.Add(new Vector2Int(x, dy < 0 ? y - 1 : y + 1));
+                    }
                 }
                 else
                 {
                     y = dy < 0 ? y - 1 : y + 1;
-                    d = d + (2 * absdy - 2 * absdx);
+                    //d += 2 * absdy - 2 * absdx;
+                    d += slope - 1;
                 }
-
                 outputArray.Add(new Vector2Int(x, y));
             }
         }
         else
         {
             // case when slope is greater than or equals to 1
-            float d = 2 * absdx - absdy;
+            //float d = 2 * absdx - absdy;
+            float d = 0.5f;
+            float slope = Mathf.Abs(absdx / absdy);
 
             for (int i = 0; i < absdy; i++)
             {
                 y = dy < 0 ? y - 1 : y + 1;
-                if (d < 0)
-                    d = d + 2 * absdx;
+                if (d + slope / 2 < 1) // d < 0
+                {
+                    //d = d + 2 * absdx;
+                    d += slope;
+                    if (d + slope / 2 > 1)
+                    {
+                        outputArray.Add(new Vector2Int(dx < 0 ? x - 1 : x + 1, y));
+                    }
+                }
                 else
                 {
                     x = dx < 0 ? x - 1 : x + 1;
-                    d = d + (2 * absdx) - (2 * absdy);
+                    //d = d + (2 * absdx) - (2 * absdy);
+                    d += slope - 1;
                 }
-
+                
                 outputArray.Add(new Vector2Int(x, y));
             }
         }
-
         return outputArray;
     }
 

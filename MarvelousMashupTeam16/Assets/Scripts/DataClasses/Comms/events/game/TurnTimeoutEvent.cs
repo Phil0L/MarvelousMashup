@@ -21,7 +21,7 @@ public class TurnTimeoutEvent : Message, GameEvent
     {
         Info.Set()
             .Text("You took too long to make a move!")
-            .Cooldown(3000)
+            .Cooldown(500)
             .NewRandomSprite()
             .Show();
     }

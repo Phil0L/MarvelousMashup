@@ -40,9 +40,12 @@ public class TurnEvent : Message, GameEvent
         character.AP = character.maxAP;
         character.MP = character.maxMP;
         Game.State().SetCurrentTurn(character);
+        if (character.characterID == Character.Characters.Goose || 
+            character.characterID == Character.Characters.Thanos || 
+            character.characterID == Character.Characters.StanLee) return;
         if (!character.enemy) Info.Set()
             .Text("It's your turn!")
-            .Cooldown(500)
+            .Cooldown(300)
             .NewRandomSprite()
             .Show();
     }

@@ -24,14 +24,15 @@ public class Character : IFieldContent, IID
     {
         infinityStones = new List<InfinityStone>();
     }
-    
+
     public Character(Characters characterID)
     {
         this.characterID = characterID;
         infinityStones = new List<InfinityStone>();
     }
 
-    public Character(Characters characterID, string name, int hp, int mp, int ap, int meleeDamage, int rangeCombatDamage, int rangeCombatReach)
+    public Character(Characters characterID, string name, int hp, int mp, int ap, int meleeDamage,
+        int rangeCombatDamage, int rangeCombatReach)
     {
         this.characterID = characterID;
         this.name = name;
@@ -46,7 +47,7 @@ public class Character : IFieldContent, IID
         this.rangeCombatReach = rangeCombatReach;
         infinityStones = new List<InfinityStone>();
     }
-    
+
     public enum Characters
     {
         Unassigned,

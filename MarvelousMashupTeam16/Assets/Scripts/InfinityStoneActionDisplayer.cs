@@ -41,7 +41,7 @@ public class InfinityStoneActionDisplayer : MonoBehaviour
     public void Yellow()
     {
         active = 2;
-        Game.Controller().AttackDisplayer.SetMaxLength(10000);
+        Game.Controller().AttackDisplayer.SetMaxLength(Game.State().CurrentTurn().rangeCombatReach - 1);
         Game.Controller().AttackDisplayer.SetColor(colorYellowStone);
         Game.Controller().AttackDisplayer.Activate();
         Game.Controller().AttackDisplayer.OnSelected(position =>

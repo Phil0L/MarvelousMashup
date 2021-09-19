@@ -21,6 +21,7 @@ public class GameState
                 this[x, y] = field;
             }
         }
+
         Game.Controller().GameInfoDisplayer.SetNameOne(PartyConfigStore.You());
         Game.Controller().GameInfoDisplayer.SetNameTwo(PartyConfigStore.Opponent());
     }
@@ -56,7 +57,7 @@ public class GameState
 
         return null;
     }
-    
+
     public Character FindHero(string name)
     {
         foreach (Character chara in CurrentCharactersDetail())
@@ -64,6 +65,7 @@ public class GameState
             if (chara.name == name)
                 return chara;
         }
+
         return null;
     }
 
@@ -197,7 +199,11 @@ public class GameState
         {
             AttackIndicator.Summon(attackedPosition);
             if (attacked is Character c)
+            {
+                if (damage > c.HP) damage = c.HP;
                 c.HP -= damage;
+                if (c.HP == 0) c.infinityStones = new List<InfinityStone>();
+            }
             else
             {
                 Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
@@ -205,6 +211,7 @@ public class GameState
                     Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
                 Game.Controller().GroundLoader.UpdateTile(attackedPosition);
             }
+
             callback?.Invoke();
         });
     }
@@ -214,7 +221,11 @@ public class GameState
     {
         AttackIndicator.Summon(attackedPosition);
         if (attacked is Character c)
+        {
+            if (damage > c.HP) damage = c.HP;
             c.HP -= damage;
+            if (c.HP == 0) c.infinityStones = new List<InfinityStone>();
+        }
         else
         {
             Game.State()[attackedPosition.x, attackedPosition.y].tileData -= damage;
@@ -222,9 +233,10 @@ public class GameState
                 Game.State()[attackedPosition.x, attackedPosition.y].tile = MapTile.GRASS;
             Game.Controller().GroundLoader.UpdateTile(attackedPosition);
         }
+
         callback?.Invoke();
     }
-    
+
     public List<Character> YourCharacters() => CurrentCharactersDetail().Where(c => !c.enemy).ToList();
 
     public List<Character> OpponentCharacters() => CurrentCharactersDetail().Where(c => c.enemy).ToList();

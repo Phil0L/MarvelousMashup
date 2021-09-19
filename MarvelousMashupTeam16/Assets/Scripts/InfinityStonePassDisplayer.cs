@@ -53,7 +53,7 @@ public class InfinityStonePassDisplayer : MonoBehaviour
 
     private void StoneSelected(int stone)
     {
-        Debug.Log("Selected");
+        Debug.Log("Selected Infinity Stone for passing");
         hasStoneSelected = true;
         selectedStone = stone;
         highlighter.gameObject.SetActive(false);
