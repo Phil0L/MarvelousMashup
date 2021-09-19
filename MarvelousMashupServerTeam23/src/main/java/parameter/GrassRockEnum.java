@@ -7,5 +7,6 @@ package parameter;
  */
 public enum GrassRockEnum {
     GRASS,
-    ROCK
+    ROCK,
+    PORTAL
 }

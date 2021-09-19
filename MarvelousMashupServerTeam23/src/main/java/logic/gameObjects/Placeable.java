@@ -48,8 +48,8 @@ public abstract class Placeable {
     public boolean place(Position position){
         if(model.isFree(position)){
             // Create the right entity for the SpawnEntityEvent
-            Entities entity = this.toEntity();
             model.field[position.getX()][position.getY()] = this;
+            Entities entity = this.toEntity();
             model.controller.eventList.add(new SpawnEntityEvent(entity));
             return true;
         }else{
@@ -157,32 +157,7 @@ public abstract class Placeable {
      * Translates this Placeable object to an Entities object that is needed for some
      * network messages.
      * @author Luka Stoehr
-     * @return Entity, or null in case of error
+     * @return Entity
      */
-    public Entities toEntity(){
-        Entities entity;
-        if(this instanceof Hero){
-            Hero h = (Hero) this;
-            entity = new InGameCharacter(h.name, h.PID, h.ID, h.getHealthPoints(), h.getMovementPoints(), h.getActionPoints(), h.inventoryToArray(), h.getPosAsArray());
-        }else if(this instanceof Rock){
-            Rock r = (Rock) this;
-            entity = new communication.messages.objects.Rock(r.ID, r.healthPoints, r.getPosAsArray());
-        }else if(this instanceof InfinityStone){
-            InfinityStone s = (InfinityStone) this;
-            entity = new communication.messages.objects.InfinityStone(s.ID, s.getPosAsArray());
-        }else if(this instanceof Thanos){
-            Thanos t = (Thanos) this;
-            entity = new NPC(t.ID, t.getPosAsArray(), t.movementPoints, t.inventoryToArray());
-        }else if(this instanceof Goose){
-            Goose g = (Goose) this;
-            entity = new NPC(g.ID, g.getPosAsArray(), 0, new int[0]);
-        }else if(this instanceof StanLee){
-            StanLee s = (StanLee) this;
-            entity = new NPC(s.ID, s.getPosAsArray(), 0, new int[0]);
-        }else{
-            //Unknown entity
-            entity = null;
-        }
-        return  entity;
-    }
+    public abstract Entities toEntity();
 }

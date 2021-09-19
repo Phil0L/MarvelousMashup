@@ -1,0 +1,16 @@
+{
+  "scenario": [
+    [ "PORTAL", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "PORTAL", "GRASS", "GRASS", "GRASS", "GRASS", "ROCK", "ROCK", "GRASS", "GRASS", "GRASS"],
+    [ "ROCK", "ROCK", "GRASS", "ROCK", "ROCK", "ROCK", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "PORTAL", "GRASS", "ROCK", "ROCK", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "PORTAL", "GRASS", "ROCK", "ROCK", "ROCK", "GRASS", "PORTAL", "GRASS", "GRASS", "GRASS"],
+    [ "PORTAL", "GRASS", "ROCK", "PORTAL", "PORTAL", "ROCK", "PORTAL", "GRASS", "GRASS", "GRASS"],
+    [ "PORTAL", "PORTAL", "ROCK", "GRASS", "GRASS", "ROCK", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "GRASS", "GRASS", "ROCK", "GRASS", "GRASS", "ROCK", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "GRASS", "GRASS", "ROCK", "GRASS", "ROCK", "ROCK", "GRASS", "GRASS", "GRASS", "GRASS"],
+    [ "GRASS", "GRASS", "GRASS", "GRASS", "ROCK", "GRASS", "GRASS", "GRASS", "GRASS", "GRASS"]
+  ],
+  "author": null,
+  "name": "My Map"
+}

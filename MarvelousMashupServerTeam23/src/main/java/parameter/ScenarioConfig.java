@@ -23,7 +23,7 @@ public class ScenarioConfig {
      * @param name The name of the scenario config
      * @param author the author of the scenario config
      */
-    public ScenarioConfig(GrassRockEnum[][] scenario,String name, String author){
+    public ScenarioConfig(GrassRockEnum[][] scenario, String name, String author){
         this.scenario = scenario;
         this.name = name;
         this.author = author;

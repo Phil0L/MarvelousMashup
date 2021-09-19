@@ -5,8 +5,6 @@
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
@@ -25,6 +23,9 @@
 
 # Visual Studio cache directory
 .vs/
+
+# Ignore vscode settings.
+.vscode/
 
 # Gradle cache directory
 .gradle/
@@ -69,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Project versions.
+MarvelousMashupTeam16/ProjectSettings/ProjectVersion.txt
+

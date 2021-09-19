@@ -4,6 +4,7 @@ import communication.NetworkHandler;
 import communication.messages.IDs;
 import communication.messages.Message;
 import communication.messages.enums.EntityID;
+import communication.messages.events.entity.DestroyedEntityEvent;
 import communication.messages.events.game.DisconnectEvent;
 import communication.messages.events.game.RoundSetupEvent;
 import communication.messages.events.game.TurnEvent;
@@ -131,6 +132,17 @@ public class Controller {
                 }
             }
 
+            //Place all Portals on the field
+            for (int x = 0; x < configuration.scenarioConfig.scenario[0].length; x++) {
+                for (int y = 0; y < configuration.scenarioConfig.scenario.length; y++) {
+                    if (configuration.scenarioConfig.scenario[y][x] == GrassRockEnum.PORTAL) {
+                        Portal portal = new Portal(model);
+                        portal.place(new Position(x, y));
+                    }
+                }
+            }
+
+
             //Place all Heroes on the field randomly
             LinkedList<Position> freePosList = new LinkedList<>();
             for (int x = 0; x < model.field.length; x++) {
@@ -159,6 +171,17 @@ public class Controller {
             model.goose = new Goose(model);
             this.turnOrder.add(0, model.goose);
             this.turnCount = 0;
+
+            // Create RoundSetupEvent
+            IDs[] orderIDs = new IDs[turnOrder.size()];
+            for(int i = 0; i < turnOrder.size(); i++){
+                orderIDs[i] = turnOrder.get(i).getIDs();
+            }
+            this.eventList.add(
+                    new RoundSetupEvent(model.round, orderIDs)
+            );
+
+            // Carry out Gooses turn
             model.goose.gooseTurn();
             nextTurn();
             return handleReturn(true);
@@ -192,6 +215,18 @@ public class Controller {
         if(model.round == configuration.matchConfig.maxRounds){
             // First time Thanos shows up
             model.thanos = new Thanos(model);
+            // Destroy all portals
+            for(int x = 0; x < model.field.length; x++){
+                for(int y = 0; y < model.field[0].length; y++){
+                    if(model.field[x][y] instanceof Portal){
+                        Portal portal = (Portal) model.field[x][y];
+                        this.eventList.add(
+                                new DestroyedEntityEvent(portal.getPosAsArray(), portal.getIDs())
+                        );
+                        model.field[x][y] = null;
+                    }
+                }
+            }
             //Place thanos
             LinkedList<Position> freePosList = new LinkedList<>();
             for(int x = 0; x < model.field.length; x++){
@@ -624,13 +659,13 @@ public class Controller {
      * @param heroArray an Array of Heroes
      * @return returns the converted Array of ConfigHeroes
      */
-    public ConfigHero[] toConfigHeroArray(Hero[] heroArray){
+    public ConfigHero[] toConfigHeroArray(Hero[] heroArray, Configuration config){
 
         // create a new ArrayList which temporarily stores the heroes
         ArrayList<ConfigHero> configHeroes = new ArrayList<>();
 
         // uses stream API to transform a Hero into a ConfigHero and stores it into the list
-        Arrays.stream(heroArray).forEach((Hero hero)-> configHeroes.add(hero.toConfigHero()));
+        Arrays.stream(heroArray).forEach((Hero hero)-> configHeroes.add(hero.toConfigHero(config)));
 
         // Casts the List into a Array which the suitable Typ (ATTENTION toArray() without the Array as a parameter
         // and cast afterwords does not work.)

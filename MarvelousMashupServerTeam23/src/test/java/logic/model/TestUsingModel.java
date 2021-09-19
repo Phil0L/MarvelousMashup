@@ -60,11 +60,19 @@ public abstract class TestUsingModel {
 
         ConfigHero[] cfHArray1 = new ConfigHero[6];
         for(int i = 0; i < 6; i++){
-            cfHArray1[i] = player1Team[i].toConfigHero();
+            try {
+                cfHArray1[i] = player1Team[i].toConfigHero(new Configuration("", "", ""));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         ConfigHero[] cfHArray2 = new ConfigHero[6];
         for(int i = 0; i < 6; i++){
-            cfHArray2[i] = player2Team[i].toConfigHero();
+            try {
+                cfHArray2[i] = player2Team[i].toConfigHero(new Configuration("", "", ""));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         this.model.setPlayerTeam(new Profile(null, "id/1", "1"), cfHArray1);
         this.model.setPlayerTeam(new Profile(null, "id/2", "2"), cfHArray2);

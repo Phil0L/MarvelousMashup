@@ -16,6 +16,7 @@ public class IDs {
      * The function of the entity  (NPC, P1, P2, Rocks or InfinityStones)
      */
     public EntityID entityID;
+
     /**
      * The specific ID of the entity. Every entity has its own ID.
      */

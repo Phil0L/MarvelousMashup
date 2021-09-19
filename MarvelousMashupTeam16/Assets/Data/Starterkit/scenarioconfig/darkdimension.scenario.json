@@ -1,0 +1,18 @@
+{
+    "scenario":[
+        ["ROCK", "ROCK", "ROCK", "ROCK", "ROCK"],
+        ["ROCK", "GRASS", "ROCK", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "ROCK", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "GRASS", "GRASS", "GRASS", "ROCK"],
+        ["ROCK", "ROCK", "ROCK", "ROCK", "ROCK"]
+    ],
+    "author": "jakobmh",
+    "name": "darkdimension"
+}

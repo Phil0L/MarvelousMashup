@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -14,7 +15,6 @@ public class TestConnection : MonoBehaviour
     public ClientWebSocket cws;
 
     private string message = "";
-    private Coroutine receiveRoutine;
 
     public void Connect()
     {
@@ -31,9 +31,13 @@ public class TestConnection : MonoBehaviour
         StartCoroutine(SendData(data));
     }
 
-    public string Receive()
+    public void Receive()
     {
         StartCoroutine(ReceiveData());
+    }
+
+    public string GetLastMessage()
+    {
         return message;
     }
 
@@ -76,17 +80,39 @@ public class TestConnection : MonoBehaviour
         while (cws != null && cws.State == WebSocketState.Open)
         {
             Debug.Log("Reading...");
-            var sendBuffer = new ArraySegment<byte>(new byte[10000]);
-            await cws.ReceiveAsync(sendBuffer, CancellationToken.None);
-            string received = Encoding.UTF8.GetString(sendBuffer.Array);
-            Debug.Log(received);
+            
+            byte[] buffer = new byte[1024];
+            WebSocketReceiveResult result = await cws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);//ToDo built in CancellationToken
+
+            if (result.MessageType == WebSocketMessageType.Close)
+            {
+                return;
+            }
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                stream.Write(buffer,0, result.Count);
+                while(!result.EndOfMessage)
+                {
+                    result = await cws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);//ToDo built in CancellationToken
+                    stream.Write(buffer, 0, result.Count);
+                }
+
+                stream.Seek(0, SeekOrigin.Begin);
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    message = reader.ReadToEnd();
+                    Debug.Log(message);
+                    return;
+                }
+            }
         }
     }
 }
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(TestConnection))]
-public class GridDisplayerEditor : Editor
+public class TestConnectionEditor : Editor
 {
     private string enteredText = "";
     private string state;
@@ -158,10 +184,15 @@ public class GridDisplayerEditor : Editor
 
         GUILayout.Space(20);
 
+        if (GUILayout.Button("Start Receiving"))
+        {
+            myScript.Receive();
+            lastMaessageReveived = "Started Receiving!";
+        }
+        
         GUILayout.Label("Received:");
-        string message = myScript.Receive();
-        if (!string.IsNullOrEmpty(message))
-            lastMaessageReveived = message;
+        if (myScript.GetLastMessage() != "")
+            lastMaessageReveived = myScript.GetLastMessage();
         GUILayout.TextArea(lastMaessageReveived, GUILayout.Height(50));
     }
 }
